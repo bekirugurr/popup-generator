@@ -1,5 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
+import GraySection from '../components/GraySection'
+import Header from '../components/Header'
 import Navbar from '../components/Navbar'
 
 const Home: NextPage = () => {
@@ -9,9 +11,10 @@ const Home: NextPage = () => {
       <title>Popup Generator</title>
     </Head>
       <Navbar/>
-    <div className="px-7 py-4">
+      <Header/>
+      <GraySection/>
 
-    </div>
+
     </>
   )
 }
