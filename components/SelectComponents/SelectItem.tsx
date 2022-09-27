@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import Image from "next/image";
-import deneme from "../../assets/templatesAsImage/1.svg";
+import { useDispatch } from 'react-redux'
+import { changeTemplate } from '../../slices/popUpSlice'
 
 interface Props {
     templateNum:number;
     image:any;
-    setChosenTemplate: React.Dispatch<React.SetStateAction<number>>;
   }
 
-const SelectItem: React.FC<Props>  = ({templateNum, image, setChosenTemplate}) => {
+const SelectItem: React.FC<Props>  = ({templateNum, image}) => {
   const [isOnHover, setIsOnHover] = useState<boolean>(false);
+  const dispatch = useDispatch()
   return (
     <div
       className="bg-gray-200 rounded-xl  px-2 h-56 grid place-items-center z-20 relative"
@@ -19,7 +20,7 @@ const SelectItem: React.FC<Props>  = ({templateNum, image, setChosenTemplate}) =
       <Image src={image} />
       {isOnHover && (
         <div className="absolute top-0 bottom-0 right-0 left-0 z-50 bg-prime-violet/[0.6] grid place-items-center  rounded-xl ">
-          <button className="bg-white  rounded-xl text-prime-violet text-sm font-semibold py-3 px-4" onClick={()=>setChosenTemplate(templateNum)}>
+          <button className="bg-white  rounded-xl text-prime-violet text-sm font-semibold py-3 px-4" onClick={()=>dispatch(changeTemplate(templateNum))}>
             Select Template
           </button>
         </div>

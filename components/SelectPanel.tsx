@@ -2,10 +2,13 @@ import React, { useState } from "react";
 import templateImageArray from "../utils/templatesAsImages.js";
 import ButtonChangePanel from "./SelectComponents/ButtonChangePanel";
 import SelectItem from "./SelectComponents/SelectItem";
+import { useSelector } from 'react-redux'
+import type { RootState } from '../store'
+
 
 const SelectPanel = () => {
   const [numberOfPanel, setNumberOfPanel] = useState<number>(1);
-  const [chosenTemplate, setChosenTemplate] = useState<number>(1);
+  const numberOfSelectedTemplate = useSelector((state:RootState)=>state.popUp.numberOfSelectedTemplate)
 
   const templatesArrayToShow =
     numberOfPanel === 1
@@ -31,7 +34,7 @@ const SelectPanel = () => {
 
       <div className="grid grid-cols-4 grid-flow-row gap-5 mb-6">
       {templatesArrayToShow.map((item, index)=>(
-      <SelectItem setChosenTemplate={setChosenTemplate} key={index} templateNum={item[1]} image={item[0]}/>
+      <SelectItem  key={index} templateNum={item[1]} image={item[0]}/>
       ))}
       </div>
       <ButtonChangePanel
