@@ -4,6 +4,7 @@ import Footer from '../components/Footer'
 import GraySection from '../components/GraySection'
 import Header from '../components/Header'
 import Navbar from '../components/Navbar'
+import SelectPanel from '../components/SelectPanel'
 
 const Home: NextPage = () => {
   return (
@@ -14,6 +15,7 @@ const Home: NextPage = () => {
       <Navbar/>
       <Header/>
       <GraySection/>
+      <SelectPanel/>
       <div className='h-24 bg-green-500'></div>
       <Footer/>
     </>
