@@ -1,7 +1,7 @@
 import React from 'react'
-import Accordion from './Accordion'
-import BottomOfFooter from './BottomOfFooter'
-import TopOfFooter from './TopOfFooter'
+import Accordion from './footerComponents/Accordion'
+import BottomOfFooter from './footerComponents/BottomOfFooter'
+import TopOfFooter from './footerComponents/TopOfFooter'
 
 
 const Footer = () => {

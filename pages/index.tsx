@@ -1,6 +1,5 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Accordion from '../components/Accordion'
 import Footer from '../components/Footer'
 import GraySection from '../components/GraySection'
 import Header from '../components/Header'

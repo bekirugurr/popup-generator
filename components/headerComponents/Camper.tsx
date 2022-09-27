@@ -1,10 +1,10 @@
 import React from "react";
 import Image from "next/image";
-import camperLogo from "../assets/camperLogo.svg";
-import walkingFoots from "../assets/walkingFoots.png";
+import camperLogo from "../../assets/camperLogo.svg";
+import walkingFoots from "../../assets/walkingFoots.png";
 import { MdClose } from "react-icons/md";
-import flashImage from "../assets/flashImage.svg";
-import dollarImage from "../assets/dollarImage.svg";
+import flashImage from "../../assets/flashImage.svg";
+import dollarImage from "../../assets/dollarImage.svg";
 
 const Camper = () => {
   return (

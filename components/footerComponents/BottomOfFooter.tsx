@@ -6,7 +6,7 @@ import {
 } from "react-icons/md";
 import { FaAws } from "react-icons/fa";
 import Image from 'next/image'
-import popUpSmartLogo from '../assets/popUpSmartLogo.svg'
+import popUpSmartLogo from '../../assets/popUpSmartLogo.svg'
 
 const BottomOfFooter = () => {
   return (

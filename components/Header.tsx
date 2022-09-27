@@ -1,6 +1,6 @@
 import React from "react";
 import { MdDone } from "react-icons/md";
-import Camper from "./Camper";
+import Camper from "./headerComponents/Camper";
 import Image from "next/image";
 
 const Header = () => {
