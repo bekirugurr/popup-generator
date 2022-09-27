@@ -6,7 +6,7 @@ import TopOfFooter from './TopOfFooter'
 
 const Footer = () => {
   return (
-    <footer className='px-32 mb-36'>
+    <footer className='px-32 mb-6'>
         <TopOfFooter/>
         <Accordion/>
         <BottomOfFooter/>
