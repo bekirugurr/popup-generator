@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import {changePosition} from "../../slices/popUpSlice";
+import {setPosition} from "../../slices/popUpSlice";
 import type { RootState } from "../../store";
 const Position = () => {
     const position = useSelector((state: RootState) => state.popUp.position);
@@ -13,19 +13,19 @@ const Position = () => {
           className={`h-4 w-6 border border-1 border-gray-500 ${
             position.x === "left" && position.y === "top" && "bg-prime-violet"
           }`}
-          onClick={() => dispatch(changePosition({ x: "left", y: "top" }))}
+          onClick={() => dispatch(setPosition({ x: "left", y: "top" }))}
         />
         <button
           className={`h-4 w-6 border border-1 border-gray-500 ${
             position.x === "center" && position.y === "top" && "bg-prime-violet"
           }`}
-          onClick={() => dispatch(changePosition({ x: "center", y: "top" }))}
+          onClick={() => dispatch(setPosition({ x: "center", y: "top" }))}
         />
         <button
           className={`h-4 w-6 border border-1 border-gray-500 ${
             position.x === "right" && position.y === "top" && "bg-prime-violet"
           }`}
-          onClick={() => dispatch(changePosition({ x: "right", y: "top" }))}
+          onClick={() => dispatch(setPosition({ x: "right", y: "top" }))}
         />
         <button
           className={`h-4 w-6 border border-1 border-gray-500 ${
@@ -33,7 +33,7 @@ const Position = () => {
             position.y === "center" &&
             "bg-prime-violet"
           }`}
-          onClick={() => dispatch(changePosition({ x: "left", y: "center" }))}
+          onClick={() => dispatch(setPosition({ x: "left", y: "center" }))}
         />
         <button
           className={`h-4 w-6 border border-1 border-gray-500 ${
@@ -41,7 +41,7 @@ const Position = () => {
             position.y === "center" &&
             "bg-prime-violet"
           }`}
-          onClick={() => dispatch(changePosition({ x: "center", y: "center" }))}
+          onClick={() => dispatch(setPosition({ x: "center", y: "center" }))}
         />
         <button
           className={`h-4 w-6 border border-1 border-gray-500 ${
@@ -49,7 +49,7 @@ const Position = () => {
             position.y === "center" &&
             "bg-prime-violet"
           }`}
-          onClick={() => dispatch(changePosition({ x: "right", y: "center" }))}
+          onClick={() => dispatch(setPosition({ x: "right", y: "center" }))}
         />
         <button
           className={`h-4 w-6 border border-1 border-gray-500 ${
@@ -57,7 +57,7 @@ const Position = () => {
             position.y === "bottom" &&
             "bg-prime-violet"
           }`}
-          onClick={() => dispatch(changePosition({ x: "left", y: "bottom" }))}
+          onClick={() => dispatch(setPosition({ x: "left", y: "bottom" }))}
         />
         <button
           className={`h-4 w-6 border border-1 border-gray-500 ${
@@ -65,7 +65,7 @@ const Position = () => {
             position.y === "bottom" &&
             "bg-prime-violet"
           }`}
-          onClick={() => dispatch(changePosition({ x: "center", y: "bottom" }))}
+          onClick={() => dispatch(setPosition({ x: "center", y: "bottom" }))}
         />
         <button
           className={`h-4 w-6 border border-1 border-gray-500 ${
@@ -73,7 +73,7 @@ const Position = () => {
             position.y === "bottom" &&
             "bg-prime-violet"
           }`}
-          onClick={() => dispatch(changePosition({ x: "right", y: "bottom" }))}
+          onClick={() => dispatch(setPosition({ x: "right", y: "bottom" }))}
         />
       </div>
     </section>

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import {changeSize} from "../../slices/popUpSlice";
+import {setSize} from "../../slices/popUpSlice";
 import type { RootState } from "../../store";
 
 const Size = () => {
@@ -16,7 +16,7 @@ const Size = () => {
           className={`font-semibold rounded-lg flex items-center px-4 ${
             size === "small" ? "bg-white" : "bg-zinc-200 text-zinc-500"
           }`}
-          onClick={() => dispatch(changeSize("small"))}
+          onClick={() => dispatch(setSize("small"))}
         >
           Small
         </button>
@@ -24,7 +24,7 @@ const Size = () => {
           className={`font-semibold rounded-lg flex items-center px-4 ${
             size === "medium" ? "bg-white" : "bg-zinc-200 text-zinc-500"
           }`}
-          onClick={() => dispatch(changeSize("medium"))}
+          onClick={() => dispatch(setSize("medium"))}
         >
           Medium
         </button>
@@ -32,7 +32,7 @@ const Size = () => {
           className={`font-semibold rounded-lg flex items-center px-4 ${
             size === "large" ? "bg-white" : "bg-zinc-200 text-zinc-500"
           }`}
-          onClick={() => dispatch(changeSize("large"))}
+          onClick={() => dispatch(setSize("large"))}
         >
           Large
         </button>

@@ -1,6 +1,6 @@
 import React, { FormEvent } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { changeContent} from "../../slices/popUpSlice";
+import { setContent} from "../../slices/popUpSlice";
 import type { RootState } from "../../store";
 
 const Content = () => {
@@ -10,7 +10,7 @@ const Content = () => {
     const target = e.target as HTMLInputElement
     let newContent: string[] = [...content]
     newContent[index] = target.value
-    dispatch(changeContent(newContent))
+    dispatch(setContent(newContent))
   }
 
   return (

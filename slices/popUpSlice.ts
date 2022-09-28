@@ -9,11 +9,11 @@ export interface PopUpState {
   logo?:any;
   content: string[];
   image?: any;
-  visitorDevice?: 'desktop' | 'mobile';
-  howManySecondsAfter?: number;
-  percentage?: number;
-  trafficSource?: string;
-  browserLanguage?: string[];
+  visitorDevice?: 'desktop' | 'mobile' | false;
+  howManySecondsAfter?: number | false;
+  percentage?: number | false;
+  trafficSource?: string | false;
+  browserLanguage?: string[] | false;
   exitIntentTargeting?: boolean;
 }
 
@@ -29,32 +29,44 @@ export const popUpSlice = createSlice({
   name: "popUp",
   initialState,
   reducers: {
-    changeTemplate: (state, action: PayloadAction<number>) => {
+    setTemplate: (state, action: PayloadAction<number>) => {
       return {...state, numberOfSelectedTemplate:action.payload}
     },
-    changeSize: (state, action: PayloadAction<'small' | 'medium' | 'large'>) => {
+    setSize: (state, action: PayloadAction<'small' | 'medium' | 'large'>) => {
       return {...state, size:action.payload}
     },
-    changePosition: (state, action: PayloadAction<{x:'left' | 'center'| 'right', y: 'top' | 'center'| 'bottom'}>) => {
+    setPosition: (state, action: PayloadAction<{x:'left' | 'center'| 'right', y: 'top' | 'center'| 'bottom'}>) => {
       return {...state, position:action.payload}
     },
-    changeColor: (state, action: PayloadAction<string>) => {
+    setColor: (state, action: PayloadAction<string>) => {
       return {...state, color:action.payload}
     },
-    changeLogo: (state, action: PayloadAction<any>) => {
+    setLogo: (state, action: PayloadAction<any>) => {
       return {...state, logo:action.payload}
     },
-    changeContent: (state, action: PayloadAction<string[]>) => {
+    setContent: (state, action: PayloadAction<string[]>) => {
       return {...state, content:action.payload}
     },
-    changeImage: (state, action: PayloadAction<any>) => {
+    setImage: (state, action: PayloadAction<any>) => {
       return {...state, image:action.payload}
+    },
+    setVisitorDevice: (state, action: PayloadAction<'desktop' | 'mobile' | false>) => {
+      return {...state, visitorDevice:action.payload}
+    },
+    setHowManySecondsAfter: (state, action: PayloadAction<number | false>) => {
+      return {...state, howManySecondsAfter:action.payload}
+    },
+    setPercentage: (state, action: PayloadAction<number | false>) => {
+      return {...state, percentage:action.payload}
+    },
+    setTrafficSource: (state, action: PayloadAction<string | false >) => {
+      return {...state, trafficSource:action.payload}
     },
 
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { changeTemplate, changeSize, changePosition, changeColor,changeLogo, changeContent, changeImage } = popUpSlice.actions;
+export const { setTemplate, setSize, setPosition, setColor,setLogo, setContent, setImage, setVisitorDevice, setHowManySecondsAfter, setPercentage, setTrafficSource } = popUpSlice.actions;
 
 export default popUpSlice.reducer;
