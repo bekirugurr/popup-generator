@@ -3,6 +3,7 @@ import Head from 'next/head'
 import Footer from '../components/Footer'
 import GraySection from '../components/GraySection'
 import Header from '../components/Header'
+import MainComp from '../components/MainComp'
 import Navbar from '../components/Navbar'
 import SelectPanel from '../components/SelectPanel'
 
@@ -16,7 +17,7 @@ const Home: NextPage = () => {
       <Header/>
       <GraySection/>
       <SelectPanel/>
-      <div className='h-24 bg-green-500'></div>
+      <MainComp/>
       <Footer/>
     </>
   )

@@ -4,7 +4,7 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 export interface PopUpState {
   numberOfSelectedTemplate: number;
   size: 'small' | 'medium' | 'large';
-  position: string;
+  position: {x:'left' | 'center'| 'right', y: 'top' | 'center'| 'bottom'};
   color: string;
   logo?:any;
   content: string[];
@@ -15,15 +15,14 @@ export interface PopUpState {
   trafficSource?: string;
   browserLanguage?: string[];
   exitIntentTargeting?: boolean;
-
 }
 
 const initialState: PopUpState = {
   numberOfSelectedTemplate: 1,
   size: 'medium' ,
-  position: 'center',
-  color: 'prime-violet',
-  content: []
+  position: {x:'center', y:'center'},
+  color: '#F37C34',
+  content: ['Sign up', 'Enter your email', 'By signing up, you agree to private policy']
 };
 
 export const popUpSlice = createSlice({
@@ -33,16 +32,29 @@ export const popUpSlice = createSlice({
     changeTemplate: (state, action: PayloadAction<number>) => {
       return {...state, numberOfSelectedTemplate:action.payload}
     },
-    // decrement: (state) => {
-    //   state.value -= 1;
-    // },
-    // incrementByAmount: (state, action: PayloadAction<number>) => {
-    //   state.value += action.payload;
-    // },
+    changeSize: (state, action: PayloadAction<'small' | 'medium' | 'large'>) => {
+      return {...state, size:action.payload}
+    },
+    changePosition: (state, action: PayloadAction<{x:'left' | 'center'| 'right', y: 'top' | 'center'| 'bottom'}>) => {
+      return {...state, position:action.payload}
+    },
+    changeColor: (state, action: PayloadAction<string>) => {
+      return {...state, color:action.payload}
+    },
+    changeLogo: (state, action: PayloadAction<any>) => {
+      return {...state, logo:action.payload}
+    },
+    changeContent: (state, action: PayloadAction<string[]>) => {
+      return {...state, content:action.payload}
+    },
+    changeImage: (state, action: PayloadAction<any>) => {
+      return {...state, image:action.payload}
+    },
+
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { changeTemplate } = popUpSlice.actions;
+export const { changeTemplate, changeSize, changePosition, changeColor,changeLogo, changeContent, changeImage } = popUpSlice.actions;
 
 export default popUpSlice.reducer;

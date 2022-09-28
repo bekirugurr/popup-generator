@@ -8,7 +8,7 @@ import type { RootState } from '../store'
 
 const SelectPanel = () => {
   const [numberOfPanel, setNumberOfPanel] = useState<number>(1);
-  const numberOfSelectedTemplate = useSelector((state:RootState)=>state.popUp.numberOfSelectedTemplate)
+  // const numberOfSelectedTemplate = useSelector((state:RootState)=>state.popUp.numberOfSelectedTemplate)
 
   const templatesArrayToShow =
     numberOfPanel === 1
@@ -16,6 +16,7 @@ const SelectPanel = () => {
       : numberOfPanel === 2
       ? templateImageArray.slice(12, 24)
       : templateImageArray.slice(24);
+  // console.log(numberOfSelectedTemplate)
 
   return (
     <section className="px-32  pt-12 pb-8">
