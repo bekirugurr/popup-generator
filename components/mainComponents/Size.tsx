@@ -9,7 +9,7 @@ const Size = () => {
 
 
   return (
-    <section>
+    <section className='font-secondary'>
     <h4 className="my-2 pl-1">Size</h4>
     <div className="text-sm h-12 bg-zinc-200 flex gap-1 rounded-xl p-1 w-[17rem]">
         <button

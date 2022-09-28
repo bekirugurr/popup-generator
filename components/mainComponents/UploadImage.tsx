@@ -37,7 +37,7 @@ const UploadImage: React.FC<Props> = ({ defaultImage, changeImgFunc, title }) =>
     });
 
   return (
-    <section>
+    <section className="font-secondary">
       <h4 className="mt-7 mb-3">Upload {title}</h4>
       <div
         className={`border-2 border-dashed ${

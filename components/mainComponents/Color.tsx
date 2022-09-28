@@ -6,7 +6,7 @@ const Color = () => {
     const dispatch = useDispatch()
   return (
     <section>
-       <h4 className="mt-7 mb-3">Colors</h4>
+       <h4 className="mt-7 mb-3 font-secondary">Colors</h4>
       <div className="flex gap-2">
         <button
           className="rounded-lg h-11 w-11 bg-[#000000]"

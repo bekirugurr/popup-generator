@@ -32,7 +32,18 @@ const MainComp: React.FC = () => {
         changeImgFunc={changeLogo}
         title={"Logo"}
       />
-
+      <div className="flex items-center py-8">
+        <div className="rounded-full bg-zinc-300 w-8 h-8 flex items-center justify-center font-semibold">
+          3
+        </div>
+        <h3 className="text-xl font-semibold pl-4">Content </h3>
+      </div>
+      <Content/>
+      <UploadImage
+        defaultImage={defaultImage}
+        changeImgFunc={changeImage}
+        title={"Image"}
+      />
 
     </main>
   );

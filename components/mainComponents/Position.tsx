@@ -7,7 +7,7 @@ const Position = () => {
     const dispatch = useDispatch()
   return (
     <section>
-        <p className="mt-7 mb-3">Position</p>
+        <p className="mt-7 mb-3 font-secondary">Position</p>
       <div className="grid grid-cols-3 grid-flow-row gap-1 w-[5rem] ">
         <button
           className={`h-4 w-6 border border-1 border-gray-500 ${
