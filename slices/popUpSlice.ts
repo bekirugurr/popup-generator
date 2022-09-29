@@ -7,7 +7,7 @@ export interface PopUpState {
   position: {x:'left' | 'center'| 'right', y: 'top' | 'center'| 'bottom'};
   color: string;
   logo?:any;
-  content: string[];
+  content: [string, string][];
   image?: any;
   visitorDevice?: 'desktop' | 'mobile' | false;
   howManySecondsAfter?: number | false;
@@ -22,7 +22,7 @@ const initialState: PopUpState = {
   size: 'medium' ,
   position: {x:'center', y:'center'},
   color: '#F37C34',
-  content: ['Sign up', 'Enter your email', 'By signing up, you agree to private policy']
+  content: [['1', 'Sign up'],['2', 'Enter your email'],['3', 'By signing up, you agree to private polic']]
 };
 
 export const popUpSlice = createSlice({
@@ -44,7 +44,7 @@ export const popUpSlice = createSlice({
     setLogo: (state, action: PayloadAction<any>) => {
       return {...state, logo:action.payload}
     },
-    setContent: (state, action: PayloadAction<string[]>) => {
+    setContent: (state, action: PayloadAction<[string, string][]>) => {
       return {...state, content:action.payload}
     },
     setImage: (state, action: PayloadAction<any>) => {

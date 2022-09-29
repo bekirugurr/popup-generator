@@ -13,19 +13,19 @@ const Color = () => {
           onClick={() => dispatch(setColor("#000000"))}
         ></button>
         <button
-          className="rounded-lg h-11 w-11 bg-[#F37C34]"
-          onClick={() => dispatch(setColor("#F37C34"))}
+          className="rounded-lg h-11 w-11 bg-[#7D4AEA]"
+          onClick={() => dispatch(setColor("#7D4AEA"))}
         ></button>
         <button
-          className="rounded-lg h-11 w-11 bg-[#777777]"
-          onClick={() => dispatch(setColor("#777777"))}
+          className="rounded-lg h-11 w-11 bg-[#F37C34]"
+          onClick={() => dispatch(setColor("#F37C34"))}
         ></button>
         <button
           className="rounded-lg h-11 w-11 bg-[#DDDDDD]"
           onClick={() => dispatch(setColor("#DDDDDD"))}
         ></button>
         <button
-          className="rounded-lg h-11 w-11 bg-[#FFFFFF]"
+          className="rounded-lg border-2 border-gray-300 h-11 w-11 bg-[#FFFFFF]"
           onClick={() => dispatch(setColor("#FFFFFF"))}
         ></button>
       </div> 
