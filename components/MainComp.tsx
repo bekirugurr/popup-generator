@@ -1,18 +1,20 @@
 import React from "react";
 import type { RootState } from "../store";
 import { useSelector } from "react-redux";
-import Size from "./mainComponents/Size";
-import Position from "./mainComponents/Position";
-import Color from "./mainComponents/Color";
-import UploadImage from "./mainComponents/UploadImage";
+import Size from "./mainFormComponents/Size";
+import Position from "./mainFormComponents/Position";
+import Color from "./mainFormComponents/Color";
+import UploadImage from "./mainFormComponents/UploadImage";
 import defaultLogo from "../assets/defaultLogo.svg";
 import defaultImage from "../assets/defaultImage.png";
 import { setLogo, setImage } from "../slices/popUpSlice";
-import Content from "./mainComponents/Content";
-import VisitorDevice from "./mainComponents/VisitorDevice";
-import TimeTrigger from "./mainComponents/TimeTrigger";
-import ScrollTrigger from "./mainComponents/ScrollTrigger";
-import TrafficSource from "./mainComponents/TrafficSource";
+import Content from "./mainFormComponents/Content";
+import VisitorDevice from "./mainFormComponents/VisitorDevice";
+import TimeTrigger from "./mainFormComponents/TimeTrigger";
+import ScrollTrigger from "./mainFormComponents/ScrollTrigger";
+import TrafficSource from "./mainFormComponents/TrafficSource";
+import Language from "./mainFormComponents/Language";
+import ExitIntentTargeting from "./mainFormComponents/ExitIntentTargeting";
 
 const MainComp: React.FC = () => {
   const popUpInfos = useSelector((state: RootState) => state.popUp);
@@ -58,6 +60,8 @@ const MainComp: React.FC = () => {
       <TimeTrigger/>
       <ScrollTrigger/>
       <TrafficSource/>
+      <Language/>
+      <ExitIntentTargeting/>
 
     </main>
   );

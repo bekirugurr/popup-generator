@@ -12,14 +12,7 @@ const Content = () => {
     newContent[index] = [item[0], target.value]
     dispatch(setContent(newContent))
   }
-    console.log(content)
 
-/*     const handleChange = (e:React.FormEvent<HTMLInputElement>, text:string, index:number) => {
-      const target = e.target as HTMLInputElement
-      let newContent: string[] = [...content]
-      newContent[index] = target.value
-      dispatch(setContent(newContent))
-    } */
   return (
     <section className="font-secondary">
       <h4 className="my-2 pl-1">Edit Your Content</h4>

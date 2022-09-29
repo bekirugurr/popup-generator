@@ -7,13 +7,13 @@ export interface PopUpState {
   position: {x:'left' | 'center'| 'right', y: 'top' | 'center'| 'bottom'};
   color: string;
   logo?:any;
-  content: [string, string][];
+  content: [string, string][];//first string refers to what second string is used for. Button, header, placeholder etc.
   image?: any;
   visitorDevice?: 'desktop' | 'mobile' | false;
   howManySecondsAfter?: number | false;
   percentage?: number | false;
   trafficSource?: string | false;
-  browserLanguage?: string[] | false;
+  browserLanguage?: string[];
   exitIntentTargeting?: boolean;
 }
 
@@ -22,7 +22,7 @@ const initialState: PopUpState = {
   size: 'medium' ,
   position: {x:'center', y:'center'},
   color: '#F37C34',
-  content: [['1', 'Sign up'],['2', 'Enter your email'],['3', 'By signing up, you agree to private polic']]
+  content: [['1', 'Sign up'],['2', 'Enter your email'],['3', 'By signing up, you agree to private polic']] //first string refers to what second string is used for. Button, header, placeholder etc.
 };
 
 export const popUpSlice = createSlice({
@@ -62,11 +62,17 @@ export const popUpSlice = createSlice({
     setTrafficSource: (state, action: PayloadAction<string | false >) => {
       return {...state, trafficSource:action.payload}
     },
+    setBrowserLanguage: (state, action: PayloadAction<string[]>) => {
+      return {...state, browserLanguage:action.payload}
+    },
+    setExitIntentTargeting: (state, action: PayloadAction<boolean>) => {
+      return {...state, exitIntentTargeting:action.payload}
+    },
 
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { setTemplate, setSize, setPosition, setColor,setLogo, setContent, setImage, setVisitorDevice, setHowManySecondsAfter, setPercentage, setTrafficSource } = popUpSlice.actions;
+export const { setTemplate, setSize, setPosition, setColor,setLogo, setContent, setImage, setVisitorDevice, setHowManySecondsAfter, setPercentage, setTrafficSource, setBrowserLanguage, setExitIntentTargeting} = popUpSlice.actions;
 
 export default popUpSlice.reducer;
