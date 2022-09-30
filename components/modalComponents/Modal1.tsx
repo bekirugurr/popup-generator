@@ -18,7 +18,7 @@ interface SizeType {
 const Modal1 = () => {
   const modalInfos = useSelector((state: RootState) => state.popUp);
   const [modalSize, setModalSize] = useState<SizeType>({
-    outerDiv: "h-[28rem] w-[30rem]",
+    outerDiv: "h-[28rem] w-[30rem] gap-6 ",
     badgeDiv: 'h-24 w-24',
     badge:'h-[4rem] w-[3rem]',
     form: "gap-3",
@@ -34,7 +34,7 @@ const Modal1 = () => {
       ["Explaination", "Join new adventure"],
       ["Placeholder for code", "Code"],
       ["Left button", "Cancel"],
-      ["Right button", "Continue"],
+      ["Right button", "Continue"]
     ],
     logo: starShieldBadge,
   };
@@ -79,21 +79,21 @@ const Modal1 = () => {
       >
         <img src={modalInfos.logo} alt="badge" className={`${modalSize.badge}`} />
       </div>
-      <h2 className="font-bold text-3xl">{modalInfos.content[0][1]}</h2>
-      <h3 className="text-xl font-medium">{modalInfos.content[1][1]}</h3>
+      <h2 className="font-bold text-3xl">{modalInfos.content[0] && modalInfos.content[0][1]}</h2>
+      <h3 className="text-xl font-medium">{modalInfos.content[1] && modalInfos.content[1][1]}</h3>
       <form className={`flex flex-col w-full  ${modalSize.form}`}>
         <input
           type="text"
           name="name"
           id="name"
-          placeholder={modalInfos.content[2][1]}
+          placeholder={modalInfos.content[2] && modalInfos.content[2][1]}
           className="text-sm border border-gray-400 rounded-lg py-3 pl-2 w-full"
         />
         <div className="flex gap-4">
           <button
             className={`text-sm font-semibold border border-gray-400  rounded-lg py-3 w-full text-black hover:bg-[${modalInfos.color}]`}
           >
-            {modalInfos.content[3][1]}
+            {modalInfos.content[3] && modalInfos.content[3][1]}
           </button>
           <button
             type="submit"
@@ -105,7 +105,7 @@ const Modal1 = () => {
                 : "text-white"
             }`}
           >
-            {modalInfos.content[4][1]}
+            {modalInfos.content[4] && modalInfos.content[4][1]}
           </button>
         </div>
       </form>

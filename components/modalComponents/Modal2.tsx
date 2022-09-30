@@ -76,8 +76,8 @@ const Modal2 = () => {
       <img src={modalInfos.image} alt="upper image" className="w-full h-1/2" />
 
       <div className={`w-ful h-1/2 flex flex-col justify-center items-center ${modalSize.innerDiv}`} >
-        <h2 className="font-bold text-3xl">{modalInfos.content[0][1]}</h2>
-        <h3 className="text-xl font-medium">{modalInfos.content[1][1]}</h3>
+        <h2 className="font-bold text-3xl">{modalInfos.content[0] && modalInfos.content[0][1]}</h2>
+        <h3 className="text-xl font-medium">{modalInfos.content[1] && modalInfos.content[1][1]}</h3>
 
         <button
           className={`text-sm font-semibold border border-gray-400  rounded-lg py-3 w-full bg-[${
@@ -88,13 +88,13 @@ const Modal2 = () => {
               : "text-white"
           }`}
         >
-          {modalInfos.content[2][1]}
+          {modalInfos.content[2] && modalInfos.content[2][1]}
         </button>
 
         <button
           className={`text-sm font-semibold border border-gray-400  rounded-lg py-3 w-full text-black hover:bg-[${modalInfos.color}]`}
         >
-          {modalInfos.content[3][1]}
+          {modalInfos.content[3] && modalInfos.content[3][1]}
         </button>
       </div>
 
