@@ -15,14 +15,15 @@ export interface PopUpState {
   trafficSource?: string | false;
   browserLanguage?: string[];
   exitIntentTargeting?: boolean;
+  webhookURL?: string;
 }
 
 const initialState: PopUpState = {
-  numberOfSelectedTemplate: 1,
+  numberOfSelectedTemplate: 0,
   size: 'medium' ,
   position: {x:'center', y:'center'},
   color: '#F37C34',
-  content: [['1', 'Sign up'],['2', 'Enter your email'],['3', 'By signing up, you agree to private polic']] //first string refers to what second string is used for. Button, header, placeholder etc.
+  content: [['1', 'Sign up'],['2', 'Enter your email'],['3', 'By signing up, you agree to private polic'],['2', 'Enter your email'],['3', 'By signing up, you agree to private polic'],['2', 'Enter your email'],['3', 'By signing up, you agree to private polic'],['2', 'Enter your email'],['3', 'By signing up, you agree to private polic']] //first string refers to what second string is used for. Button, header, placeholder etc.
 };
 
 export const popUpSlice = createSlice({
@@ -31,6 +32,9 @@ export const popUpSlice = createSlice({
   reducers: {
     setTemplate: (state, action: PayloadAction<number>) => {
       return {...state, numberOfSelectedTemplate:action.payload}
+    },
+    setStateTogether: (state, action: PayloadAction<PopUpState>) => {
+      return {...state, ...action.payload}
     },
     setSize: (state, action: PayloadAction<'small' | 'medium' | 'large'>) => {
       return {...state, size:action.payload}
@@ -68,11 +72,14 @@ export const popUpSlice = createSlice({
     setExitIntentTargeting: (state, action: PayloadAction<boolean>) => {
       return {...state, exitIntentTargeting:action.payload}
     },
+    setWebhookURL: (state, action: PayloadAction<string>) => {
+      return {...state, webhookURL:action.payload}
+    },
 
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { setTemplate, setSize, setPosition, setColor,setLogo, setContent, setImage, setVisitorDevice, setHowManySecondsAfter, setPercentage, setTrafficSource, setBrowserLanguage, setExitIntentTargeting} = popUpSlice.actions;
+export const { setTemplate, setStateTogether, setSize, setPosition, setColor,setLogo, setContent, setImage, setVisitorDevice, setHowManySecondsAfter, setPercentage, setTrafficSource, setBrowserLanguage, setExitIntentTargeting, setWebhookURL} = popUpSlice.actions;
 
 export default popUpSlice.reducer;

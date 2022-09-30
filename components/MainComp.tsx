@@ -15,12 +15,15 @@ import ScrollTrigger from "./mainFormComponents/ScrollTrigger";
 import TrafficSource from "./mainFormComponents/TrafficSource";
 import Language from "./mainFormComponents/Language";
 import ExitIntentTargeting from "./mainFormComponents/ExitIntentTargeting";
+import SettingsAndCode from "./mainFormComponents/SettingsAndCode";
+import ModalWrapper from "./modalComponents/ModalWrapper";
 
 const MainComp: React.FC = () => {
   const popUpInfos = useSelector((state: RootState) => state.popUp);
-  console.log(popUpInfos);
+  // console.log(popUpInfos);
   return (
-    <main className="px-32 py-4">
+    <main className="px-28 py-4 flex gap-3">
+      <div>
       <div className="flex items-center  pb-3 pt-8">
         <div className="rounded-full bg-zinc-300 w-8 h-8 flex items-center justify-center font-semibold">
           2
@@ -62,6 +65,17 @@ const MainComp: React.FC = () => {
       <TrafficSource/>
       <Language/>
       <ExitIntentTargeting/>
+      <div className="flex items-center pb-3 pt-10">
+        <div className="rounded-full bg-zinc-300 w-8 h-8 flex items-center justify-center font-semibold">
+          5
+        </div>
+        <h3 className="text-xl font-semibold pl-4">Settings and Code </h3>
+      </div>
+      <SettingsAndCode/>
+      </div>
+          
+        <ModalWrapper/>
+
 
     </main>
   );

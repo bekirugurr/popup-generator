@@ -74,7 +74,7 @@ const Language = () => {
           )}
         </div>
         {isOptionsOpen && (
-          <div className="absolute w-96 h-[16rem] -bottom-[16.4rem] rounded-lg border border-gray-400 overflow-y-auto bg-white" onMouseLeave={()=>setIsOptionsOpen(false)}>
+          <div className="absolute w-96 h-[16rem] -bottom-[16.1rem] rounded-lg border border-gray-400 overflow-y-auto bg-white z-50" onMouseLeave={()=>setIsOptionsOpen(false)}>
             {languages.map((lang, index) => (
               <button key={index} className='hover:bg-gray-200 flex items-center px-3 py-1.5 gap-3 w-full' onClick={(e)=>handleClick(e,lang)}>
                 {browserLanguage != undefined && browserLanguage.includes(lang) ? <BsFillCheckSquareFill className="text-prime-violet"/> : <BsSquare/> }
