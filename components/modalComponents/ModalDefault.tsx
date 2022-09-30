@@ -6,6 +6,8 @@ import type { RootState } from "../../store";
 import defaultImageForModalInitial from "../../assets/defaultImageForModalInitial.svg";
 import { useSelector, useDispatch } from "react-redux";
 import positionFunction from "../../utils/positionFunction";
+import { IoMdClose } from 'react-icons/io'
+
 
 interface SizeType {
   outerDiv: string;
@@ -16,7 +18,7 @@ interface SizeType {
 const ModalDefault = () => {
   const modalInfos = useSelector((state: RootState) => state.popUp);
   const [modalSize, setModalSize] = useState<SizeType>({
-    outerDiv: "h-[20rem] w-[39rem]",
+    outerDiv: "h-[20.8rem] w-[39rem]",
     innerDiv: "gap-2 px-8",
     form: "gap-3",
   });
@@ -56,7 +58,7 @@ const ModalDefault = () => {
       });
     } else {
       setModalSize({
-        outerDiv: "h-[20rem] w-[39rem]",
+        outerDiv: "h-[20.8rem] w-[39rem]",
         innerDiv: "gap-2 px-8",
         form: "gap-3"
       });
@@ -67,7 +69,7 @@ const ModalDefault = () => {
 
   return (
     <div
-      className={`${modalSize.outerDiv} bg-white z-50 rounded-3xl shadow-xl shadow-gray-300 border border-gray-300 flex overflow-hidden`}
+      className={`${modalSize.outerDiv} bg-white z-50 rounded-3xl shadow-lg shadow-gray-200 border border-gray-300 flex overflow-hidden`}
     >
       <div className={`w-1/2  flex flex-col justify-center items-center gap-2 px-8 ${modalSize.innerDiv}`}>
         <h2 className="font-semibold text-3xl">{modalInfos.content[0][1]}</h2>
@@ -96,12 +98,15 @@ const ModalDefault = () => {
         </form>
         <p className="text-xs text-[#777777]">{modalInfos.content[5][1]}</p>
       </div>
-      <div className="w-1/2">
+      <div className="w-1/2 relative">
         <img
           src={modalInfos.image}
           alt="popup image"
           className="w-full h-full"
         />
+              <button className="absolute top-3 right-3 bg-gray-400 p-1 rounded-full">
+      <IoMdClose className="text-white text-lg"/>
+      </button>
       </div>
     </div>
   );
