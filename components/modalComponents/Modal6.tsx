@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import type { PopUpState } from "../../slices/popUpSlice";
 import { setStateTogether } from "../../slices/popUpSlice";
 import type { RootState } from "../../store";
-import starShieldBadge from "../../assets/starShieldBadge.svg";
 import { useSelector, useDispatch } from "react-redux";
 import positionFunction from "../../utils/positionFunction";
 import { IoIosCloseCircleOutline } from "react-icons/io";
@@ -23,6 +22,7 @@ const Modal6 = () => {
     badge: "100",
     form: "gap-3",
   });
+  const [isModalVisible, setIsModalVisible] = useState<string>('visible')
   const dispatch = useDispatch();
   const initialData: PopUpState = {
     numberOfSelectedTemplate: 6,
@@ -36,7 +36,6 @@ const Modal6 = () => {
       ["Left button", "Later"],
       ["Right button", "Join now"],
     ],
-    logo: starShieldBadge,
   };
 
   useEffect(() => {
@@ -67,12 +66,16 @@ const Modal6 = () => {
       });
     }
   }, [modalInfos]);
-
+  
+  const handleSubmit = (e: React.FormEvent<EventTarget>) => { 
+    e.preventDefault()
+    setIsModalVisible('hidden')
+   }
   //! let eklenecek1= 'absolute' + positionFunction(modalInfos.position) //giderken en dıştaki divin className i içine eklenecek
 
   return (
     <div
-      className={`${modalSize.outerDiv} font-secondary bg-white z-50 rounded-3xl shadow-lg shadow-gray-200 border border-gray-300  overflow-hidden flex flex-col justify-center items-center px-16 text-center`}
+      className={` font-secondary bg-white z-50 rounded-3xl shadow-lg shadow-gray-200 border border-gray-300  overflow-hidden flex flex-col justify-center items-center px-16 text-center  ${isModalVisible} ${modalSize.outerDiv}`}
     >
       <div
         className={`${modalSize.badgeDiv} grid place-items-center rounded-full`}
@@ -96,7 +99,7 @@ const Modal6 = () => {
       <h3 className="text-xl font-medium">
         {modalInfos.content[1] && modalInfos.content[1][1]}
       </h3>
-      <form className={`flex flex-col w-full  ${modalSize.form}`}>
+      <form className={`flex flex-col w-full  ${modalSize.form}`} onSubmit={handleSubmit}>
         <input
           type="text"
           name="name"
@@ -107,6 +110,7 @@ const Modal6 = () => {
         <div className="flex gap-4">
           <button
             className={`text-sm font-semibold border border-gray-400  rounded-lg py-3 w-full text-black hover:bg-[${modalInfos.color}]`}
+            onClick={()=>setIsModalVisible('hidden')}
           >
             {modalInfos.content[3] && modalInfos.content[3][1]}
           </button>
@@ -126,7 +130,8 @@ const Modal6 = () => {
       </form>
 
       <button className="absolute top-3 right-3 rounded-full">
-        <IoIosCloseCircleOutline className="text-gray-600 text-4xl" />
+        <IoIosCloseCircleOutline className="text-gray-600 text-4xl"  onClick={()=>setIsModalVisible('hidden')}
+/>
       </button>
     </div>
   );

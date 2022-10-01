@@ -3,11 +3,9 @@ import React, { useEffect, useState } from "react";
 import type { PopUpState } from "../../slices/popUpSlice";
 import { setStateTogether } from "../../slices/popUpSlice";
 import type { RootState } from "../../store";
-import defaultImageForModalInitial from "../../assets/defaultImageForModalInitial.svg";
 import { useSelector, useDispatch } from "react-redux";
 import positionFunction from "../../utils/positionFunction";
-import { IoMdClose } from 'react-icons/io'
-
+import { IoMdClose } from "react-icons/io";
 
 interface SizeType {
   outerDiv: string;
@@ -22,6 +20,7 @@ const ModalDefault = () => {
     innerDiv: "gap-2 px-8",
     form: "gap-3",
   });
+  const [isModalVisible, setIsModalVisible] = useState<string>('visible')
   const dispatch = useDispatch();
   const initialData: PopUpState = {
     numberOfSelectedTemplate: 0,
@@ -36,7 +35,6 @@ const ModalDefault = () => {
       ["Button content", "Sign Up"],
       ["Footnote", "By signing up, you agree to private policy"],
     ],
-    image: defaultImageForModalInitial,
   };
 
   useEffect(() => {
@@ -48,33 +46,40 @@ const ModalDefault = () => {
       setModalSize({
         outerDiv: "h-[30rem] w-[57rem]",
         innerDiv: "gap-7 px-12",
-        form: "gap-7"
+        form: "gap-7",
       });
     } else if (modalInfos.size == "small") {
       setModalSize({
         outerDiv: "h-[16rem] w-[30rem]",
         innerDiv: "gap-1 px-4",
-        form: "gap-2"
+        form: "gap-2",
       });
     } else {
       setModalSize({
         outerDiv: "h-[20.8rem] w-[39rem]",
         innerDiv: "gap-2 px-8",
-        form: "gap-3"
+        form: "gap-3",
       });
     }
   }, [modalInfos]);
+
+  const handleSubmit = (e: React.FormEvent<EventTarget>) => { 
+    e.preventDefault()
+    setIsModalVisible('hidden')
+   }
 
   //! let eklenecek1= 'absolute' + positionFunction(modalInfos.position) //giderken en dıştaki divin className i içine eklenecek
 
   return (
     <div
-      className={`${modalSize.outerDiv} bg-white z-50 rounded-3xl shadow-lg shadow-gray-200 border border-gray-300 flex overflow-hidden`}
+      className={` bg-white z-50 rounded-3xl shadow-lg shadow-gray-200 border border-gray-300 flex overflow-hidden ${isModalVisible} ${modalSize.outerDiv}`}
     >
-      <div className={`w-1/2  flex flex-col justify-center items-center gap-2 px-8 ${modalSize.innerDiv}`}>
+      <div
+        className={`w-1/2  flex flex-col justify-center items-center gap-2 px-8 ${modalSize.innerDiv}`}
+      >
         <h2 className="font-semibold text-3xl">{modalInfos.content[0][1]}</h2>
         <p>{modalInfos.content[1][1]}</p>
-        <form className={`flex flex-col w-full gap-3 ${modalSize.form}`}>
+        <form className={`flex flex-col w-full gap-3 ${modalSize.form}`} onSubmit={handleSubmit}>
           <input
             type="text"
             name="name"
@@ -91,7 +96,13 @@ const ModalDefault = () => {
           />
           <button
             type="submit"
-            className={`text-sm font-semibold border border-gray-400  rounded-lg py-2 pl-2 w-full bg-[${modalInfos.color}] ${modalInfos.color == "#FFFFFF" || modalInfos.color == "#DDDDDD" ? 'text-black' : 'text-white'}`}
+            className={`text-sm font-semibold border border-gray-400  rounded-lg py-2 pl-2 w-full bg-[${
+              modalInfos.color
+            }] ${
+              modalInfos.color == "#FFFFFF" || modalInfos.color == "#DDDDDD"
+                ? "text-black"
+                : "text-white"
+            }`}
           >
             {modalInfos.content[4][1]}
           </button>
@@ -99,14 +110,14 @@ const ModalDefault = () => {
         <p className="text-xs text-[#777777]">{modalInfos.content[5][1]}</p>
       </div>
       <div className="w-1/2 relative">
-        <img
-          src={modalInfos.image}
-          alt="popup image"
-          className="w-full h-full"
-        />
-              <button className="absolute top-3 right-3 bg-gray-400 p-1 rounded-full">
-      <IoMdClose className="text-white text-lg"/>
-      </button>
+          <img
+            src={modalInfos.image ? modalInfos.image:"https://pyxis.nymag.com/v1/imgs/32b/378/88337020950cc202c43d7ef929b62af9b0-bic-mens-workout-shoe.rsquare.w1200.jpg"}
+            alt="popup image"
+            className="w-full h-full"
+          />
+        <button className="absolute top-3 right-3 bg-gray-400 p-1 rounded-full" onClick={()=>setIsModalVisible('hidden')}>
+          <IoMdClose className="text-white text-lg" />
+        </button>
       </div>
     </div>
   );

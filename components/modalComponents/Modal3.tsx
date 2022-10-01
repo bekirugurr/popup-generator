@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import type { PopUpState } from "../../slices/popUpSlice";
 import { setStateTogether } from "../../slices/popUpSlice";
 import type { RootState } from "../../store";
-import starShieldBadge from "../../assets/starShieldBadge.svg";
 import { useSelector, useDispatch } from "react-redux";
 import positionFunction from "../../utils/positionFunction";
 import { IoIosCloseCircleOutline } from "react-icons/io";
@@ -28,6 +27,7 @@ const Modal3 = () => {
     accent: string;
   }>({ text: "text-[#7D4AEA]", accent: "accent-[#7D4AEA]" });
   const [whichIsChecked, setWhichIsChecked] = useState<number>(0);
+  const [isModalVisible, setIsModalVisible] = useState<string>('visible')
   const dispatch = useDispatch();
   const initialData: PopUpState = {
     numberOfSelectedTemplate: 3,
@@ -47,7 +47,6 @@ const Modal3 = () => {
       ["Left button", "Cancel"],
       ["Right button", "Continue"],
     ],
-    logo: starShieldBadge,
   };
 
   useEffect(() => {
@@ -91,11 +90,16 @@ const Modal3 = () => {
 
   }, [modalInfos]);
 
+  const handleSubmit = (e: React.FormEvent<EventTarget>) => { 
+    e.preventDefault()
+    setIsModalVisible('hidden')
+   }
+
   //! let eklenecek1= 'absolute' + positionFunction(modalInfos.position) //giderken en dıştaki divin className i içine eklenecek
 
   return (
     <div
-      className={`${modalSize.outerDiv} font-secondary bg-white z-50 rounded-3xl shadow-lg shadow-gray-200 border border-gray-300  overflow-hidden flex flex-col justify-center items-center px-6`}
+      className={` font-secondary bg-white z-50 rounded-3xl shadow-lg shadow-gray-200 border border-gray-300  overflow-hidden flex flex-col justify-center items-center px-6 ${isModalVisible} ${modalSize.outerDiv}`}
     >
       <h3 className={`font-lg font-medium text-center text-lg ${colorState.text}`}>
         {modalInfos.content[0] && modalInfos.content[0][1].toUpperCase()}
@@ -106,7 +110,7 @@ const Modal3 = () => {
       <h3 className="text-center  text-xl font-normal">
         {modalInfos.content[2] && modalInfos.content[2][1]}
       </h3>
-      <form className={` px-4 flex flex-col w-full  ${modalSize.form}`}>
+      <form className={` px-4 flex flex-col w-full  ${modalSize.form}`} onSubmit={handleSubmit}>
         {modalInfos.content[8] &&
           [
             [modalInfos.content[3], modalInfos.content[4]],
@@ -136,6 +140,7 @@ const Modal3 = () => {
         <div className="flex gap-4">
           <button
             className={`text-sm font-semibold border border-gray-400  rounded-lg py-3 w-full text-black hover:bg-[${modalInfos.color}]`}
+            onClick={()=>setIsModalVisible('hidden')}
           >
             {modalInfos.content[9] && modalInfos.content[9][1]}
           </button>
@@ -155,7 +160,7 @@ const Modal3 = () => {
       </form>
 
       <button className="absolute top-3 right-3 rounded-full">
-        <IoIosCloseCircleOutline className="text-gray-600 text-4xl" />
+        <IoIosCloseCircleOutline className="text-gray-600 text-4xl"  onClick={()=>setIsModalVisible('hidden')}/>
       </button>
     </div>
   );
