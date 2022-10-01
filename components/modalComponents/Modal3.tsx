@@ -77,12 +77,18 @@ const Modal3 = () => {
         form: "gap-6",
       });
     }
-    setColorState({
-      text: `text-[${modalInfos.color}]`,
-      accent: `accent-[${modalInfos.color}]`,
-    });
-    if (modalInfos.content[8]) {
+    if (modalInfos.color === "#000000") {
+        setColorState({text: `text-[#000000]`, accent: `accent-[#000000]`});
+    } else if (modalInfos.color === "#7D4AEA") {
+        setColorState({text: `text-[#7D4AEA]`, accent: `accent-[#7D4AEA]`});
+    } else if (modalInfos.color === "#F37C34") {
+        setColorState({text: `text-[#F37C34]`, accent: `accent-[#F37C34]`});
+    } else if (modalInfos.color === "#DDDDDD") {
+        setColorState({text: `text-[#959090]`, accent: `accent-[#959090]`});
+    } else {
+        setColorState({text: `text-[#000000]`, accent: `accent-[#000000]`});
     }
+
   }, [modalInfos]);
 
   //! let eklenecek1= 'absolute' + positionFunction(modalInfos.position) //giderken en dıştaki divin className i içine eklenecek

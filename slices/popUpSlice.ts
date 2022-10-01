@@ -19,7 +19,7 @@ export interface PopUpState {
 }
 
 const initialState: PopUpState = {
-  numberOfSelectedTemplate: 0,
+  numberOfSelectedTemplate: 4,
   size: 'medium' ,
   position: {x:'center', y:'center'},
   color: '#F37C34',
