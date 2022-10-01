@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import Image from "next/image";
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { setTemplate } from '../../slices/popUpSlice'
+import type { RootState } from "../../store";
+
 
 interface Props {
     templateNum:number;
@@ -10,6 +12,9 @@ interface Props {
 
 const SelectItem: React.FC<Props>  = ({templateNum, image}) => {
   const [isOnHover, setIsOnHover] = useState<boolean>(false);
+  const numberOfSelectedTemplate = useSelector(
+    (state: RootState) => state.popUp.numberOfSelectedTemplate
+  );
   const dispatch = useDispatch()
   return (
     <div
@@ -21,7 +26,7 @@ const SelectItem: React.FC<Props>  = ({templateNum, image}) => {
       {isOnHover && (
         <div className="absolute top-0 bottom-0 right-0 left-0 z-50 bg-prime-violet/[0.6] grid place-items-center  rounded-xl ">
           <button className="bg-white  rounded-xl text-prime-violet text-sm font-semibold py-3 px-4" onClick={()=>dispatch(setTemplate(templateNum))}>
-            Select Template
+            {numberOfSelectedTemplate == templateNum ? 'Selected' : 'Select Template'}
           </button>
         </div>
       )}
