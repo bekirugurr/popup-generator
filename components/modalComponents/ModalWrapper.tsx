@@ -6,6 +6,7 @@ import Modal1 from "./Modal1";
 import Modal2 from "./Modal2";
 import Modal3 from "./Modal3";
 import Modal4 from "./Modal4";
+import Modal5 from "./Modal5";
 
 const ModalWrapper = () => {
   const numberOfSelectedTemplate = useSelector(
@@ -19,6 +20,7 @@ const ModalWrapper = () => {
           {numberOfSelectedTemplate === 2 && <div className="ml-6"><Modal2 /></div>}
           {numberOfSelectedTemplate === 3 && <div className="ml-6"><Modal3 /></div>}
           {numberOfSelectedTemplate === 4 && <div className="ml-6"><Modal4 /></div>}
+          {numberOfSelectedTemplate === 5 && <div className="ml-6"><Modal5 /></div>}
       </div>
 
     </div>
