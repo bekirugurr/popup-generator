@@ -6,9 +6,9 @@ export interface PopUpState {
   size: "small" | "medium" | "large";
   position: { x: "left" | "center" | "right"; y: "top" | "center" | "bottom" };
   color: string;
-  logo?: any;
+  logo?: string;
   content: [string, string][]; //first string refers to what second string is used for. Button, header, placeholder etc.
-  image?: any;
+  image?: string;
   visitorDevice?: "desktop" | "mobile" | false;
   howManySecondsAfter?: number | false;
   percentage?: number | false;

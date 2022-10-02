@@ -2,27 +2,45 @@ import React, { useCallback, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import Image from "next/image";
 import { MdOutlineCloudUpload } from "react-icons/md";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
 interface Props {
   defaultImage: any;
   changeImgFunc: any;
-  title:string;
+  title: string;
 }
 
-const UploadImage: React.FC<Props> = ({ defaultImage, changeImgFunc, title }) => {
+const UploadImage: React.FC<Props> = ({
+  defaultImage,
+  changeImgFunc,
+  title,
+}) => {
   const [image, setImage] = useState<any>(null);
   const dispatch = useDispatch();
 
-  const onDrop = useCallback((acceptedFiles: any[]) => {
+  const onDrop = useCallback((acceptedFiles: File[]) => {
+    axios
+      .post(
+        "https://thumbsnap.com/api/upload",
+        { media: acceptedFiles[0], key: "000021c5ce7b184262e8de5d83c1b2e4" },
+        {
+          headers: {
+            "content-type": "multipart/form-data",
+          },
+        }
+      )
+      .then(({ data }) => {
+        console.log(data.data.media);
+        setImage(data.data.media);
+        dispatch(changeImgFunc(data.data.media));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
     acceptedFiles.map((file) => {
       const reader = new FileReader();
-      reader.onload = function (e) {
-        setImage(e.target?.result);
-        dispatch(changeImgFunc(e.target?.result));
-      };
+      reader.onload = function (e) {};
       reader.readAsDataURL(file);
-      console.log(file);
-      console.log(image);
       return file;
     });
   }, []);
@@ -50,7 +68,7 @@ const UploadImage: React.FC<Props> = ({ defaultImage, changeImgFunc, title }) =>
         <input {...getInputProps()} />
         <div className="bg-gray-300 rounded-xl w-[6rem] h-[6rem] grid place-items-center">
           {image ? (
-            <img src={image} className="h-16 w-16" />
+            <img src={image} className="h-12 w-12" />
           ) : (
             <Image src={defaultImage} className="h-12 w-12" />
           )}
