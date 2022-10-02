@@ -54,7 +54,7 @@ const BottomOfFooter = () => {
       </div>
       <div className="flex flex-col items-center gap-3">
       <div className="mt-14 w-[2.7rem] h-[2.7rem] grid grid-center p-3 bg-black rounded-full">
-        <Image src={popUpSmartLogo} className='text-xl'/>
+        <Image src={popUpSmartLogo} alt='logo' className='text-xl'/>
       </div>
       <p className="text-sm">Povered by Popupsmart</p>
       </div>

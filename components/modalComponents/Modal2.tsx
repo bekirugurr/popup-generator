@@ -24,22 +24,23 @@ const Modal2 = () => {
   });
   const [isModalVisible, setIsModalVisible] = useState<string>('visible')
   const dispatch = useDispatch();
-  const initialData: PopUpState = {
-    numberOfSelectedTemplate: 2,
-    size: "medium",
-    position: { x: "center", y: "center" },
-    color: "#7D4AEA",
-    content: [
-      ["Title", "Install local now"],
-      ["Explaination", "We’ve gone native, try it!"],
-      ["Upper button", "Continue"],
-      ["Down button", "Not now"],
-    ],
-  };
+  
 
   useEffect(() => {
+    const initialData: PopUpState = {
+      numberOfSelectedTemplate: 2,
+      size: "medium",
+      position: { x: "center", y: "center" },
+      color: "#7D4AEA",
+      content: [
+        ["Title", "Install local now"],
+        ["Explaination", "We’ve gone native, try it!"],
+        ["Upper button", "Continue"],
+        ["Down button", "Not now"],
+      ],
+    };
     dispatch(setStateTogether(initialData));
-  }, []);
+  }, [ dispatch]);
 
   useEffect(() => {
     if (modalInfos.size == "large") {
@@ -77,7 +78,7 @@ const Modal2 = () => {
     <div
       className={`font-secondary bg-white z-50 rounded-3xl shadow-lg shadow-gray-200 border border-gray-300  overflow-hidden ${isModalVisible} ${modalSize.outerDiv} `}
     >
-      <img src={modalInfos.image ? modalInfos.image : "https://www.softlanding.ca/wp-content/uploads/2020/04/WM-2.jpg"} alt="upper image" className="w-full h-1/2" />
+      <Image src={modalInfos.image ? modalInfos.image : "https://www.softlanding.ca/wp-content/uploads/2020/04/WM-2.jpg"} alt="upper image" className="w-full h-1/2" />
 
       <div className={`w-ful h-1/2 flex flex-col justify-center items-center ${modalSize.innerDiv}`} >
         <h2 className="font-bold text-3xl">{modalInfos.content[0] && modalInfos.content[0][1]}</h2>

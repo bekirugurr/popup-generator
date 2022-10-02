@@ -5,6 +5,7 @@ import type { RootState } from "../../store";
 import { useSelector, useDispatch } from "react-redux";
 import positionFunction from "../../utils/positionFunction";
 import { IoIosCloseCircleOutline } from "react-icons/io";
+import Image from 'next/image'
 
 interface SizeType {
   outerDiv: string;
@@ -25,27 +26,28 @@ const Modal4 = () => {
   });
   const [isModalVisible, setIsModalVisible] = useState<string>('visible')
   const dispatch = useDispatch();
-  const initialData: PopUpState = {
-    numberOfSelectedTemplate: 4,
-    size: "medium",
-    position: { x: "center", y: "center" },
-    color: "#7D4AEA",
-    content: [
-      ["Top title", "Delete your profile"],
-      [
-        "Explaination",
-        "Your profile will be automatically deleted after 1 month.",
-      ],
-      ["Sub explaination", "You won’t be able to access to your profile after"],
-      ["Bolder part of sub explaination", "30.08.2021."],
-      ["Top button", "Delete my profile"],
-      ["Down button", "Cancel"],
-    ],
-  };
+
 
   useEffect(() => {
+    const initialData: PopUpState = {
+      numberOfSelectedTemplate: 4,
+      size: "medium",
+      position: { x: "center", y: "center" },
+      color: "#7D4AEA",
+      content: [
+        ["Top title", "Delete your profile"],
+        [
+          "Explaination",
+          "Your profile will be automatically deleted after 1 month.",
+        ],
+        ["Sub explaination", "You won’t be able to access to your profile after"],
+        ["Bolder part of sub explaination", "30.08.2021."],
+        ["Top button", "Delete my profile"],
+        ["Down button", "Cancel"],
+      ],
+    };
     dispatch(setStateTogether(initialData));
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     if (modalInfos.size == "large") {
@@ -85,7 +87,7 @@ const Modal4 = () => {
         className={`${modalSize.badgeDiv} grid place-items-center rounded-full bg-[${modalInfos.color}]`}
       >
         {modalInfos.logo ? (
-          <img
+          <Image
             src={modalInfos.logo}
             alt="badge"
             className={`${modalSize.badge}`}

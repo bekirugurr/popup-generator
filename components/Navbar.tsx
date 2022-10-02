@@ -8,7 +8,7 @@ const Navbar = () => {
     <nav className='font-secondary font-medium my-1 py-2.5 px-32 flex flex-row justify-between items-center shadow-md shadow-slate-300/50'>
         <div className='flex flex-row  items-center gap-5'>
             <div className='pr-6 hover:text-prime-violet'>
-                <a className='flex flex-row  items-center gap-1 cursor-pointer'><Image src={navbarLogo} />
+                <a className='flex flex-row  items-center gap-1 cursor-pointer'><Image src={navbarLogo} alt='logo'/>
                 <div className='font-bold'>modal.cards</div>
             </a></div>
             <div className='hover:text-prime-violet'><a className='cursor-pointer flex flex-row items-center gap-2'>Solutions  <FiChevronDown/></a></div>

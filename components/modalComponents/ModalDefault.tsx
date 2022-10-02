@@ -22,24 +22,25 @@ const ModalDefault = () => {
   });
   const [isModalVisible, setIsModalVisible] = useState<string>('visible')
   const dispatch = useDispatch();
-  const initialData: PopUpState = {
-    numberOfSelectedTemplate: 0,
-    size: "medium",
-    position: { x: "center", y: "center" },
-    color: "#F37C34",
-    content: [
-      ["Top title", "Sign Up"],
-      ["Sub title", "Join new adventure"],
-      ["Name input placeholder", "Enter your name"],
-      ["Email input placeholder", "Enter your email"],
-      ["Button content", "Sign Up"],
-      ["Footnote", "By signing up, you agree to private policy"],
-    ],
-  };
+
 
   useEffect(() => {
+    const initialData: PopUpState = {
+      numberOfSelectedTemplate: 0,
+      size: "medium",
+      position: { x: "center", y: "center" },
+      color: "#F37C34",
+      content: [
+        ["Top title", "Sign Up"],
+        ["Sub title", "Join new adventure"],
+        ["Name input placeholder", "Enter your name"],
+        ["Email input placeholder", "Enter your email"],
+        ["Button content", "Sign Up"],
+        ["Footnote", "By signing up, you agree to private policy"],
+      ],
+    };
     dispatch(setStateTogether(initialData));
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     if (modalInfos.size == "large") {
@@ -110,11 +111,17 @@ const ModalDefault = () => {
         <p className="text-xs text-[#777777]">{modalInfos.content[5][1]}</p>
       </div>
       <div className="w-1/2 relative">
-          <img
-            src={modalInfos.image ? modalInfos.image:"https://images.unsplash.com/photo-1603808033192-082d6919d3e1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=415&q=80"}
+      {modalInfos.image ?( <Image
+            src={ modalInfos.image}
             alt="popup image"
             className="w-full h-full"
-          />
+            layout='fill'
+          /> ):(         
+      <img
+          src="https://thumbsnap.com/i/yAynuzuM.jpg"
+          alt="popup image"
+          className="w-full h-full"
+        />)}
         <button className="absolute top-3 right-3 bg-gray-400 p-1 rounded-full" onClick={()=>setIsModalVisible('hidden')}>
           <IoMdClose className="text-white text-lg" />
         </button>

@@ -29,29 +29,30 @@ const Modal3 = () => {
   const [whichIsChecked, setWhichIsChecked] = useState<number>(0);
   const [isModalVisible, setIsModalVisible] = useState<string>('visible')
   const dispatch = useDispatch();
-  const initialData: PopUpState = {
-    numberOfSelectedTemplate: 3,
-    size: "medium",
-    position: { x: "center", y: "center" },
-    color: "#7D4AEA",
-    content: [
-      ["Category title", "Plans"],
-      ["Top Title", "Choose best for you"],
-      ["Explaination", "Only pay for the capacity that you use."],
-      ["Option 1", "Starter"],
-      ["Option footer 1", "1 free (then $15 per meember / month)"],
-      ["Option 2", "Pro"],
-      ["Option footer 2", "$19 per member/month"],
-      ["Option 3", "Business"],
-      ["Option footer 3", "$29 per member/month"],
-      ["Left button", "Cancel"],
-      ["Right button", "Continue"],
-    ],
-  };
+  
 
   useEffect(() => {
+    const initialData: PopUpState = {
+      numberOfSelectedTemplate: 3,
+      size: "medium",
+      position: { x: "center", y: "center" },
+      color: "#7D4AEA",
+      content: [
+        ["Category title", "Plans"],
+        ["Top Title", "Choose best for you"],
+        ["Explaination", "Only pay for the capacity that you use."],
+        ["Option 1", "Starter"],
+        ["Option footer 1", "1 free (then $15 per meember / month)"],
+        ["Option 2", "Pro"],
+        ["Option footer 2", "$19 per member/month"],
+        ["Option 3", "Business"],
+        ["Option footer 3", "$29 per member/month"],
+        ["Left button", "Cancel"],
+        ["Right button", "Continue"],
+      ],
+    };
     dispatch(setStateTogether(initialData));
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     if (modalInfos.size == "large") {

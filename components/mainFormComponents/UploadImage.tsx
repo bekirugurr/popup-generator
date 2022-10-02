@@ -43,7 +43,7 @@ const UploadImage: React.FC<Props> = ({
       reader.readAsDataURL(file);
       return file;
     });
-  }, []);
+  }, [changeImgFunc, dispatch]);
 
   const { getRootProps, getInputProps, isDragAccept, isDragReject } =
     useDropzone({
@@ -62,15 +62,15 @@ const UploadImage: React.FC<Props> = ({
           isDragReject ? "border-red-600" : "border-gray-500"
         } ${
           isDragAccept ? "border-green-500" : "border-gray-500"
-        } rounded-xl   w-96 h-44 flex flex-col items-center justify-center gap-2 cursor-pointer hover:bg-gray-200/75 relative`}
+        } rounded-xl   w-96 h-44 flex flex-col items-center justify-center gap-3 cursor-pointer hover:bg-gray-200/75 relative`}
         {...getRootProps()}
       >
         <input {...getInputProps()} />
         <div className="bg-gray-300 rounded-xl w-[6rem] h-[6rem] grid place-items-center">
           {image ? (
-            <img src={image} className="h-12 w-12" />
+            <Image src={image} alt='image' className="h-12 w-12" />
           ) : (
-            <Image src={defaultImage} className="h-12 w-12" />
+            <Image src={defaultImage}  alt='image' className="h-12 w-12" />
           )}
         </div>
         <div className="text-xl text-sm flex items-center ">

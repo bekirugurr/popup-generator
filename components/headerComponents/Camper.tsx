@@ -10,7 +10,7 @@ const Camper = () => {
   return (
     <section className="w-[50rem] h-[29.2rem] rounded-3xl bg-white  flex flex-row absolute -bottom-[14.5rem] z-20">
       <form className="px-10 py-12 flex flex-col items-center justify-between w-1/2">
-        <Image src={camperLogo} className="h-9" />
+        <Image src={camperLogo} alt='camperLogo' className="h-9" />
         <h1 className="text-5xl font-semibold">Join the club</h1>
         <p className="text-lg text-center">
           Subscribe and Get an Extra
@@ -37,7 +37,7 @@ const Camper = () => {
         </p>
       </form>
       <div className="h-full  w-1/2 relative">
-        <Image src={walkingFoots} className="h-full rounded-r-3xl " />
+        <Image src={walkingFoots} alt='walking' className="h-full rounded-r-3xl " />
         <button className="p-2 bg-white absolute right-4 top-4  rounded-full hover:opacity-80">
           <MdClose className="bg-white text-base" />
         </button>
@@ -46,10 +46,10 @@ const Camper = () => {
         </p>
         <div className="absolute top-36 -right-40 z-50 text-sm">
         <div className="rounded-xl flex items-center bg-white py-1.5 px-3 mb-2 w-40 ml-4">
-          <Image src={flashImage} /> <p className="ml-3">Grow email list</p>
+          <Image src={flashImage}  alt='flashImage'/> <p className="ml-3">Grow email list</p>
         </div>
         <div className="rounded-xl flex items-center bg-white py-1.5 px-3">
-          <Image src={dollarImage} /> <p className="ml-3">Increase sales conversion</p>
+          <Image src={dollarImage}  alt='dollarImage'/> <p className="ml-3">Increase sales conversion</p>
         </div></div>
       </div>
     </section>

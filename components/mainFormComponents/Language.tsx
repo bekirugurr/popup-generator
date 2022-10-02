@@ -3,11 +3,9 @@ import RadioButton from "./RadioButton";
 import { setBrowserLanguage } from "../../slices/popUpSlice";
 import type { RootState } from "../../store";
 import { useDispatch, useSelector } from "react-redux";
-import { MultiSelect } from "react-multi-select-component";
 import { IoMdCloseCircle } from "react-icons/io";
 import { FiChevronUp, FiChevronDown } from "react-icons/fi";
 import { BsFillCheckSquareFill, BsSquare  } from "react-icons/bs";
-import { browser } from "process";
 
 interface LanguageItem {
   label: string;
@@ -24,7 +22,7 @@ const Language = () => {
 
   useEffect(() => {
     !isSwitchOn && dispatch(setBrowserLanguage([]));
-  }, [isSwitchOn]);
+  }, [isSwitchOn, dispatch]);
 
   const languages: string[] = [
     "English",
@@ -100,72 +98,10 @@ const Language = () => {
             />
           </div>
         ))}        
-        {browserLanguage != undefined && browserLanguage.length !== 0 ?<div className="h-9"></div> : <div className="h-9 flex items-center text-gray-600">You haven't select yet...</div> }
+        {browserLanguage != undefined && browserLanguage.length !== 0 ?<div className="h-9"></div> : <div className="h-9 flex items-center text-gray-600">You have not select yet...</div> }
       </div>
     </section>
   );
 };
 
 export default Language;
-
-/* const Language = () => {
-    const [isSwitchOn, setIsSwitchOn] = useState<boolean>(true);
-    const [selected, setSelected] = useState<any>([]);
-    const browserLanguage = useSelector(
-      (state: RootState) => state.popUp.browserLanguage
-    );
-    const dispatch = useDispatch();
-    const options = [
-      { label: "English", value: "English" },
-      { label: "Turkish", value: "Turkish" },
-      { label: "Spanish", value: "Spanish" },
-      { label: "Arabic", value: "Arabic" },
-      { label: "Portuguese", value: "Portuguese" },
-      { label: "Japanese", value: "Japanese" },
-      { label: "German", value: "German" },
-      { label: "French", value: "French" },
-      { label: "Italian", value: "Italian" },
-    ];
-  
-    useEffect(() => {
-      !isSwitchOn && dispatch(setBrowserLanguage([]));
-      let langArr: LanguageItem[] = selected.map((item: LanguageItem) => item.value);
-      dispatch(setBrowserLanguage(langArr));
-    }, [selected]);
-  
-    const handleDelete = (e: any, item: LanguageItem) => {
-      const langDictArr = selected.filter(
-        (lang: LanguageItem) => item.value !== lang.value
-      );
-      setSelected(langDictArr);
-    };
-  
-    console.log(browserLanguage);
-    return (
-      <section className="text-secondary w-96 relative mt-12">
-        <h4 className="my-2 pl-1 font-semibold">Browser Language</h4>
-        <RadioButton isSwitchOn={isSwitchOn} setIsSwitchOn={setIsSwitchOn} />
-        <MultiSelect
-          options={options}
-          value={selected}
-          onChange={setSelected}
-          labelledBy="Select"
-        />
-        <div className="w-96 p-px mt-6 text-sm rounded-md border border-gray-400 flex gap-1 items-center flex-wrap">
-          <div className="h-10"></div>
-          {selected?.map((item: LanguageItem, index: number) => (
-            <div
-              key={index}
-              className="border rounded py-1.5 px-1 mr-1 bg-gray-200 hover:bg-white hover:border-red-700 flex items-center hover:text-red-700"
-            >
-              <span className="text-black">{item.value}</span>
-              <IoMdCloseCircle
-                className="ml-2 text-xl"
-                onClick={(e) => handleDelete(e, item)}
-              />
-            </div>
-          ))}
-        </div>
-      </section>
-    );
-  }; */

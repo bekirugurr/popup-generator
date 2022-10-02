@@ -22,7 +22,7 @@ const SelectItem: React.FC<Props>  = ({templateNum, image}) => {
       onMouseEnter={() => setIsOnHover(true)}
       onMouseLeave={() => setIsOnHover(false)}
     >
-      <Image src={image} />
+      <Image src={image} alt='image'/>
       {isOnHover && (
         <div className="absolute top-0 bottom-0 right-0 left-0 z-50 bg-prime-violet/[0.6] grid place-items-center  rounded-xl ">
           <button className="bg-white  rounded-xl text-prime-violet text-sm font-semibold py-3 px-4" onClick={()=>dispatch(setTemplate(templateNum))}>

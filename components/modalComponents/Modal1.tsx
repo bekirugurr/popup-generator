@@ -27,23 +27,24 @@ const Modal1 = () => {
   });
   const [isModalVisible, setIsModalVisible] = useState<string>('visible')
   const dispatch = useDispatch();
-  const initialData: PopUpState = {
-    numberOfSelectedTemplate: 1,
-    size: "medium",
-    position: { x: "center", y: "center" },
-    color: "#7D4AEA",
-    content: [
-      ["Top title", "Security Code"],
-      ["Explaination", "Join new adventure"],
-      ["Placeholder for code", "Code"],
-      ["Left button", "Cancel"],
-      ["Right button", "Continue"],
-    ],
-  };
+
 
   useEffect(() => {
+    const initialData: PopUpState = {
+      numberOfSelectedTemplate: 1,
+      size: "medium",
+      position: { x: "center", y: "center" },
+      color: "#7D4AEA",
+      content: [
+        ["Top title", "Security Code"],
+        ["Explaination", "Join new adventure"],
+        ["Placeholder for code", "Code"],
+        ["Left button", "Cancel"],
+        ["Right button", "Continue"],
+      ],
+    };
     dispatch(setStateTogether(initialData));
-  }, []);
+  }, [ dispatch]);
 
   useEffect(() => {
     if (modalInfos.size == "large") {
@@ -89,7 +90,7 @@ const Modal1 = () => {
         className={`${modalSize.badgeDiv} grid place-items-center rounded-full bg-[${modalInfos.color}]`}
       >
         {modalInfos.logo ? (
-          <img
+          <Image
             src={modalInfos.logo}
             alt="badge"
             className={`${modalSize.badge}`}

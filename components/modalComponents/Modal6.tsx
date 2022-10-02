@@ -24,23 +24,24 @@ const Modal6 = () => {
   });
   const [isModalVisible, setIsModalVisible] = useState<string>('visible')
   const dispatch = useDispatch();
-  const initialData: PopUpState = {
-    numberOfSelectedTemplate: 6,
-    size: "medium",
-    position: { x: "center", y: "center" },
-    color: "#7D4AEA",
-    content: [
-      ["Top title", "Join our mail list"],
-      ["Explaination", "Save up to 30% of your next order"],
-      ["Placeholder for code", "Enter your email"],
-      ["Left button", "Later"],
-      ["Right button", "Join now"],
-    ],
-  };
+
 
   useEffect(() => {
+    const initialData: PopUpState = {
+      numberOfSelectedTemplate: 6,
+      size: "medium",
+      position: { x: "center", y: "center" },
+      color: "#7D4AEA",
+      content: [
+        ["Top title", "Join our mail list"],
+        ["Explaination", "Save up to 30% of your next order"],
+        ["Placeholder for code", "Enter your email"],
+        ["Left button", "Later"],
+        ["Right button", "Join now"],
+      ],
+    };
     dispatch(setStateTogether(initialData));
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     if (modalInfos.size == "large") {

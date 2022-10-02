@@ -17,21 +17,22 @@ const Modal4 = () => {
   });
   const [isModalVisible, setIsModalVisible] = useState<string>('visible')
   const dispatch = useDispatch();
-  const initialData: PopUpState = {
-    numberOfSelectedTemplate: 5,
-    size: "medium",
-    position: { x: "center", y: "center" },
-    color: "#7D4AEA",
-    content: [
-      ["Top title", "The file is on it's way"],
-      ["Explaination", "You’ll get an notified when the receiver has opened the email."],
-      ["Button", "Go to dashboard"],
-    ],
-  };
+
 
   useEffect(() => {
+    const initialData: PopUpState = {
+      numberOfSelectedTemplate: 5,
+      size: "medium",
+      position: { x: "center", y: "center" },
+      color: "#7D4AEA",
+      content: [
+        ["Top title", "The file is on it's way"],
+        ["Explaination", "You’ll get an notified when the receiver has opened the email."],
+        ["Button", "Go to dashboard"],
+      ],
+    };
     dispatch(setStateTogether(initialData));
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     if (modalInfos.size == "large") {

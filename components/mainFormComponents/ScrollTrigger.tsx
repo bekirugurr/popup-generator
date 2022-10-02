@@ -13,7 +13,7 @@ const ScrollTrigger = () => {
 
   useEffect(() => {
     !isSwitchOn && dispatch(setPercentage(false));
-  }, [isSwitchOn]);
+  }, [isSwitchOn, dispatch]);
 
   return (
     <section className="text-secondary w-96 relative mt-8">

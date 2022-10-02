@@ -16,7 +16,7 @@ const VisitorDevice = () => {
 
   useEffect(() => {
     !isSwitchOn && dispatch(setVisitorDevice(false));
-  }, [isSwitchOn]);
+  }, [isSwitchOn, dispatch]);
 
   return (
     <section className="text-secondary w-96 relative">

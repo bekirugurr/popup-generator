@@ -13,7 +13,7 @@ const TimeTrigger = () => {
 
   useEffect(() => {
     !isSwitchOn && dispatch(setHowManySecondsAfter(false));
-  }, [isSwitchOn]);
+  }, [isSwitchOn, dispatch]);
 
   return (
     <section className="text-secondary w-96 relative mt-8">
