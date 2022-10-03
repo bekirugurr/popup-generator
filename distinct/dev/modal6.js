@@ -1,60 +1,61 @@
 const popUp6 = (t) => {
-    let modalSize;
-    let isVisible = "visible";
-    let modalPosition;
-    const positionFunction = (position) => {
-      let str = position.x + "-" + position.y;
-      if (str === "left-top") {
-        return "left-3 top-3";
-      } else if (str === "center-top") {
-        return "left-1/2 -translate-x-1/2 top-3 ";
-      } else if (str === "right-top") {
-        return "right-3 top-3";
-      } else if (str === "left-center") {
-        return "left-3  top-1/2 -translate-y-1/2";
-      } else if (str === "right-center") {
-        return "right-3 top-1/2 -translate-y-1/2";
-      } else if (str === "left-bottom") {
-        return "left-3 bottom-3";
-      } else if (str === "center-bottom") {
-        return "left-1/2 -translate-x-1/2 bottom-3";
-      } else if (str === "right-bottom") {
-        return "right-3 bottom-3";
-      } else {
-        return "left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2";
-      }
-    };
-  
-    modalPosition = positionFunction(t.position);
-  
-    if (t.size === "large") {
-      modalSize = {
-        outerDiv: "h-[35rem] w-[37rem]  gap-10",
-        badgeDiv: "h-32 w-32",
-        badge: "120",
-        form: "gap-10",
-      };
-    } else if (t.size === "small") {
-      modalSize = {
-        outerDiv: "h-[22rem] w-[24rem] gap-1",
-        badgeDiv: "h-24 w-24",
-        badge: "80",
-        form: "gap-3",
-      };
+  let modalSize;
+  let isVisible = t.percentage || t.howManySecondsAfter ? "hidden" : "visible";
+  let modalPosition;
+  const positionFunction = (position) => {
+    let str = position.x + "-" + position.y;
+    if (str === "left-top") {
+      return "left-3 top-3";
+    } else if (str === "center-top") {
+      return "left-1/2 -translate-x-1/2 top-3 ";
+    } else if (str === "right-top") {
+      return "right-3 top-3";
+    } else if (str === "left-center") {
+      return "left-3  top-1/2 -translate-y-1/2";
+    } else if (str === "right-center") {
+      return "right-3 top-1/2 -translate-y-1/2";
+    } else if (str === "left-bottom") {
+      return "left-3 bottom-3";
+    } else if (str === "center-bottom") {
+      return "left-1/2 -translate-x-1/2 bottom-3";
+    } else if (str === "right-bottom") {
+      return "right-3 bottom-3";
     } else {
-      modalSize = {
-        outerDiv: "h-[28rem] w-[30rem] gap-6 ",
-        badgeDiv: "h-24 w-24",
-        badge: "100",
-        form: "gap-6",
-      };
+      return "left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2";
     }
-  
-  
-    let popDiv = `
+  };
+
+  modalPosition = positionFunction(t.position);
+
+  if (t.size === "large") {
+    modalSize = {
+      outerDiv: "h-[35rem] w-[37rem]  gap-10",
+      badgeDiv: "h-32 w-32",
+      badge: "120",
+      form: "gap-10",
+    };
+  } else if (t.size === "small") {
+    modalSize = {
+      outerDiv: "h-[22rem] w-[24rem] gap-1",
+      badgeDiv: "h-24 w-24",
+      badge: "80",
+      form: "gap-3",
+    };
+  } else {
+    modalSize = {
+      outerDiv: "h-[28rem] w-[30rem] gap-6 ",
+      badgeDiv: "h-24 w-24",
+      badge: "100",
+      form: "gap-6",
+    };
+  }
+
+  let popDiv = `
           <div
           id='modalWrapper'
-          class=" bg-white z-50 rounded-3xl shadow-lg shadow-gray-200 border border-gray-300  overflow-hidden flex flex-col justify-center items-center px-16 text-center absolute ${isVisible} ${modalSize.outerDiv} ${modalPosition}"
+          class=" bg-white z-50 rounded-3xl shadow-lg shadow-gray-200 border border-gray-300  overflow-hidden flex flex-col justify-center items-center px-16 text-center fixed ${isVisible} ${
+    modalSize.outerDiv
+  } ${modalPosition}"
               >
           <div
             class="${modalSize.badgeDiv} grid place-items-center rounded-full]"
@@ -74,7 +75,9 @@ const popUp6 = (t) => {
           </div>
 
           <h2 class="font-bold text-3xl">${t.content[0] && t.content[0][1]}</h2>
-          <h3 class="text-xl font-medium">${t.content[1] && t.content[1][1]}</h3>
+          <h3 class="text-xl font-medium">${
+            t.content[1] && t.content[1][1]
+          }</h3>
           <form id='popUpForm' class="flex flex-col w-full  ${modalSize.form}">
           <input
             type="email"
@@ -85,7 +88,9 @@ const popUp6 = (t) => {
           />
           <div class="flex gap-4">
             <button
-              class="text-sm font-semibold border border-gray-400  rounded-lg py-3 w-full text-black hover:bg-[${t.color}] close-button" 
+              class="text-sm font-semibold border border-gray-400  rounded-lg py-3 w-full text-black hover:bg-[${
+                t.color
+              }] close-button" 
             >
               ${t.content[3] && t.content[3][1]}
             </button>
@@ -94,8 +99,8 @@ const popUp6 = (t) => {
               class="text-sm font-semibold border border-gray-400  rounded-lg py-3 w-full bg-[${
                 t.color
               }] ${
-                  t.color == '#FFFFFF' || t.color == '#DDDDDD' ? 'text-black' : 'text-white'
-              }"
+    t.color == "#FFFFFF" || t.color == "#DDDDDD" ? "text-black" : "text-white"
+  }"
             >
               ${t.content[4] && t.content[4][1]}
             </button>
@@ -118,43 +123,57 @@ const popUp6 = (t) => {
           </svg>
         </button>
       </div>`;
-  
-    let theBody = document.getElementsByTagName("body")[0];
-    theBody.innerHTML += popDiv;
-  
-    function makeModalHidden() {
-      modalWrapper.classList.remove("visible");
-      modalWrapper.classList.add("hidden");
-    }
-  
-    let popUpForm = document.getElementById("popUpForm");
-    let modalWrapper = document.getElementById("modalWrapper");
-  
-    popUpForm.addEventListener("submit", (e) => {
-      e.preventDefault();
-  
-      //! IT WILL BE WRİTTEN HERE WHAT IS WANTED TO HAPPEN WHEN CLICKED ON THE FORM . BUT I DID NOT ADD IT. BECAUSE WAS NOT WANTED IN THE TASK
+
+  let theBody = document.getElementsByTagName("body")[0];
+  theBody.innerHTML += popDiv;
+
+  function makeModalHidden() {
+    modalWrapper.classList.remove("visible");
+    modalWrapper.classList.add("hidden");
+  }
+
+  let popUpForm = document.getElementById("popUpForm");
+  let modalWrapper = document.getElementById("modalWrapper");
+
+  popUpForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    //! IT WILL BE WRİTTEN HERE WHAT IS WANTED TO HAPPEN WHEN CLICKED ON THE FORM . BUT I DID NOT ADD IT. BECAUSE WAS NOT WANTED IN THE TASK
+    makeModalHidden();
+  });
+
+  let closeButtons = document.querySelectorAll(".close-button");
+
+  closeButtons.forEach((button) => {
+    button.addEventListener("click", () => {
       makeModalHidden();
     });
-  
-    let closeButtons = document.querySelectorAll(".close-button");
-  
-    closeButtons.forEach((button) => {
-      button.addEventListener("click", () => {
-        makeModalHidden();
-      });
+  });
+
+  if (t.howManySecondsAfter) {
+    let time = parseInt(t.howManySecondsAfter) * 1000;
+    setTimeout(() => {
+      modalWrapper.classList.remove("hidden");
+      modalWrapper.classList.add("visible");
+    }, [time]);
+  }
+
+  if (t.percentage) {
+    let scrollPercentRounded = 0
+    window.addEventListener("scroll", () => {
+      let scrollTop = window.scrollY;
+      let docHeight = document.body.offsetHeight;
+      let winHeight = window.innerHeight;
+      let scrollPercent = scrollTop / (docHeight - winHeight);
+      scrollPercentRounded = Math.round(scrollPercent * 100);
     });
-  
-    if (t.howManySecondsAfter) {
-      modalWrapper.classList.remove("visible");
-      modalWrapper.classList.add("hidden");
-      let time = parseInt(t.howManySecondsAfter) * 1000;
-      setTimeout(() => {
+    const myInterval = setInterval(checkOutScroll, 500);
+    function checkOutScroll() {
+      if (scrollPercentRounded >= 50) {
         modalWrapper.classList.remove("hidden");
         modalWrapper.classList.add("visible");
-      }, [time]);
+        clearInterval(myInterval);
+      }
     }
-  };
-  
-  
-  
+  }
+};

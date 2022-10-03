@@ -1,6 +1,6 @@
 const popUp1 = (t) => {
   let modalSize;
-  let isVisible = "visible";
+  let isVisible = t.percentage || t.howManySecondsAfter ? "hidden" : "visible";
   let modalPosition;
   const positionFunction = (position) => {
     let str = position.x + "-" + position.y;
@@ -71,7 +71,7 @@ const popUp1 = (t) => {
   let popDiv = `
         <div
         id='modalWrapper'
-        class=" bg-white z-50 rounded-3xl shadow-lg shadow-gray-200 border border-gray-300  overflow-hidden flex flex-col justify-center items-center px-16 absolute ${isVisible} ${
+        class=" bg-white z-50 rounded-3xl shadow-lg shadow-gray-200 border border-gray-300  overflow-hidden flex flex-col justify-center items-center px-16 fixed ${isVisible} ${
             modalSize.outerDiv} ${modalPosition}"
             >
         <div
@@ -157,13 +157,32 @@ const popUp1 = (t) => {
   });
 
   if (t.howManySecondsAfter) {
-    modalWrapper.classList.remove("visible");
-    modalWrapper.classList.add("hidden");
+
     let time = parseInt(t.howManySecondsAfter) * 1000;
     setTimeout(() => {
       modalWrapper.classList.remove("hidden");
       modalWrapper.classList.add("visible");
     }, [time]);
+  }
+
+  
+  if (t.percentage) {
+    let scrollPercentRounded = 0
+    window.addEventListener("scroll", () => {
+      let scrollTop = window.scrollY;
+      let docHeight = document.body.offsetHeight;
+      let winHeight = window.innerHeight;
+      let scrollPercent = scrollTop / (docHeight - winHeight);
+      scrollPercentRounded = Math.round(scrollPercent * 100);
+    });
+    const myInterval = setInterval(checkOutScroll, 500);
+    function checkOutScroll() {
+      if (scrollPercentRounded >= 50) {
+        modalWrapper.classList.remove("hidden");
+        modalWrapper.classList.add("visible");
+        clearInterval(myInterval);
+      }
+    }
   }
 };
 

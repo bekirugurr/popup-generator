@@ -64,6 +64,9 @@ const ModalDefault = () => {
   //   }
   // }, [modalInfos]);
 
+ //! Burada yok ama kullanıcıya html döndürecek olan js dosyasına position ve size eklendi
+
+
   const handleSubmit = (e: React.FormEvent<EventTarget>) => { 
     e.preventDefault()
     // setIsModalVisible('hidden')

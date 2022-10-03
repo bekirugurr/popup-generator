@@ -92,12 +92,14 @@ const Modal3 = () => {
 
   }, [modalInfos]);
 
+  //! Burada yok ama kullanıcıya html döndürecek olan js dosyasına position ve size eklendi
+
+
   const handleSubmit = (e: React.FormEvent<EventTarget>) => { 
     e.preventDefault()
     // setIsModalVisible('hidden')
    }
 
-  //! let eklenecek1= 'absolute' + positionFunction(modalInfos.position) //giderken en dıştaki divin className i içine eklenecek
 
   return (
     <div

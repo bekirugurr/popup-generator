@@ -78,7 +78,8 @@ const Modal4 = () => {
   //   }
   // }, [modalInfos]);
 
-  //! let eklenecek1= 'absolute' + positionFunction(modalInfos.position) //giderken en dıştaki divin className i içine eklenecek
+  //! Burada yok ama kullanıcıya html döndürecek olan js dosyasına position ve size eklendi
+
 
   const handleDelete = () => {
     // setIsModalVisible('hidden')
