@@ -34,22 +34,27 @@ const Modal4 = () => {
     dispatch(setStateTogether(initialData));
   }, [dispatch]);
 
-  useEffect(() => {
-    if (modalInfos.size == "large") {
-      setModalSize({
-        outerDiv: "h-[21rem] w-[34rem]  gap-7  px-16",
-      });
-    } else if (modalInfos.size == "small") {
-      setModalSize({
-        outerDiv: "h-[15rem] w-[26rem] gap-3 px-8",
-      });
-    } else {
-      setModalSize({
-        outerDiv: "h-[18rem] w-[30rem] gap-5  px-16",
-      });
-    }
-  }, [modalInfos]);
+  //! Alttaki kısım açık olursa kullanıcı modal'ın small, medium ve large hallerini deneme yaparken görebilecek. Ama bu yerleşimi bozduğu ve "task"ta istenmediği için yoruma aldım.
+  // useEffect(() => {
+  //   if (modalInfos.size == "large") {
+  //     setModalSize({
+  //       outerDiv: "h-[22rem] w-[34rem]  gap-10  px-16",
+  //     });
+  //   } else if (modalInfos.size == "small") {
+  //     setModalSize({
+  //       outerDiv: "h-[15rem] w-[26rem] gap-3 px-8",
+  //     });
+  //   } else {
+  //     setModalSize({
+  //       outerDiv: "h-[18rem] w-[30rem] gap-5  px-16",
+  //     });
+  //   }
+  // }, [modalInfos]);
 
+  const handleClick = () => {
+    // setIsModalVisible('hidden')
+  }
+  
   //! let eklenecek1= 'absolute' + positionFunction(modalInfos.position) //giderken en dıştaki divin className i içine eklenecek
 
   return (
@@ -66,13 +71,14 @@ const Modal4 = () => {
               ? "text-black"
               : "text-white"
           }`}
-          onClick={()=>setIsModalVisible('hidden')}
+          onClick={()=>handleClick()}
         >
           {modalInfos.content[2] && modalInfos.content[2][1]}
         </button>
 
       <button className="absolute top-3 right-3 rounded-full">
-        <IoIosCloseCircleOutline className="text-gray-600 text-4xl"  onClick={()=>setIsModalVisible('hidden')}/>
+        <IoIosCloseCircleOutline className="text-gray-600 text-4xl"  />
+        {/* onClick={()=>setIsModalVisible('hidden')} */}
       </button>
     </div>
   );

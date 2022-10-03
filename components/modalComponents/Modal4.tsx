@@ -49,35 +49,40 @@ const Modal4 = () => {
     dispatch(setStateTogether(initialData));
   }, [dispatch]);
 
-  useEffect(() => {
-    if (modalInfos.size == "large") {
-      setModalSize({
-        outerDiv: "h-[37rem] w-[34rem]  gap-6  px-16",
-        badgeDiv: "h-32 w-32",
-        badge: "h-[5rem] w-[4rem]",
-        defSVG: "90",
-        form: "gap-10",
-      });
-    } else if (modalInfos.size == "small") {
-      setModalSize({
-        outerDiv: "h-[26rem] w-[26rem] gap-3 px-8",
-        badgeDiv: "h-24 w-24",
-        badge: "h-[4rem] w-[3rem]",
-        defSVG: "60",
-        form: "gap-3",
-      });
-    } else {
-      setModalSize({
-        outerDiv: "h-[32rem] w-[30rem] gap-5  px-16",
-        badgeDiv: "h-24 w-24",
-        badge: "h-[4rem] w-[3rem]",
-        defSVG: "60",
-        form: "gap-6",
-      });
-    }
-  }, [modalInfos]);
+  //! Alttaki kısım açık olursa kullanıcı modal'ın small, medium ve large hallerini deneme yaparken görebilecek. Ama bu yerleşimi bozduğu ve "task"ta istenmediği için yoruma aldım.
+  // useEffect(() => {
+  //   if (modalInfos.size == "large") {
+  //     setModalSize({
+  //       outerDiv: "h-[37rem] w-[34rem]  gap-6  px-16",
+  //       badgeDiv: "h-32 w-32",
+  //       badge: "h-[5rem] w-[4rem]",
+  //       defSVG: "90",
+  //       form: "gap-10",
+  //     });
+  //   } else if (modalInfos.size == "small") {
+  //     setModalSize({
+  //       outerDiv: "h-[26rem] w-[26rem] gap-3 px-8",
+  //       badgeDiv: "h-24 w-24",
+  //       badge: "h-[4rem] w-[3rem]",
+  //       defSVG: "60",
+  //       form: "gap-3",
+  //     });
+  //   } else {
+  //     setModalSize({
+  //       outerDiv: "h-[32rem] w-[30rem] gap-5  px-16",
+  //       badgeDiv: "h-24 w-24",
+  //       badge: "h-[4rem] w-[3rem]",
+  //       defSVG: "60",
+  //       form: "gap-6",
+  //     });
+  //   }
+  // }, [modalInfos]);
 
   //! let eklenecek1= 'absolute' + positionFunction(modalInfos.position) //giderken en dıştaki divin className i içine eklenecek
+
+  const handleDelete = () => {
+    // setIsModalVisible('hidden')
+  }
 
   return (
     <div
@@ -127,20 +132,21 @@ const Modal4 = () => {
             ? "text-black"
             : "text-white"
         }`}
-        onClick={()=>setIsModalVisible('hidden')}
+        onClick={()=>handleDelete()}
       >
         {modalInfos.content[4] && modalInfos.content[4][1]}
       </button>
 
       <button
         className={`text-sm font-semibold border border-gray-400  rounded-lg py-3 w-full text-black hover:bg-[${modalInfos.color}]`}
-        onClick={()=>setIsModalVisible('hidden')}
       >
+        {/* onClick={()=>setIsModalVisible('hidden')} */}
         {modalInfos.content[5] && modalInfos.content[5][1]}
       </button>
 
       <button className="absolute top-3 right-3 rounded-full">
-        <IoIosCloseCircleOutline className="text-gray-600 text-4xl" onClick={()=>setIsModalVisible('hidden')}/>
+        <IoIosCloseCircleOutline className="text-gray-600 text-4xl" />
+        {/* onClick={()=>setIsModalVisible('hidden')} */}
       </button>
     </div>
   );

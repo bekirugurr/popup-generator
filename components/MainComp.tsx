@@ -22,7 +22,7 @@ const MainComp: React.FC = () => {
   const popUpInfos = useSelector((state: RootState) => state.popUp);
   console.log(popUpInfos);
   return (
-    <main className="px-28 py-4 flex gap-3">
+    <main className="px-32 py-4 flex gap-9">
       <div>
       <div className="flex items-center  pb-3 pt-8">
         <div className="rounded-full bg-zinc-300 w-8 h-8 flex items-center justify-center font-semibold">

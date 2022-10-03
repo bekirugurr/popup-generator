@@ -55,28 +55,29 @@ const Modal3 = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    if (modalInfos.size == "large") {
-      setModalSize({
-        outerDiv: "h-[37.5rem] w-[30rem]  gap-10",
-        badgeDiv: "h-32 w-32",
-        badge: "h-[5rem] w-[4rem]",
-        form: "gap-10",
-      });
-    } else if (modalInfos.size == "small") {
-      setModalSize({
-        outerDiv: "h-[27.5rem] w-[22rem] gap-4",
-        badgeDiv: "h-24 w-24",
-        badge: "h-[4rem] w-[3rem]",
-        form: "gap-3",
-      });
-    } else {
-      setModalSize({
-        outerDiv: "h-[32.5rem] w-[26rem] gap-6 pb-4",
-        badgeDiv: "h-24 w-24",
-        badge: "h-[4rem] w-[3rem]",
-        form: "gap-6",
-      });
-    }
+    //! Alttaki kısım açık olursa kullanıcı modal'ın small, medium ve large hallerini deneme yaparken görebilecek. Ama bu yerleşimi bozduğu ve "task"ta istenmediği için yoruma aldım.
+    // if (modalInfos.size == "large") {
+    //   setModalSize({
+    //     outerDiv: "h-[37.5rem] w-[30rem]  gap-10",
+    //     badgeDiv: "h-32 w-32",
+    //     badge: "h-[5rem] w-[4rem]",
+    //     form: "gap-10",
+    //   });
+    // } else if (modalInfos.size == "small") {
+    //   setModalSize({
+    //     outerDiv: "h-[27.5rem] w-[22rem] gap-4",
+    //     badgeDiv: "h-24 w-24",
+    //     badge: "h-[4rem] w-[3rem]",
+    //     form: "gap-3",
+    //   });
+    // } else {
+    //   setModalSize({
+    //     outerDiv: "h-[32.5rem] w-[26rem] gap-6 pb-4",
+    //     badgeDiv: "h-24 w-24",
+    //     badge: "h-[4rem] w-[3rem]",
+    //     form: "gap-6",
+    //   });
+    // }
     if (modalInfos.color === "#000000") {
         setColorState({text: `text-[#000000]`, accent: `accent-[#000000]`});
     } else if (modalInfos.color === "#7D4AEA") {
@@ -93,7 +94,7 @@ const Modal3 = () => {
 
   const handleSubmit = (e: React.FormEvent<EventTarget>) => { 
     e.preventDefault()
-    setIsModalVisible('hidden')
+    // setIsModalVisible('hidden')
    }
 
   //! let eklenecek1= 'absolute' + positionFunction(modalInfos.position) //giderken en dıştaki divin className i içine eklenecek
@@ -141,8 +142,8 @@ const Modal3 = () => {
         <div className="flex gap-4">
           <button
             className={`text-sm font-semibold border border-gray-400  rounded-lg py-3 w-full text-black hover:bg-[${modalInfos.color}]`}
-            onClick={()=>setIsModalVisible('hidden')}
           >
+            {/* onClick={()=>setIsModalVisible('hidden')} */}
             {modalInfos.content[9] && modalInfos.content[9][1]}
           </button>
           <button
@@ -161,7 +162,8 @@ const Modal3 = () => {
       </form>
 
       <button className="absolute top-3 right-3 rounded-full">
-        <IoIosCloseCircleOutline className="text-gray-600 text-4xl"  onClick={()=>setIsModalVisible('hidden')}/>
+        <IoIosCloseCircleOutline className="text-gray-600 text-4xl"/>
+        {/* onClick={()=>setIsModalVisible('hidden')} */}
       </button>
     </div>
   );

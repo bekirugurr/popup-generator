@@ -4,7 +4,6 @@ import type { PopUpState } from "../../slices/popUpSlice";
 import { setStateTogether } from "../../slices/popUpSlice";
 import type { RootState } from "../../store";
 import { useSelector, useDispatch } from "react-redux";
-import positionFunction from "../../utils/positionFunction";
 import { IoMdClose } from "react-icons/io";
 
 interface SizeType {
@@ -42,34 +41,33 @@ const ModalDefault = () => {
     dispatch(setStateTogether(initialData));
   }, [dispatch]);
 
-  useEffect(() => {
-    if (modalInfos.size == "large") {
-      setModalSize({
-        outerDiv: "h-[30rem] w-[57rem]",
-        innerDiv: "gap-7 px-12",
-        form: "gap-7",
-      });
-    } else if (modalInfos.size == "small") {
-      setModalSize({
-        outerDiv: "h-[16rem] w-[30rem]",
-        innerDiv: "gap-1 px-4",
-        form: "gap-2",
-      });
-    } else {
-      setModalSize({
-        outerDiv: "h-[20.8rem] w-[39rem]",
-        innerDiv: "gap-2 px-8",
-        form: "gap-3",
-      });
-    }
-  }, [modalInfos]);
+  //! Alttaki kısım açık olursa kullanıcı modal'ın small, medium ve large hallerini deneme yaparken görebilecek. Ama bu yerleşimi bozduğu ve "task"ta istenmediği için yoruma aldım.
+  // useEffect(() => {
+  //   if (modalInfos.size == "large") {
+  //     setModalSize({
+  //       outerDiv: "h-[30rem] w-[57rem]",
+  //       innerDiv: "gap-7 px-12",
+  //       form: "gap-7",
+  //     });
+  //   } else if (modalInfos.size == "small") {
+  //     setModalSize({
+  //       outerDiv: "h-[16rem] w-[30rem]",
+  //       innerDiv: "gap-1 px-4",
+  //       form: "gap-2",
+  //     });
+  //   } else {
+  //     setModalSize({
+  //       outerDiv: "h-[20.8rem] w-[39rem]",
+  //       innerDiv: "gap-2 px-8",
+  //       form: "gap-3",
+  //     });
+  //   }
+  // }, [modalInfos]);
 
   const handleSubmit = (e: React.FormEvent<EventTarget>) => { 
     e.preventDefault()
-    setIsModalVisible('hidden')
+    // setIsModalVisible('hidden')
    }
-
-  //! let eklenecek1= 'absolute' + positionFunction(modalInfos.position) //giderken en dıştaki divin className i içine eklenecek
 
   return (
     <div
@@ -122,7 +120,8 @@ const ModalDefault = () => {
           alt="popup image"
           className="w-full h-full"
         />)}
-        <button className="absolute top-3 right-3 bg-gray-400 p-1 rounded-full" onClick={()=>setIsModalVisible('hidden')}>
+        <button className="absolute top-3 right-3 bg-gray-400 p-1 rounded-full" > 
+        {/* onClick={()=>setIsModalVisible('hidden')} */}
           <IoMdClose className="text-white text-lg" />
         </button>
       </div>
