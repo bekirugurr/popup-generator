@@ -68,9 +68,9 @@ const UploadImage: React.FC<Props> = ({
         <input {...getInputProps()} />
         <div className="bg-gray-300 rounded-xl w-[6rem] h-[6rem] grid place-items-center">
           {image ? (
-            <Image src={image} alt='image' className="h-12 w-12" />
+            <Image src={image} alt='image' className="h-12 w-12"  width='80%' height='80%' />
           ) : (
-            <Image src={defaultImage}  alt='image' className="h-12 w-12" />
+            <Image src={defaultImage}  alt='image' className="h-12 w-12"  width='80%' height='80%'/>
           )}
         </div>
         <div className="text-xl text-sm flex items-center ">

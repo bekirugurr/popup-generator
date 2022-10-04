@@ -25,9 +25,8 @@ const Modal1 = () => {
     defSVG: "60",
     form: "gap-3",
   });
-  const [isModalVisible, setIsModalVisible] = useState<string>('visible')
+  const [isModalVisible, setIsModalVisible] = useState<string>("visible");
   const dispatch = useDispatch();
-
 
   useEffect(() => {
     const initialData: PopUpState = {
@@ -42,9 +41,18 @@ const Modal1 = () => {
         ["Left button", "Cancel"],
         ["Right button", "Continue"],
       ],
+      visitorDevice: "all",
+      howManySecondsAfter: 0,
+      percentage: 0,
+      trafficSource: "",
+      browserLanguage: [],
+      exitIntentTargeting: true,
+      webhookURL: "",
+      image: "",
+      logo: ""
     };
     dispatch(setStateTogether(initialData));
-  }, [ dispatch]);
+  }, [dispatch]);
 
   //! Alttaki kısım açık olursa kullanıcı modal'ın small, medium ve large hallerini deneme yaparken görebilecek. Ama bu yerleşimi bozduğu ve "task"ta istenmediği için yoruma aldım.
   // useEffect(() => {
@@ -77,13 +85,12 @@ const Modal1 = () => {
 
   //! Burada yok ama kullanıcıya html döndürecek olan js dosyasına position ve size eklendi
 
-  const handleSubmit = (e: React.FormEvent<EventTarget>) => { 
-    e.preventDefault()
+  const handleSubmit = (e: React.FormEvent<EventTarget>) => {
+    e.preventDefault();
     // setIsModalVisible('hidden')
-   }
+  };
 
-  
-  console.log(modalInfos.logo )
+  console.log(modalInfos.logo);
   return (
     <div
       className={` font-secondary bg-white z-50 rounded-3xl shadow-lg shadow-gray-200 border border-gray-300  overflow-hidden flex flex-col justify-center items-center px-16 ${isModalVisible} ${modalSize.outerDiv}`}
@@ -118,7 +125,10 @@ const Modal1 = () => {
       <h3 className="text-xl font-medium">
         {modalInfos.content[1] && modalInfos.content[1][1]}
       </h3>
-      <form className={`flex flex-col w-full  ${modalSize.form}`} onSubmit={handleSubmit}>
+      <form
+        className={`flex flex-col w-full  ${modalSize.form}`}
+        onSubmit={handleSubmit}
+      >
         <input
           type="text"
           name="name"
@@ -128,7 +138,8 @@ const Modal1 = () => {
         />
         <div className="flex gap-4">
           <button
-            className={`text-sm font-semibold border border-gray-400  rounded-lg py-3 w-full text-black hover:bg-[${modalInfos.color}]`} >
+            className={`text-sm font-semibold border border-gray-400  rounded-lg py-3 w-full text-black hover:bg-[${modalInfos.color}]`}
+          >
             {/* onClick={()=>setIsModalVisible('hidden')} */}
             {modalInfos.content[3] && modalInfos.content[3][1]}
           </button>

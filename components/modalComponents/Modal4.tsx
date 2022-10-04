@@ -5,7 +5,7 @@ import type { RootState } from "../../store";
 import { useSelector, useDispatch } from "react-redux";
 import positionFunction from "../../utils/positionFunction";
 import { IoIosCloseCircleOutline } from "react-icons/io";
-import Image from 'next/image'
+import Image from "next/image";
 
 interface SizeType {
   outerDiv: string;
@@ -24,9 +24,8 @@ const Modal4 = () => {
     defSVG: "60",
     form: "gap-3",
   });
-  const [isModalVisible, setIsModalVisible] = useState<string>('visible')
+  const [isModalVisible, setIsModalVisible] = useState<string>("visible");
   const dispatch = useDispatch();
-
 
   useEffect(() => {
     const initialData: PopUpState = {
@@ -40,11 +39,23 @@ const Modal4 = () => {
           "Explaination",
           "Your profile will be automatically deleted after 1 month.",
         ],
-        ["Sub explaination", "You won’t be able to access to your profile after"],
+        [
+          "Sub explaination",
+          "You won’t be able to access to your profile after",
+        ],
         ["Bolder part of sub explaination", "30.08.2021."],
         ["Top button", "Delete my profile"],
         ["Down button", "Cancel"],
       ],
+      visitorDevice: "all",
+      howManySecondsAfter: 0,
+      percentage: 0,
+      trafficSource: "",
+      browserLanguage: [],
+      exitIntentTargeting: true,
+      webhookURL: "",
+      image: "",
+      logo: ""
     };
     dispatch(setStateTogether(initialData));
   }, [dispatch]);
@@ -80,10 +91,9 @@ const Modal4 = () => {
 
   //! Burada yok ama kullanıcıya html döndürecek olan js dosyasına position ve size eklendi
 
-
   const handleDelete = () => {
     // setIsModalVisible('hidden')
-  }
+  };
 
   return (
     <div
@@ -133,7 +143,7 @@ const Modal4 = () => {
             ? "text-black"
             : "text-white"
         }`}
-        onClick={()=>handleDelete()}
+        onClick={() => handleDelete()}
       >
         {modalInfos.content[4] && modalInfos.content[4][1]}
       </button>

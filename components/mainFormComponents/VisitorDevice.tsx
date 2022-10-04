@@ -15,7 +15,7 @@ const VisitorDevice = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    !isSwitchOn && dispatch(setVisitorDevice(false));
+    !isSwitchOn && dispatch(setVisitorDevice('all'));
   }, [isSwitchOn, dispatch]);
 
   return (

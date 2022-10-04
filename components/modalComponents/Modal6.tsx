@@ -38,6 +38,15 @@ const Modal6 = () => {
         ["Left button", "Later"],
         ["Right button", "Join now"],
       ],
+      visitorDevice: "all",
+      howManySecondsAfter: 0,
+      percentage: 0,
+      trafficSource: "",
+      browserLanguage: [],
+      exitIntentTargeting: true,
+      webhookURL: "",
+      image: "",
+      logo: ""
     };
     dispatch(setStateTogether(initialData));
   }, [dispatch]);
@@ -69,7 +78,6 @@ const Modal6 = () => {
   // }, [modalInfos]);
 
   //! Burada yok ama kullanıcıya html döndürecek olan js dosyasına position ve size eklendi
-
 
   const handleSubmit = (e: React.FormEvent<EventTarget>) => {
     e.preventDefault();

@@ -27,9 +27,8 @@ const Modal3 = () => {
     accent: string;
   }>({ text: "text-[#7D4AEA]", accent: "accent-[#7D4AEA]" });
   const [whichIsChecked, setWhichIsChecked] = useState<number>(0);
-  const [isModalVisible, setIsModalVisible] = useState<string>('visible')
+  const [isModalVisible, setIsModalVisible] = useState<string>("visible");
   const dispatch = useDispatch();
-  
 
   useEffect(() => {
     const initialData: PopUpState = {
@@ -50,6 +49,15 @@ const Modal3 = () => {
         ["Left button", "Cancel"],
         ["Right button", "Continue"],
       ],
+      visitorDevice: "all",
+      howManySecondsAfter: 0,
+      percentage: 0,
+      trafficSource: "",
+      browserLanguage: [],
+      exitIntentTargeting: true,
+      webhookURL: "",
+      image: "",
+      logo: ""
     };
     dispatch(setStateTogether(initialData));
   }, [dispatch]);
@@ -79,33 +87,32 @@ const Modal3 = () => {
     //   });
     // }
     if (modalInfos.color === "#000000") {
-        setColorState({text: `text-[#000000]`, accent: `accent-[#000000]`});
+      setColorState({ text: `text-[#000000]`, accent: `accent-[#000000]` });
     } else if (modalInfos.color === "#7D4AEA") {
-        setColorState({text: `text-[#7D4AEA]`, accent: `accent-[#7D4AEA]`});
+      setColorState({ text: `text-[#7D4AEA]`, accent: `accent-[#7D4AEA]` });
     } else if (modalInfos.color === "#F37C34") {
-        setColorState({text: `text-[#F37C34]`, accent: `accent-[#F37C34]`});
+      setColorState({ text: `text-[#F37C34]`, accent: `accent-[#F37C34]` });
     } else if (modalInfos.color === "#DDDDDD") {
-        setColorState({text: `text-[#959090]`, accent: `accent-[#959090]`});
+      setColorState({ text: `text-[#959090]`, accent: `accent-[#959090]` });
     } else {
-        setColorState({text: `text-[#000000]`, accent: `accent-[#000000]`});
+      setColorState({ text: `text-[#000000]`, accent: `accent-[#000000]` });
     }
-
   }, [modalInfos]);
 
   //! Burada yok ama kullanıcıya html döndürecek olan js dosyasına position ve size eklendi
 
-
-  const handleSubmit = (e: React.FormEvent<EventTarget>) => { 
-    e.preventDefault()
+  const handleSubmit = (e: React.FormEvent<EventTarget>) => {
+    e.preventDefault();
     // setIsModalVisible('hidden')
-   }
-
+  };
 
   return (
     <div
       className={` font-secondary bg-white z-50 rounded-3xl shadow-lg shadow-gray-200 border border-gray-300  overflow-hidden flex flex-col justify-center items-center px-6 ${isModalVisible} ${modalSize.outerDiv}`}
     >
-      <h3 className={`font-lg font-medium text-center text-lg ${colorState.text}`}>
+      <h3
+        className={`font-lg font-medium text-center text-lg ${colorState.text}`}
+      >
         {modalInfos.content[0] && modalInfos.content[0][1].toUpperCase()}
       </h3>
       <h2 className="text-center  font-bold text-3xl">
@@ -114,7 +121,10 @@ const Modal3 = () => {
       <h3 className="text-center  text-xl font-normal">
         {modalInfos.content[2] && modalInfos.content[2][1]}
       </h3>
-      <form className={` px-4 flex flex-col w-full  ${modalSize.form}`} onSubmit={handleSubmit}>
+      <form
+        className={` px-4 flex flex-col w-full  ${modalSize.form}`}
+        onSubmit={handleSubmit}
+      >
         {modalInfos.content[8] &&
           [
             [modalInfos.content[3], modalInfos.content[4]],
@@ -122,22 +132,22 @@ const Modal3 = () => {
             [modalInfos.content[7], modalInfos.content[8]],
           ].map((item, index) => (
             <div key={index}>
-            <label
-              
-              htmlFor={item[0][0]}
-              className="flex items-center font-semibold"
-              onClick={()=>setWhichIsChecked(index)}
-            >
-              <input
-                type="radio"
-                name="campaign"
-                id={item[0][0]}
-                className={`mr-3 w-6 h-6 ${colorState.accent}`}
-                checked={whichIsChecked == index}
-              />
-              {item[0][1]}
-            </label>
-            <div className="ml-9 text-xs">{item[1][1]}</div>
+              <label
+                htmlFor={item[0][0]}
+                className="flex items-center font-semibold"
+              >
+                <input
+                  type="radio"
+                  name="campaign"
+                  id={item[0][0]}
+                  className={`mr-3 w-6 h-6 ${colorState.accent}`}
+                  checked={whichIsChecked == index}
+                  onChange={()=> setWhichIsChecked(index)}
+
+                />
+                {item[0][1]}
+              </label>
+              <div className="ml-9 text-xs">{item[1][1]}</div>
             </div>
           ))}
 
@@ -164,7 +174,7 @@ const Modal3 = () => {
       </form>
 
       <button className="absolute top-3 right-3 rounded-full">
-        <IoIosCloseCircleOutline className="text-gray-600 text-4xl"/>
+        <IoIosCloseCircleOutline className="text-gray-600 text-4xl" />
         {/* onClick={()=>setIsModalVisible('hidden')} */}
       </button>
     </div>

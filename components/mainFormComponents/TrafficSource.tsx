@@ -13,7 +13,7 @@ const TrafficSource = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    !isSwitchOn && dispatch(setTrafficSource(false));
+    !isSwitchOn && dispatch(setTrafficSource(""));
   }, [isSwitchOn, dispatch]);
 
   return (

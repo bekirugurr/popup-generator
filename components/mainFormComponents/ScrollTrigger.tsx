@@ -12,7 +12,7 @@ const ScrollTrigger = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    !isSwitchOn && dispatch(setPercentage(false));
+    !isSwitchOn && dispatch(setPercentage(0));
   }, [isSwitchOn, dispatch]);
 
   return (

@@ -19,9 +19,8 @@ const ModalDefault = () => {
     innerDiv: "gap-2 px-8",
     form: "gap-3",
   });
-  const [isModalVisible, setIsModalVisible] = useState<string>('visible')
+  const [isModalVisible, setIsModalVisible] = useState<string>("visible");
   const dispatch = useDispatch();
-
 
   useEffect(() => {
     const initialData: PopUpState = {
@@ -37,6 +36,15 @@ const ModalDefault = () => {
         ["Button content", "Sign Up"],
         ["Footnote", "By signing up, you agree to private policy"],
       ],
+      visitorDevice: "all",
+      howManySecondsAfter: 0,
+      percentage: 0,
+      trafficSource: "",
+      browserLanguage: [],
+      exitIntentTargeting: true,
+      webhookURL: "",
+      image: 'https://thumbsnap.com/i/E4UJGTGf.jpg',
+      logo: ""
     };
     dispatch(setStateTogether(initialData));
   }, [dispatch]);
@@ -64,13 +72,12 @@ const ModalDefault = () => {
   //   }
   // }, [modalInfos]);
 
- //! Burada yok ama kullanıcıya html döndürecek olan js dosyasına position ve size eklendi
+  //! Burada yok ama kullanıcıya html döndürecek olan js dosyasına position ve size eklendi
 
-
-  const handleSubmit = (e: React.FormEvent<EventTarget>) => { 
-    e.preventDefault()
+  const handleSubmit = (e: React.FormEvent<EventTarget>) => {
+    e.preventDefault();
     // setIsModalVisible('hidden')
-   }
+  };
 
   return (
     <div
@@ -81,7 +88,10 @@ const ModalDefault = () => {
       >
         <h2 className="font-semibold text-3xl">{modalInfos.content[0][1]}</h2>
         <p>{modalInfos.content[1][1]}</p>
-        <form className={`flex flex-col w-full gap-3 ${modalSize.form}`} onSubmit={handleSubmit}>
+        <form
+          className={`flex flex-col w-full gap-3 ${modalSize.form}`}
+          onSubmit={handleSubmit}
+        >
           <input
             type="text"
             name="name"
@@ -112,19 +122,24 @@ const ModalDefault = () => {
         <p className="text-xs text-[#777777]">{modalInfos.content[5][1]}</p>
       </div>
       <div className="w-1/2 relative">
-      {modalInfos.image ?( <Image
-            src={ modalInfos.image}
+        {modalInfos.image ? (
+          <Image
+            src={modalInfos.image}
             alt="popup image"
-            className="w-full h-full"
             layout='fill'
-          /> ):(         
-      <img
-          src="https://thumbsnap.com/i/yAynuzuM.jpg"
-          alt="popup image"
-          className="w-full h-full"
-        />)}
-        <button className="absolute top-3 right-3 bg-gray-400 p-1 rounded-full" > 
-        {/* onClick={()=>setIsModalVisible('hidden')} */}
+            className="w-full h-full"
+
+          />
+        ) : (
+          <Image
+            src="https://thumbsnap.com/i/E4UJGTGf.jpg"
+            alt="popup image"
+            layout='fill'
+            className="w-full h-full"
+          />
+        )}
+        <button className="absolute top-3 right-3 bg-gray-400 p-1 rounded-full">
+          {/* onClick={()=>setIsModalVisible('hidden')} */}
           <IoMdClose className="text-white text-lg" />
         </button>
       </div>

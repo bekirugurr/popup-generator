@@ -22,9 +22,8 @@ const Modal2 = () => {
     badge: "h-[4rem] w-[3rem]",
     form: "gap-6",
   });
-  const [isModalVisible, setIsModalVisible] = useState<string>('visible')
+  const [isModalVisible, setIsModalVisible] = useState<string>("visible");
   const dispatch = useDispatch();
-  
 
   useEffect(() => {
     const initialData: PopUpState = {
@@ -38,9 +37,18 @@ const Modal2 = () => {
         ["Upper button", "Continue"],
         ["Down button", "Not now"],
       ],
+      visitorDevice: "all",
+      howManySecondsAfter: 0,
+      percentage: 0,
+      trafficSource: "",
+      browserLanguage: [],
+      exitIntentTargeting: true,
+      webhookURL: "",
+      image: "https://www.softlanding.ca/wp-content/uploads/2020/04/WM-2.jpg",
+      logo: ""
     };
     dispatch(setStateTogether(initialData));
-  }, [ dispatch]);
+  }, [dispatch]);
 
   //! Alttaki kısım açık olursa kullanıcı modal'ın small, medium ve large hallerini deneme yaparken görebilecek. Ama bu yerleşimi bozduğu ve "task"ta istenmediği için yoruma aldım.
   // useEffect(() => {
@@ -70,20 +78,36 @@ const Modal2 = () => {
 
   //! Burada yok ama kullanıcıya html döndürecek olan js dosyasına position ve size eklendi
 
-  
-  const handleClick = () => { 
+  const handleClick = () => {
     // setIsModalVisible('hidden')
-   }
+  };
 
   return (
     <div
       className={`font-secondary bg-white z-50 rounded-3xl shadow-lg shadow-gray-200 border border-gray-300  overflow-hidden ${isModalVisible} ${modalSize.outerDiv} `}
     >
-      <img src={modalInfos.image ? modalInfos.image : "https://www.softlanding.ca/wp-content/uploads/2020/04/WM-2.jpg"} alt="upper image" className="w-full h-1/2" />
+      <div className="w-full h-1/2 relative">
+        <Image
+          src={
+            modalInfos.image
+              ? modalInfos.image
+              : "https://www.softlanding.ca/wp-content/uploads/2020/04/WM-2.jpg"
+          }
+          alt="upper image"
+          layout="fill"
+          className="w-full h-full"
+        />
+      </div>
 
-      <div className={`w-ful h-1/2 flex flex-col justify-center items-center ${modalSize.innerDiv}`} >
-        <h2 className="font-bold text-3xl">{modalInfos.content[0] && modalInfos.content[0][1]}</h2>
-        <h3 className="text-xl font-medium">{modalInfos.content[1] && modalInfos.content[1][1]}</h3>
+      <div
+        className={`w-ful h-1/2 flex flex-col justify-center items-center ${modalSize.innerDiv}`}
+      >
+        <h2 className="font-bold text-3xl">
+          {modalInfos.content[0] && modalInfos.content[0][1]}
+        </h2>
+        <h3 className="text-xl font-medium">
+          {modalInfos.content[1] && modalInfos.content[1][1]}
+        </h3>
 
         <button
           className={`text-sm font-semibold border border-gray-400  rounded-lg py-3 w-full bg-[${
@@ -93,7 +117,7 @@ const Modal2 = () => {
               ? "text-black"
               : "text-white"
           }`}
-          onClick={()=>handleClick()}
+          onClick={() => handleClick()}
         >
           {modalInfos.content[2] && modalInfos.content[2][1]}
         </button>
@@ -107,7 +131,7 @@ const Modal2 = () => {
       </div>
 
       <button className="absolute top-3 right-3 rounded-full">
-        <IoIosCloseCircleOutline className="text-gray-600 text-4xl"  />
+        <IoIosCloseCircleOutline className="text-gray-600 text-4xl" />
         {/* onClick={()=>setIsModalVisible('hidden')} */}
       </button>
     </div>

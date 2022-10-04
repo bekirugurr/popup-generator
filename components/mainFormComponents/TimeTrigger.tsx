@@ -12,7 +12,7 @@ const TimeTrigger = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    !isSwitchOn && dispatch(setHowManySecondsAfter(false));
+    !isSwitchOn && dispatch(setHowManySecondsAfter(0));
   }, [isSwitchOn, dispatch]);
 
   return (

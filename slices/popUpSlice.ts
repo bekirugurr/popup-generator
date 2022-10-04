@@ -9,13 +9,13 @@ export interface PopUpState {
   logo?: string;
   content: [string, string][]; //first string refers to what second string is used for. Button, header, placeholder etc.
   image?: string;
-  visitorDevice?: "desktop" | "mobile" | false;
-  howManySecondsAfter?: number | false;
-  percentage?: number | false;
-  trafficSource?: string | false;
-  browserLanguage?: string[];
-  exitIntentTargeting?: boolean;
-  webhookURL?: string;
+  visitorDevice: "desktop" | "mobile" | "all";
+  howManySecondsAfter: number;
+  percentage: number;
+  trafficSource: string;
+  browserLanguage: string[];
+  exitIntentTargeting: boolean;
+  webhookURL: string;
 }
 
 const initialState: PopUpState = {
@@ -37,6 +37,13 @@ const initialState: PopUpState = {
     ["Button content", "Sign Up"],
     ["Footnote", "By signing up, you agree to private policy"],
   ], //first string refers to what second string is used for. Title, button, placeholder, footnote etc.
+  visitorDevice: "all",
+  howManySecondsAfter: 0,
+  percentage: 0,
+  trafficSource: "",
+  browserLanguage: [],
+  exitIntentTargeting: false,
+  webhookURL: ""
 };
 
 export const popUpSlice = createSlice({
@@ -75,17 +82,17 @@ export const popUpSlice = createSlice({
     },
     setVisitorDevice: (
       state,
-      action: PayloadAction<"desktop" | "mobile" | false>
+      action: PayloadAction<"desktop" | "mobile" | "all" >
     ) => {
       return { ...state, visitorDevice: action.payload };
     },
-    setHowManySecondsAfter: (state, action: PayloadAction<number | false>) => {
+    setHowManySecondsAfter: (state, action: PayloadAction<number>) => {
       return { ...state, howManySecondsAfter: action.payload };
     },
-    setPercentage: (state, action: PayloadAction<number | false>) => {
+    setPercentage: (state, action: PayloadAction<number>) => {
       return { ...state, percentage: action.payload };
     },
-    setTrafficSource: (state, action: PayloadAction<string | false>) => {
+    setTrafficSource: (state, action: PayloadAction<string>) => {
       return { ...state, trafficSource: action.payload };
     },
     setBrowserLanguage: (state, action: PayloadAction<string[]>) => {

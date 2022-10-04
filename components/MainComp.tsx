@@ -20,7 +20,7 @@ import ModalWrapper from "./modalComponents/ModalWrapper";
 
 const MainComp: React.FC = () => {
   const popUpInfos = useSelector((state: RootState) => state.popUp);
-  console.log(popUpInfos);
+  // console.log(popUpInfos);
   return (
     <main className="px-32 py-4 flex gap-9">
       <div>
