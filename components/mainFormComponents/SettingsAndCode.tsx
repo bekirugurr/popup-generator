@@ -88,7 +88,7 @@ const SettingsAndCode = () => {
         })
 
         let outPutString = `<script type="text/javascript" 
-        src="https://cdn.jsdelivr.net/gh/bekirugurr/popup-generator/tree/main/distinct/modal${dataFromWebhook.numberOfSelectedTemplate}.js>
+        src="https://cdn.jsdelivr.net/gh/bekirugurr/popup-generator/distinct/modal${dataFromWebhook.numberOfSelectedTemplate}.js">
         </script>
         <script> let popObj = {
           size: "${dataFromWebhook.size}", 
