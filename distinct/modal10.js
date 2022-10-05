@@ -42,7 +42,7 @@ const popUp10 = (t) => {
           return "left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2";
         }
       };
-  
+   
       modalPosition = positionFunction(t.position);
   
       if (t.size === "large") {

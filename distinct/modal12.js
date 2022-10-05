@@ -13,7 +13,7 @@ const popUp12 = (t) => {
         referrerSite.toLowerCase().includes(t.trafficSource.toLowerCase())) ||
       (referrerSite &&
         t.trafficSource.toLowerCase().includes(referrerSite.toLowerCase()));
-  
+   
     //! if bloku ancak yukarıdaki ikisi için de sorun yoksa çalışıyor
     if (isItOkeyAboutDevice && isItOkeyAboutTrafficSource) {
       let modalSize;
