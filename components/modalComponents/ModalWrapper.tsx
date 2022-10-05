@@ -21,7 +21,7 @@ const ModalWrapper = () => {
   );
   return (
     <div className="p-1">
-      <div className="sticky top-6 ml-6">
+      <div className="sticky top-6">
           {numberOfSelectedTemplate === 0 && <ModalDefault />}
           {numberOfSelectedTemplate === 1 && <Modal1 />}
           {numberOfSelectedTemplate === 2 && <Modal2 />}

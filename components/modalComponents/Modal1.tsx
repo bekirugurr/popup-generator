@@ -93,7 +93,7 @@ const Modal1 = () => {
   console.log(modalInfos.logo);
   return (
     <div
-      className={` font-secondary bg-white z-50 rounded-3xl shadow-lg shadow-gray-200 border border-gray-300  overflow-hidden flex flex-col justify-center items-center px-16 ${isModalVisible} ${modalSize.outerDiv}`}
+      className={` font-secondary bg-white z-50 rounded-3xl shadow-lg shadow-gray-200 border border-gray-300  overflow-hidden flex flex-col justify-center items-center px-16 ml-8 ${isModalVisible} ${modalSize.outerDiv}`}
     >
       <div
         className={`${modalSize.badgeDiv} grid place-items-center rounded-full bg-[${modalInfos.color}]`}

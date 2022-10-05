@@ -82,7 +82,7 @@ const Modal12 = () => {
 
   return (
     <div
-      className={`z-50 rounded-3xl bg-transparent flex overflow-hidden ${isModalVisible} ${modalSize.outerDiv}`}
+      className={`z-50 rounded-3xl bg-transparent flex overflow-hidden ml-3 ${isModalVisible} ${modalSize.outerDiv}`}
     >
       <div className="relative w-full h-full">
         <div className="absolute left-0 h-full w-[24rem] shadow-lg shadow-gray-200 border border-gray-300   rounded-3xl">
