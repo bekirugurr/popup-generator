@@ -1,4 +1,4 @@
-const popUp3 = (t) => {
+const popUp4 = (t) => {
   //! Aşağıda siteye girilen alet all ise veya istenen alet ile girildiyse kendisi açısından if blokunun çalışmasına izin veriyor
   let whichDevice =
     "ontouchstart" in document.documentElement ? "mobile" : "desktop";
@@ -20,8 +20,6 @@ const popUp3 = (t) => {
     let isVisible =
       t.percentage || t.howManySecondsAfter ? "hidden" : "visible";
     let modalPosition;
-    let whichIsChecked = 0;
-    let colorState = { text: "text-[#000000]", accent: "accent-[#000000]" };
     const positionFunction = (position) => {
       let str = position.x + "-" + position.y;
       if (str === "left-top") {
@@ -43,110 +41,96 @@ const popUp3 = (t) => {
       } else {
         return "left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2";
       }
-    }; 
+    };
 
     modalPosition = positionFunction(t.position);
 
     if (t.size === "large") {
       modalSize = {
-        outerDiv: "h-[31.5rem] w-[26rem] gap-6 pb-4",
+        outerDiv: "h-[32rem] w-[30rem] gap-5  px-16",
+        badgeDiv: "h-24 w-24",
+        badge: "h-[4rem] w-[3rem]",
+        defSVG: "60",
         form: "gap-6",
       };
     } else if (t.size === "small") {
       modalSize = {
-        outerDiv: "h-[26.5rem] w-[21rem] gap-4",
-        form: "gap-3",
+        outerDiv: "h-[25rem] w-[25rem] gap-2 px-8",
+        badgeDiv: "h-24 w-24",
+        badge: "h-[4rem] w-[3rem]",
+        defSVG: "60",
+        form: "gap-2",
       };
     } else {
       modalSize = {
-        outerDiv: "h-[29rem] w-[23rem] gap-4 pb-4",
+        outerDiv: "h-[28rem] w-[28rem] gap-4  px-12",
+        badgeDiv: "h-24 w-24",
+        badge: "h-[4rem] w-[3rem]",
+        defSVG: "60",
         form: "gap-4",
       };
     }
 
-    if (t.color === "#7D4AEA") {
-      colorState = { text: "text-[#7D4AEA]", accent: "accent-[#7D4AEA]" };
-    } else if (t.color === "#F37C34") {
-      colorState = { text: "text-[#F37C34]", accent: "accent-[#F37C34]" };
-    } else if (t.color === "#DDDDDD") {
-      colorState = { text: "text-[#DDDDDD]", accent: "accent-[#DDDDDD]" };
-    }
-
-    let inputsContent = ``;
-    {
-      t.content[8] &&
-        [
-          [t.content[3], t.content[4]],
-          [t.content[5], t.content[6]],
-          [t.content[7], t.content[8]],
-        ].forEach(
-          (item, index) =>
-            (inputsContent += `<div key=${index}>
-        <label
-            
-            htmlFor=${item[0][0]}
-            class="flex items-center font-semibold input-radio-label"
-        >
-            <input
-            type="radio"
-            name="campaign"
-            id=${item[0][0]}
-            class="mr-3 w-6 h-6 ${colorState.accent}"
-            ${index == 0 && "checked"}
-            />
-            ${item[0][1]}
-        </label>
-        <div class="ml-9 text-xs">${item[1][1]}</div>
-        </div>
-        `)
-        );
-    }
+    let logoİmg = t.logo
+      ? `<img src={t.logo} alt="badge" class={${modalSize.badge}} />`
+      : `<svg
+    width=${modalSize.defSVG}
+    height=${modalSize.defSVG}
+    viewBox="0 0 28 36"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    >
+    <path
+    d="M22 12V32H6V12H22ZM19 0H9L7 2H0V6H28V2H21L19 0ZM26 8H2V32C2.00317 33.0599 2.42561 34.0755 3.17507 34.8249C3.92453 35.5744 4.94011 35.9968 6 36H22C23.0599 35.9968 24.0755 35.5744 24.8249 34.8249C25.5744 34.0755 25.9968 33.0599 26 32V8Z"
+    fill="white"
+    />
+    </svg>`;
 
     let popDiv = `
-    <div
-      id='modalWrapper'
-      class=" bg-white z-50 rounded-3xl shadow-lg shadow-gray-200 border border-gray-300  overflow-hidden flex flex-col justify-center items-center px-6 fixed ${isVisible} ${
+        <div
+        id='modalWrapper'
+        class="bg-white z-50 rounded-3xl shadow-lg shadow-gray-200 border border-gray-300  overflow-hidden flex flex-col justify-center items-center text-center fixed ${isVisible} ${
       modalSize.outerDiv
     } ${modalPosition}"
-    >
-        <h3 class="font-lg font-medium text-center text-lg ${colorState.text}">
-        ${t.content[0] && t.content[0][1].toUpperCase()}
-        </h3>
-        <h2 class="text-center  font-bold text-3xl">
-            ${t.content[1] && t.content[1][1]}
-        </h2>
-        <h3 class="text-center  text-xl font-normal">
-            ${t.content[2] && t.content[2][1]}
-        </h3>
+            >
+        <div
+          class="${
+            modalSize.badgeDiv
+          } grid place-items-center rounded-full bg-[${t.color}]"
+        >
+        ${logoİmg}
 
-        <form id='popUpForm' class="px-4 flex flex-col w-full  ${
-          modalSize.form
-        }">
+        </div>
 
-        ${inputsContent}
+        <h2 class="font-bold text-3xl">${t.content[0] && t.content[0][1]}</h2>
+        <h3 class="text-xl font-normal">${t.content[1] && t.content[1][1]}</h3>
 
-        <div class="flex gap-4">
-          <button
-          type='button'
-            class="text-sm font-semibold border border-gray-400  rounded-lg py-3 w-full text-black hover:bg-[${
-              t.color
-            }] close-button"
-          >
-            ${t.content[9] && t.content[9][1]}
-          </button>
-          <button
-            type="submit"
-            class="text-sm font-semibold border border-gray-400  rounded-lg py-3 w-full bg-[${
-              t.color
-            }] ${
+        <p class="text-gray-500">
+        ${t.content[2] && t.content[2][1]}
+        <span class="text-black font-medium">
+          ${t.content[3] && t.content[3][1]}
+        </span>
+      </p>
+
+        <button
+          id='delete-button'
+          class="text-sm font-semibold border border-gray-400  rounded-lg py-3 w-full bg-[${
+            t.color
+          }] ${
       t.color == "#FFFFFF" || t.color == "#DDDDDD" ? "text-black" : "text-white"
     }"
-          >
-            ${t.content[10] && t.content[10][1]}
-          </button>
-        </div>
-        </form>
-        <button class="absolute top-3 right-3 rounded-full close-button">
+        >
+          ${t.content[4] && t.content[4][1]}
+        </button>
+        <button
+          class="text-sm font-semibold border border-gray-400  rounded-lg py-3 w-full text-black hover:bg-[${
+            t.color
+          }]  close-button"
+        >
+          ${t.content[5] && t.content[5][1]}
+        </button>
+
+      <button class="absolute top-3 right-3 rounded-full close-button">
         <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -162,8 +146,7 @@ const popUp3 = (t) => {
         />
         </svg>
       </button>
-    </div>
-`;
+    </div>`;
 
     let theBody = document.getElementsByTagName("body")[0];
     theBody.innerHTML += popDiv;
@@ -173,15 +156,10 @@ const popUp3 = (t) => {
       modalWrapper.classList.add("hidden");
     }
 
+    let deleteButton = document.getElementById("delete-button");
     let modalWrapper = document.getElementById("modalWrapper");
 
-    popUpForm.addEventListener("submit", (e) => {
-      e.preventDefault();
-      console.log(
-        `User selected ${
-          ["Starter", "Pro", "Business"][whichIsChecked]
-        } package and submitted....`
-      );
+    deleteButton.addEventListener("click", (e) => {
       //! IT WILL BE WRİTTEN HERE WHAT IS WANTED TO HAPPEN WHEN CLICKED ON THE FORM . BUT I DID NOT ADD IT. BECAUSE WAS NOT WANTED IN THE TASK
       makeModalHidden();
     });
@@ -191,19 +169,6 @@ const popUp3 = (t) => {
     closeButtons.forEach((button) => {
       button.addEventListener("click", () => {
         makeModalHidden();
-      });
-    });
-
-    let inputRadioLabels = document.querySelectorAll(".input-radio-label");
-
-    inputRadioLabels.forEach((label, index) => {
-      label.addEventListener("click", () => {
-        whichIsChecked = index;
-        console.log(
-          `User changed to radio to ${
-            ["Starter", "Pro", "Business"][whichIsChecked]
-          } package`
-        );
       });
     });
 

@@ -1,4 +1,4 @@
-const popUp2 = (t) => {
+const popUp1 = (t) => {
   //! Aşağıda siteye girilen alet all ise veya istenen alet ile girildiyse kendisi açısından if blokunun çalışmasına izin veriyor
   let whichDevice =
     "ontouchstart" in document.documentElement ? "mobile" : "desktop";
@@ -41,63 +41,96 @@ const popUp2 = (t) => {
       } else {
         return "left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2";
       }
-    }; 
+    };
 
     modalPosition = positionFunction(t.position);
 
     if (t.size === "large") {
       modalSize = {
-        outerDiv: "h-[32.5rem] w-[25rem]",
-        innerDiv: "gap-4 px-12",
+        outerDiv: "h-[30rem] w-[32rem]  gap-10",
+        badgeDiv: "h-32 w-32",
+        badge: "h-[5rem] w-[4rem]",
+        defSVG: "90",
+        form: "gap-10",
       };
     } else if (t.size === "small") {
       modalSize = {
-        outerDiv: "h-[26.5rem] w-[20.5rem]",
-        innerDiv: "gap-2 px-10",
+        outerDiv: "h-[22rem] w-[24rem] gap-3",
+        badgeDiv: "h-24 w-24",
+        badge: "h-[4rem] w-[3rem]",
+        defSVG: "60",
+        form: "gap-3",
       };
     } else {
       modalSize = {
-        outerDiv: "h-[30rem] w-[23rem]",
-        innerDiv: "gap-4 px-12",
+        outerDiv: "h-[26rem] w-[28rem] gap-6 ",
+        badgeDiv: "h-24 w-24",
+        badge: "h-[4rem] w-[3rem]",
+        defSVG: "60",
+        form: "gap-6",
       };
     }
 
-    let imgDiv = t.image
-      ? `<img src="${t.image}" alt="upper image" class="w-full h-1/2" />`
-      : `<img src="https://www.softlanding.ca/wp-content/uploads/2020/04/WM-2.jpg" alt="upper image" class="w-full h-1/2" />`;
+    let logoİmg = t.logo
+      ? `<img src={t.logo} alt="badge" class={${modalSize.badge}} />`
+      : `<svg
+    width=${modalSize.defSVG}
+    height=${modalSize.defSVG}
+    viewBox="0 0 36 44"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+     >
+    <path
+      d="M23 23.18L24.8 30.94L18 26.84L11.2 30.94L13 23.2L7 18.02L14.92 17.34L18 10.04L21.08 17.32L29 18L23 23.18ZM18 4.38L32 10.6V20C32 29.04 26.04 37.38 18 39.86C9.96 37.38 4 29.04 4 20V10.6L18 4.38ZM18 0L0 8V20C0 31.1 7.68 41.48 18 44C28.32 41.48 36 31.1 36 20V8L18 0Z"
+      fill="white"
+    />
+      </svg>`;
 
     let popDiv = `
-    <div
-      id='modalWrapper'
-      class=" bg-white z-50 rounded-3xl shadow-lg shadow-gray-200 border border-gray-300  overflow-hidden fixed ${isVisible} ${
+        <div
+        id='modalWrapper'
+        class=" bg-white z-50 rounded-3xl shadow-lg shadow-gray-200 border border-gray-300  overflow-hidden flex flex-col justify-center items-center px-16 fixed ${isVisible} ${
       modalSize.outerDiv
-    } ${modalPosition} "
-    >
-      ${imgDiv}
-      
-      <div class="w-ful h-1/2 flex flex-col justify-center items-center ${
-        modalSize.innerDiv
-      }" >
+    } ${modalPosition}"
+            >
+        <div
+          class="${
+            modalSize.badgeDiv
+          } grid place-items-center rounded-full bg-[${t.color}]"
+        >
+        ${logoİmg}
+        </div>
         <h2 class="font-bold text-3xl">${t.content[0] && t.content[0][1]}</h2>
         <h3 class="text-xl font-medium">${t.content[1] && t.content[1][1]}</h3>
-        <button
-          id='contine-button'
-          class="text-sm font-semibold border border-gray-400  rounded-lg py-3 w-full bg-[${
-            t.color
-          }] ${
+        <form id='popUpForm' class="flex flex-col w-full  ${modalSize.form}">
+        <input
+          type="text"
+          name="name"
+          id="name"
+          placeholder=${t.content[2] && t.content[2][1]}
+          class="text-sm border border-gray-400 rounded-lg py-3 pl-2 w-full"
+        />
+        <div class="flex gap-4">
+          <button
+            class="text-sm font-semibold border border-gray-400  rounded-lg py-3 w-full text-black hover:bg-[${
+              t.color
+            }] close-button" 
+          >
+            ${t.content[3] && t.content[3][1]}
+          </button>
+          <button
+            type="submit"
+            class="text-sm font-semibold border border-gray-400  rounded-lg py-3 w-full bg-[${
+              t.color
+            }] ${
       t.color == "#FFFFFF" || t.color == "#DDDDDD" ? "text-black" : "text-white"
     }"
-        >
-          ${t.content[2] && t.content[2][1]}
-        </button>
-        <button
-          class="text-sm font-semibold border border-gray-400  rounded-lg py-3 w-full text-black hover:bg-[${
-            t.color
-          }]  close-button"
-        >
-          ${t.content[3] && t.content[3][1]}
-        </button>
-      </div>
+          >
+            ${t.content[4] && t.content[4][1]}
+          </button>
+        </div>
+      </form>
+
       <button class="absolute top-3 right-3 rounded-full close-button">
         <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -114,8 +147,7 @@ const popUp2 = (t) => {
         />
         </svg>
       </button>
-    </div>
-`;
+    </div>`;
 
     let theBody = document.getElementsByTagName("body")[0];
     theBody.innerHTML += popDiv;
@@ -125,10 +157,12 @@ const popUp2 = (t) => {
       modalWrapper.classList.add("hidden");
     }
 
-    let continueButton = document.getElementById("contine-button");
+    let popUpForm = document.getElementById("popUpForm");
     let modalWrapper = document.getElementById("modalWrapper");
 
-    continueButton.addEventListener("click", () => {
+    popUpForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+
       //! IT WILL BE WRİTTEN HERE WHAT IS WANTED TO HAPPEN WHEN CLICKED ON THE FORM . BUT I DID NOT ADD IT. BECAUSE WAS NOT WANTED IN THE TASK
       makeModalHidden();
     });

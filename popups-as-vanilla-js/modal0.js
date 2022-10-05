@@ -1,4 +1,4 @@
-const popUp4 = (t) => {
+const popUp0 = (t) => {
   //! Aşağıda siteye girilen alet all ise veya istenen alet ile girildiyse kendisi açısından if blokunun çalışmasına izin veriyor
   let whichDevice =
     "ontouchstart" in document.documentElement ? "mobile" : "desktop";
@@ -41,112 +41,88 @@ const popUp4 = (t) => {
       } else {
         return "left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2";
       }
-    }; 
+    };
 
     modalPosition = positionFunction(t.position);
 
     if (t.size === "large") {
       modalSize = {
-        outerDiv: "h-[32rem] w-[30rem] gap-5  px-16",
-        badgeDiv: "h-24 w-24",
-        badge: "h-[4rem] w-[3rem]",
-        defSVG: "60",
+        outerDiv: "h-[28rem] w-[45rem]",
+        innerDiv: "gap-7 px-12",
         form: "gap-6",
       };
     } else if (t.size === "small") {
       modalSize = {
-        outerDiv: "h-[25rem] w-[25rem] gap-2 px-8",
-        badgeDiv: "h-24 w-24",
-        badge: "h-[4rem] w-[3rem]",
-        defSVG: "60",
+        outerDiv: "h-[16rem] w-[30rem]",
+        innerDiv: "gap-1 px-4",
         form: "gap-2",
       };
     } else {
       modalSize = {
-        outerDiv: "h-[28rem] w-[28rem] gap-4  px-12",
-        badgeDiv: "h-24 w-24",
-        badge: "h-[4rem] w-[3rem]",
-        defSVG: "60",
-        form: "gap-4",
+        outerDiv: "h-[20.8rem] w-[39rem]",
+        innerDiv: "gap-2 px-8",
+        form: "gap-3",
       };
     }
 
-    let logoİmg = t.logo
-      ? `<img src={t.logo} alt="badge" class={${modalSize.badge}} />`
-      : `<svg
-    width=${modalSize.defSVG}
-    height=${modalSize.defSVG}
-    viewBox="0 0 28 36"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    >
-    <path
-    d="M22 12V32H6V12H22ZM19 0H9L7 2H0V6H28V2H21L19 0ZM26 8H2V32C2.00317 33.0599 2.42561 34.0755 3.17507 34.8249C3.92453 35.5744 4.94011 35.9968 6 36H22C23.0599 35.9968 24.0755 35.5744 24.8249 34.8249C25.5744 34.0755 25.9968 33.0599 26 32V8Z"
-    fill="white"
-    />
-    </svg>`;
-
     let popDiv = `
-        <div
-        id='modalWrapper'
-        class="bg-white z-50 rounded-3xl shadow-lg shadow-gray-200 border border-gray-300  overflow-hidden flex flex-col justify-center items-center text-center fixed ${isVisible} ${
+    <div
+      id='modalWrapper'
+      class=" bg-white z-50 rounded-3xl shadow-lg shadow-gray-200 border border-gray-300 flex overflow-hidden fixed ${isVisible} ${
       modalSize.outerDiv
     } ${modalPosition}"
-            >
-        <div
-          class="${
-            modalSize.badgeDiv
-          } grid place-items-center rounded-full bg-[${t.color}]"
-        >
-        ${logoİmg}
-
-        </div>
-
-        <h2 class="font-bold text-3xl">${t.content[0] && t.content[0][1]}</h2>
-        <h3 class="text-xl font-normal">${t.content[1] && t.content[1][1]}</h3>
-
-        <p class="text-gray-500">
-        ${t.content[2] && t.content[2][1]}
-        <span class="text-black font-medium">
-          ${t.content[3] && t.content[3][1]}
-        </span>
-      </p>
-
-        <button
-          id='delete-button'
-          class="text-sm font-semibold border border-gray-400  rounded-lg py-3 w-full bg-[${
-            t.color
-          }] ${
+    >
+      <div
+        class="w-1/2  flex flex-col justify-center items-center gap-2 px-8 ${
+          modalSize.innerDiv
+        }"
+      >
+        <h2 class="font-semibold text-3xl">${t.content[0][1]}</h2>
+        <p>${t.content[1][1]}</p>
+        <form id='popUpForm' class="flex flex-col w-full gap-3 ${
+          modalSize.form
+        }">
+          <input
+            type="text"
+            name="name"
+            id="name"
+            placeholder=${t.content[2][1]}
+            class="text-sm border border-gray-400 rounded-lg py-2 pl-2 w-full"
+          />
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder=${t.content[3][1]}
+            class="text-sm border border-gray-400 rounded-lg py-2 pl-2 w-full"
+          />
+          <button
+            type="submit"
+            class="text-sm font-semibold border border-gray-400  rounded-lg py-2 pl-2 w-full bg-[${
+              t.color
+            }] ${
       t.color == "#FFFFFF" || t.color == "#DDDDDD" ? "text-black" : "text-white"
     }"
+          >
+            ${t.content[4][1]}
+          </button>
+        </form>
+        <p class="text-xs text-[#777777]">${t.content[5][1]}</p>
+      </div>
+      <div class="w-1/2 relative">
+      <img src=${t.image ? t.image : "https://thumbsnap.com/i/E4UJGTGf.jpg"}
+      alt='popup image'
+      class='w-full h-full'>
+        <button id='closeModalButton' class="absolute top-3 right-3 bg-gray-400 p-1 rounded-full"
         >
-          ${t.content[4] && t.content[4][1]}
-        </button>
-        <button
-          class="text-sm font-semibold border border-gray-400  rounded-lg py-3 w-full text-black hover:bg-[${
-            t.color
-          }]  close-button"
-        >
-          ${t.content[5] && t.content[5][1]}
-        </button>
-
-      <button class="absolute top-3 right-3 rounded-full close-button">
-        <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke-width="1.5"
-        stroke="gray"
-        class="w-8 h-8"
-        >
-        <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-        />
+        <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
         </svg>
-      </button>
-    </div>`;
+        
+        </button>
+      </div>
+    </div>
+`;
 
     let theBody = document.getElementsByTagName("body")[0];
     theBody.innerHTML += popDiv;
@@ -156,20 +132,20 @@ const popUp4 = (t) => {
       modalWrapper.classList.add("hidden");
     }
 
-    let deleteButton = document.getElementById("delete-button");
+    let popUpForm = document.getElementById("popUpForm");
     let modalWrapper = document.getElementById("modalWrapper");
 
-    deleteButton.addEventListener("click", (e) => {
+    popUpForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+
       //! IT WILL BE WRİTTEN HERE WHAT IS WANTED TO HAPPEN WHEN CLICKED ON THE FORM . BUT I DID NOT ADD IT. BECAUSE WAS NOT WANTED IN THE TASK
       makeModalHidden();
     });
 
-    let closeButtons = document.querySelectorAll(".close-button");
+    let closeModalButton = document.getElementById("closeModalButton");
 
-    closeButtons.forEach((button) => {
-      button.addEventListener("click", () => {
-        makeModalHidden();
-      });
+    closeModalButton.addEventListener("click", () => {
+      makeModalHidden();
     });
 
     //! Aşağıdaki isWaitingForTrigger değişkeni istenen saniye geçmesiyle ve istenen scroll yüzdesinin geçmesi iki durumunda da çalışmasını engellemk için. Bir tetikleyince öbürü tetiklemesin diye

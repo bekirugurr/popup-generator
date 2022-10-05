@@ -1,4 +1,4 @@
-const popUp9 = (t) => {
+const popUp11 = (t) => {
     //! Aşağıda siteye girilen alet all ise veya istenen alet ile girildiyse kendisi açısından if blokunun çalışmasına izin veriyor
     let whichDevice =
       "ontouchstart" in document.documentElement ? "mobile" : "desktop";
@@ -41,78 +41,54 @@ const popUp9 = (t) => {
         } else {
           return "left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2";
         }
-      }; 
+      };
   
       modalPosition = positionFunction(t.position);
   
       if (t.size === "large") {
         modalSize = {
-          outerDiv: "h-[33rem] w-[26rem] ",
-          innerDiv: "gap-4 px-12",
-          form: "gap-3",
-          logo: "h-[10rem] w-[13rem]"
+          outerDiv: "h-[30rem] w-[26rem]  gap-5 px-8",
+          innerDiv: "h-[11rem] w-[11rem]",
+          form: "gap-5",
         };
       } else if (t.size === "small") {
         modalSize = {
-          outerDiv: "h-[27rem] w-[22rem] ",
-          innerDiv: "gap-2 px-10",
-          form: "gap-2",
-          logo: "h-[6rem] w-[9rem]"
+          outerDiv: "h-[25rem] w-[21rem]  gap-3 px-8",
+          innerDiv: "h-[7rem] w-[7rem]",
+          form: "gap-3",
         };
       } else {
         modalSize = {
-          outerDiv: "h-[30rem] w-[24rem] ",
-          innerDiv: "gap-4 px-12",
+          outerDiv: "h-[28rem] w-[23rem]  gap-4 px-8",
+          innerDiv: "h-[9rem] w-[9rem]",
           form: "gap-3",
-          logo: "h-[7rem] w-[10rem]"
         };
       }
 
-      let bigImgDiv = t.image
-      ? `<img src="${t.image}" alt="bigger image" class="w-full h-full absolute z-10" />`
-      : `<img src="https://thumbsnap.com/i/F8QxftDb.jpg" alt="bigger image" class="w-full h-full absolute z-10" />`;
 
-      let smallImgDiv = t.logo
-      ? `<img src="${t.logo}" alt="smaller image" class=" ${modalSize.logo} z-50 rounded-xl absolute" />`
-      : `<img src="https://thumbsnap.com/i/RDd8v24o.jpg" alt="smaller image" class="${modalSize.logo} z-50 rounded-xl " />`;
-
-
-      let popDiv = `
-            
+      let imgDiv = t.logo
+      ? `<img src="${t.logo}" alt="image" class="w-full h-full absolute" />`
+      : `<img src="https://thumbsnap.com/i/J6sWerZN.png" alt="bigger image" class="w-full h-full absolute" />`;
+  
+      let popDiv = `  
       <div
       id='modalWrapper'
-      class="font-secondary bg-white z-50 rounded-3xl shadow-lg shadow-gray-200 border border-gray-300  overflow-hidden fixed ${isVisible} ${modalSize.outerDiv} ${modalPosition} "
+      class="bg-white z-50 rounded-3xl shadow-lg shadow-gray-200 border border-gray-300  overflow-hidden fixed flex flex-col justify-center items-center  ${isVisible} ${modalSize.outerDiv}  ${modalPosition}"
     >
-      <div class="w-full h-2/5 relative flex items-center justify-center">
-        ${bigImgDiv}
-        <div class="pt-6 z-50">
-        
-        ${smallImgDiv}
-        
-        </div>
+      <div class="relative flex items-center justify-center ${modalSize.innerDiv}">
+        ${imgDiv}        
       </div>
-
-      <div
-        class=" h-3/5 flex flex-col justify-center items-center gap-2 px-8 ${modalSize.innerDiv}"
-      >
-        <h2 class="font-bold text-3xl">${t.content[0][1]}</h2>
-        <p>${t.content[1][1]}</p>
+        <h2 class="font-bold text-3xl">${t.content[0] && t.content[0][1]}</h2>
+        <p class="text-center">${t.content[1] && t.content[1][1]}</p>
         <form
-        id='popupForm'
+          id='popUpForm'
           class="flex flex-col w-full gap-3 ${modalSize.form}"
         >
-          <input
-            type="text"
-            name="name"
-            id="name"
-            placeholder=${t.content[2][1]}
-            class="text-sm border border-gray-400 rounded-lg py-2 pl-2 w-full"
-          />
           <input
             type="email"
             name="email"
             id="email"
-            placeholder=${t.content[3][1]}
+            placeholder=${t.content[2] && t.content[2][1]}
             class="text-sm border border-gray-400 rounded-lg py-2 pl-2 w-full"
           />
           <button
@@ -125,35 +101,43 @@ const popUp9 = (t) => {
                 : "text-white"
             }"
           >
-            ${t.content[4][1]}
+            ${t.content[3] && t.content[3][1]}
           </button>
         <p class="text-xs pl-2 text-gray-800">
-            ${t.content[5] && t.content[5][1]}
-            <span class="underline pl-1">${t.content[6] && t.content[6][1]}</span>
+            ${t.content[4] && t.content[4][1]}
+            <span class="underline pl-1">${t.content[5] && t.content[5][1]}</span>
         </p>
         </form>
-      </div>
+      
+        <button class="absolute top-3 right-3 rounded-full close-button">
+        <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="gray"
+        class="w-8 h-8"
+        >
+        <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+        />
+        </svg>
+      </button>
 
-      <button class="absolute top-3 right-3 rounded-full close-button z-50">
-      <svg
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke-width="1.5"
-      stroke="gray"
-      class="w-8 h-8"
-      >
-      <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-      />
-      </svg>
-    </button>
     </div>
   );
-}
-    `;
+};
+      
+      `;
+  
+  
+  
+  
+  
+  
+      
   
       let theBody = document.getElementsByTagName("body")[0];
       theBody.innerHTML += popDiv;
@@ -163,7 +147,7 @@ const popUp9 = (t) => {
         modalWrapper.classList.add("hidden");
       }
   
-      let popUpForm = document.getElementById("popupForm");
+      let popUpForm = document.getElementById("popUpForm");
       let modalWrapper = document.getElementById("modalWrapper");
   
       popUpForm.addEventListener("submit", (e) => {
