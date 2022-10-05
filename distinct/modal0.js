@@ -86,14 +86,14 @@ const popUp0 = (t) => {
             type="text"
             name="name"
             id="name"
-            placeholder=${t.content[2][1]}
+            placeholder="${t.content[2][1]}"
             class="text-sm border border-gray-400 rounded-lg py-2 pl-2 w-full"
           />
           <input
             type="email"
             name="email"
             id="email"
-            placeholder=${t.content[3][1]}
+            placeholder="${t.content[3][1]}"
             class="text-sm border border-gray-400 rounded-lg py-2 pl-2 w-full"
           />
           <button
