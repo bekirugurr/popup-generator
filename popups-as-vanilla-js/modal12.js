@@ -159,13 +159,6 @@ const popUp12 = (t) => {
       
       `;
   
-  
-  
-  
-  
-  
-      
-  
       let theBody = document.getElementsByTagName("body")[0];
       theBody.innerHTML += popDiv;
   

@@ -110,9 +110,9 @@ const Modal12 = () => {
             className={` flex flex-col justify-center items-start gap-2 px-8 ${modalSize.innerDiv}`}
           >
             <h2 className="font-semibold text-3xl">
-              {modalInfos.content[0][1]}
+              {modalInfos.content[0] && modalInfos.content[0][1]}
             </h2>
-            <p>{modalInfos.content[1][1]}</p>
+            <p>{modalInfos.content[1] && modalInfos.content[1][1]}</p>
             <form
               className={`flex flex-col w-full gap-3 ${modalSize.form}`}
               onSubmit={handleSubmit}
@@ -121,14 +121,14 @@ const Modal12 = () => {
                 type="text"
                 name="name"
                 id="name"
-                placeholder={modalInfos.content[2][1]}
+                placeholder={modalInfos.content[2] && modalInfos.content[2][1]}
                 className="text-sm border border-gray-400 rounded-lg py-2 pl-2 w-full"
               />
               <input
                 type="email"
                 name="email"
                 id="email"
-                placeholder={modalInfos.content[3][1]}
+                placeholder={modalInfos.content[3] && modalInfos.content[3][1]}
                 className="text-sm border border-gray-400 rounded-lg py-2 pl-2 w-full"
               />
               <button
