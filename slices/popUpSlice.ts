@@ -15,6 +15,7 @@ export interface PopUpState {
   trafficSource: string;
   browserLanguage: string[];
   exitIntentTargeting: boolean;
+  infoComponent : string;
 }
 
 const initialState: PopUpState = {
@@ -42,6 +43,8 @@ const initialState: PopUpState = {
   trafficSource: "",
   browserLanguage: [],
   exitIntentTargeting: false,
+  infoComponent: 'VisitorDevice',
+  
 };
 
 export const popUpSlice = createSlice({
@@ -99,6 +102,9 @@ export const popUpSlice = createSlice({
     setExitIntentTargeting: (state, action: PayloadAction<boolean>) => {
       return { ...state, exitIntentTargeting: action.payload };
     },
+    setInfoComponent: (state, action: PayloadAction<string>) => {
+      return { ...state, infoComponent: action.payload };
+    },
   },
 });
 
@@ -118,6 +124,7 @@ export const {
   setTrafficSource,
   setBrowserLanguage,
   setExitIntentTargeting,
+  setInfoComponent,
 } = popUpSlice.actions;
 
 export default popUpSlice.reducer;

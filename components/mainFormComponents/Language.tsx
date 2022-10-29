@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import RadioButton from "./RadioButton";
+import RadioButton from "./Common/RadioButton";
 import { setBrowserLanguage } from "../../slices/popUpSlice";
 import type { RootState } from "../../store";
 import { useDispatch, useSelector } from "react-redux";
 import { IoMdCloseCircle } from "react-icons/io";
 import { FiChevronUp, FiChevronDown } from "react-icons/fi";
 import { BsFillCheckSquareFill, BsSquare  } from "react-icons/bs";
+import Info from "./Common/Info";
 
 interface LanguageItem {
   label: string;
@@ -54,11 +55,18 @@ const Language = () => {
         dispatch(setBrowserLanguage([lang]))
     }
   }
+
+  const info = "You can allow to the popup to appear in your site for users who have certain browser languages by this feature. Default is all browser languages. "
   return (
     <section className="text-secondary w-96 relative mt-12">
       <h4 className="my-2 pl-1 font-semibold">Browser Language</h4>
-      <RadioButton isSwitchOn={isSwitchOn} setIsSwitchOn={setIsSwitchOn} />
-
+      <div className="absolute top-0 right-0 flex items-center gap-3">
+        <Info
+          info={info}
+          inWhichComponent="Language"
+        />
+        <RadioButton isSwitchOn={isSwitchOn} setIsSwitchOn={setIsSwitchOn} />
+      </div>
       <div className="relative">
         <div
           className={`w-96 h-11 px-2 mt-6 text-sm rounded-md border border-gray-400 flex gap-1 items-center justify-between text-gray-600 ${isOptionsOpen && 'border-2 border-blue-400'}`}

@@ -57,9 +57,7 @@ const SettingsAndCode = () => {
   const [outPut, setOutPut] = useState<string>("");
   const dispatch = useDispatch();
   const allData = useSelector((state: RootState) => state.popUp);
-  console.log("seconds: ", allData.howManySecondsAfter, 'percentage: ', allData.percentage)
 
-  // https://hook.eu1.make.com/m2hs5h0yzgyoaz2pxj779r2onwcf7jr8
   const handleGetCode = () => {
     let time = new Date();
     if (isSubmissionChecked && isSendDataChecked) {
