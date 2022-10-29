@@ -1,4 +1,4 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import type { RootState } from "../store";
 import { useSelector } from "react-redux";
 import Size from "./mainFormComponents/Size";
@@ -19,64 +19,83 @@ import SettingsAndCode from "./mainFormComponents/SettingsAndCode";
 import ModalWrapper from "./modalComponents/ModalWrapper";
 
 const MainComp: React.FC = () => {
-  const popUpInfos = useSelector((state: RootState) => state.popUp);
-  // console.log(popUpInfos);
+  const numberOfSelectedTemplate = useSelector(
+    (state: RootState) => state.popUp.numberOfSelectedTemplate
+  );
+
+  const [isLogoShow, setIsLogoShow] = useState<boolean>(true);
+  const [isImageShow, setIsImageShow] = useState<boolean>(true);
+
+  useEffect(() => {
+    setIsLogoShow(
+      numberOfSelectedTemplate === 1 ||
+      numberOfSelectedTemplate === 4 || 
+      numberOfSelectedTemplate === 9 ||
+      numberOfSelectedTemplate === 11
+    );
+    setIsImageShow(
+      numberOfSelectedTemplate === 0 ||
+      numberOfSelectedTemplate === 2 ||
+      numberOfSelectedTemplate === 9 ||
+      numberOfSelectedTemplate === 10 ||
+      numberOfSelectedTemplate === 12
+    );
+  }, [numberOfSelectedTemplate, setIsLogoShow, setIsImageShow]);
+
   return (
     <main className="px-32 py-4 flex gap-9">
       <div>
-      <div className="flex items-center  pb-3 pt-8">
-        <div className="rounded-full bg-zinc-300 w-8 h-8 flex items-center justify-center font-semibold">
-          2
+        <div className="flex items-center  pb-3 pt-8">
+          <div className="rounded-full bg-zinc-300 w-8 h-8 flex items-center justify-center font-semibold">
+            2
+          </div>
+          <div className="flex">
+            <h3 className="text-xl font-semibold pl-4">Appearance </h3>(Size,
+            colors, logo)
+          </div>
         </div>
-        <div className="flex">
-          <h3 className="text-xl font-semibold pl-4">Appearance </h3>(Size,
-          colors, logo)
+        <Size />
+        <Position />
+        <Color />
+        {isLogoShow && <UploadImage
+          defaultImage={defaultLogo}
+          changeImgFunc={setLogo}
+          title={"Logo"}
+        />}
+        <div className="flex items-center pb-3 pt-12">
+          <div className="rounded-full bg-zinc-300 w-8 h-8 flex items-center justify-center font-semibold">
+            3
+          </div>
+          <h3 className="text-xl font-semibold pl-4">Content </h3>
         </div>
-      </div>
-      <Size />
-      <Position />
-      <Color />
-      <UploadImage
-        defaultImage={defaultLogo}
-        changeImgFunc={setLogo}
-        title={"Logo"}
-      />
-      <div className="flex items-center pb-3 pt-12">
-        <div className="rounded-full bg-zinc-300 w-8 h-8 flex items-center justify-center font-semibold">
-          3
+        <Content />
+        {isImageShow && <UploadImage
+          defaultImage={defaultImage}
+          changeImgFunc={setImage}
+          title={"Image"}
+        />}
+        <div className="flex items-center pb-3 pt-12">
+          <div className="rounded-full bg-zinc-300 w-8 h-8 flex items-center justify-center font-semibold">
+            4
+          </div>
+          <h3 className="text-xl font-semibold pl-4">Targeting Rules </h3>
         </div>
-        <h3 className="text-xl font-semibold pl-4">Content </h3>
-      </div>
-      <Content />
-      <UploadImage
-        defaultImage={defaultImage}
-        changeImgFunc={setImage}
-        title={"Image"}
-      />
-      <div className="flex items-center pb-3 pt-12">
-        <div className="rounded-full bg-zinc-300 w-8 h-8 flex items-center justify-center font-semibold">
-          4
+        <VisitorDevice />
+        <TimeTrigger />
+        <ScrollTrigger />
+        <TrafficSource />
+        <Language />
+        <ExitIntentTargeting />
+        <div className="flex items-center pb-3 pt-10">
+          <div className="rounded-full bg-zinc-300 w-8 h-8 flex items-center justify-center font-semibold">
+            5
+          </div>
+          <h3 className="text-xl font-semibold pl-4">Settings and Code </h3>
         </div>
-        <h3 className="text-xl font-semibold pl-4">Targeting Rules </h3>
+        <SettingsAndCode />
       </div>
-      <VisitorDevice/>
-      <TimeTrigger/>
-      <ScrollTrigger/>
-      <TrafficSource/>
-      <Language/>
-      <ExitIntentTargeting/>
-      <div className="flex items-center pb-3 pt-10">
-        <div className="rounded-full bg-zinc-300 w-8 h-8 flex items-center justify-center font-semibold">
-          5
-        </div>
-        <h3 className="text-xl font-semibold pl-4">Settings and Code </h3>
-      </div>
-      <SettingsAndCode/>
-      </div>
-          
-        <ModalWrapper/>
 
-
+      <ModalWrapper />
     </main>
   );
 };
