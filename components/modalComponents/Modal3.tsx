@@ -56,7 +56,8 @@ const Modal3 = () => {
       browserLanguage: [],
       exitIntentTargeting: true,
       image: "",
-      logo: ""
+      logo: "",
+      infoComponent: 'none',
     };
     dispatch(setStateTogether(initialData));
   }, [dispatch]);

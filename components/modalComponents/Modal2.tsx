@@ -44,7 +44,8 @@ const Modal2 = () => {
       browserLanguage: [],
       exitIntentTargeting: true,
       image: "https://www.softlanding.ca/wp-content/uploads/2020/04/WM-2.jpg",
-      logo: ""
+      logo: "",
+      infoComponent: 'none',
     };
     dispatch(setStateTogether(initialData));
   }, [dispatch]);

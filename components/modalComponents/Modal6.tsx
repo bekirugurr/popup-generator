@@ -45,7 +45,8 @@ const Modal6 = () => {
       browserLanguage: [],
       exitIntentTargeting: true,
       image: "",
-      logo: ""
+      logo: "",
+      infoComponent: 'none',
     };
     dispatch(setStateTogether(initialData));
   }, [dispatch]);

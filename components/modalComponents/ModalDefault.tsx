@@ -43,7 +43,8 @@ const ModalDefault = () => {
       browserLanguage: [],
       exitIntentTargeting: true,
       image: 'https://thumbsnap.com/i/E4UJGTGf.jpg',
-      logo: ""
+      logo: "",
+      infoComponent: 'none',
     };
     dispatch(setStateTogether(initialData));
   }, [dispatch]);

@@ -40,6 +40,7 @@ const Modal7 = () => {
       exitIntentTargeting: true,
       image: "",
       logo: "",
+      infoComponent: 'none',
     };
     dispatch(setStateTogether(initialData));
   }, [dispatch]);

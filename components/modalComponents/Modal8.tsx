@@ -41,6 +41,7 @@ const Modal8 = () => {
       exitIntentTargeting: true,
       image: "",
       logo: "",
+      infoComponent: 'none',
     };
     dispatch(setStateTogether(initialData));
   }, [dispatch]);

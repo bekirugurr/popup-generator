@@ -15,7 +15,7 @@ export interface PopUpState {
   trafficSource: string;
   browserLanguage: string[];
   exitIntentTargeting: boolean;
-  infoComponent : string;
+  infoComponent: string;
 }
 
 const initialState: PopUpState = {

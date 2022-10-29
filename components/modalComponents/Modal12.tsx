@@ -45,6 +45,7 @@ const Modal12 = () => {
       exitIntentTargeting: true,
       image: "https://thumbsnap.com/i/7t4GA3WF.png",
       logo: "",
+      infoComponent: 'none',
     };
     dispatch(setStateTogether(initialData));
   }, [dispatch]);
