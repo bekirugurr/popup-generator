@@ -23,24 +23,24 @@ const MainComp: React.FC = () => {
     (state: RootState) => state.popUp.numberOfSelectedTemplate
   );
 
-  const [isLogoShow, setIsLogoShow] = useState<boolean>(true);
-  const [isImageShow, setIsImageShow] = useState<boolean>(true);
+  // const [isLogoShow, setIsLogoShow] = useState<boolean>(true);
+  // const [isImageShow, setIsImageShow] = useState<boolean>(true);
 
-  useEffect(() => {
-    setIsLogoShow(
-      numberOfSelectedTemplate === 1 ||
-      numberOfSelectedTemplate === 4 || 
-      numberOfSelectedTemplate === 9 ||
-      numberOfSelectedTemplate === 11
-    );
-    setIsImageShow(
-      numberOfSelectedTemplate === 0 ||
-      numberOfSelectedTemplate === 2 ||
-      numberOfSelectedTemplate === 9 ||
-      numberOfSelectedTemplate === 10 ||
-      numberOfSelectedTemplate === 12
-    );
-  }, [numberOfSelectedTemplate, setIsLogoShow, setIsImageShow]);
+  // useEffect(() => {
+  //   setIsLogoShow(
+  //     numberOfSelectedTemplate === 1 ||
+  //     numberOfSelectedTemplate === 4 || 
+  //     numberOfSelectedTemplate === 9 ||
+  //     numberOfSelectedTemplate === 11
+  //   );
+  //   setIsImageShow(
+  //     numberOfSelectedTemplate === 0 ||
+  //     numberOfSelectedTemplate === 2 ||
+  //     numberOfSelectedTemplate === 9 ||
+  //     numberOfSelectedTemplate === 10 ||
+  //     numberOfSelectedTemplate === 12
+  //   );
+  // }, [numberOfSelectedTemplate, setIsLogoShow, setIsImageShow]);
 
   return (
     <main className="px-32 py-4 flex gap-9">
@@ -57,11 +57,11 @@ const MainComp: React.FC = () => {
         <Size />
         <Position />
         <Color />
-        {isLogoShow && <UploadImage
+        <UploadImage
           defaultImage={defaultLogo}
           changeImgFunc={setLogo}
           title={"Logo"}
-        />}
+        />
         <div className="flex items-center pb-3 pt-12">
           <div className="rounded-full bg-zinc-300 w-8 h-8 flex items-center justify-center font-semibold">
             3
@@ -69,11 +69,11 @@ const MainComp: React.FC = () => {
           <h3 className="text-xl font-semibold pl-4">Content </h3>
         </div>
         <Content />
-        {isImageShow && <UploadImage
+        <UploadImage
           defaultImage={defaultImage}
           changeImgFunc={setImage}
           title={"Image"}
-        />}
+        />
         <div className="flex items-center pb-3 pt-12">
           <div className="rounded-full bg-zinc-300 w-8 h-8 flex items-center justify-center font-semibold">
             4
