@@ -19,6 +19,7 @@ export interface PopUpState {
   trafficSource: string;
   browserLanguage: string[];
   exitIntentTargeting: boolean;
+  infoComponent: string;
 }
 
 const initialState: PopUpState = {
@@ -48,6 +49,7 @@ const initialState: PopUpState = {
   exitIntentTargeting: false,
   logo: "",
   image: "",
+  infoComponent: 'none',
 };
 
 const SettingsAndCode = () => {
