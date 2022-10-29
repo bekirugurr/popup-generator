@@ -62,10 +62,10 @@ const popUp7 = (t) => {
     }
     let textColor = t.color === "#000000" || t.color === "#7D4AEA" || t.color === "#F37C34" ? 'white' : 'black'
 
-    let popDiv = `
+    let popUpDiv = `
           <div
           id='modalWrapper'
-          class="z-50 rounded-3xl shadow-lg shadow-gray-200 border border-gray-300  overflow-hidden flex flex-col justify-center items-center text-center fixed ${isVisible} ${modalSize.outerDiv} ${modalPosition} bg-[${t.color}] text-${textColor} "
+          class="z-50 rounded-3xl border border-gray-300  overflow-hidden flex flex-col justify-center items-center text-center fixed ${isVisible} ${modalSize.outerDiv} ${modalPosition} bg-[${t.color}] text-${textColor} "
               >
           <h2 class="font-bold text-3xl">${t.content[0] && t.content[0][1]}</h2>
           <h3 class="text-xl font-normal">${
@@ -109,7 +109,7 @@ const popUp7 = (t) => {
 
 
     let theBody = document.getElementsByTagName("body")[0];
-    theBody.innerHTML += popDiv;
+    theBody.innerHTML += popUpDiv;
 
     function makeModalHidden() {
       modalWrapper.classList.remove("visible");

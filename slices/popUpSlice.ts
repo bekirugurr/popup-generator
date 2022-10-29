@@ -15,7 +15,6 @@ export interface PopUpState {
   trafficSource: string;
   browserLanguage: string[];
   exitIntentTargeting: boolean;
-  webhookURL: string;
 }
 
 const initialState: PopUpState = {
@@ -43,7 +42,6 @@ const initialState: PopUpState = {
   trafficSource: "",
   browserLanguage: [],
   exitIntentTargeting: false,
-  webhookURL: ""
 };
 
 export const popUpSlice = createSlice({
@@ -101,9 +99,6 @@ export const popUpSlice = createSlice({
     setExitIntentTargeting: (state, action: PayloadAction<boolean>) => {
       return { ...state, exitIntentTargeting: action.payload };
     },
-    setWebhookURL: (state, action: PayloadAction<string>) => {
-      return { ...state, webhookURL: action.payload };
-    },
   },
 });
 
@@ -123,7 +118,6 @@ export const {
   setTrafficSource,
   setBrowserLanguage,
   setExitIntentTargeting,
-  setWebhookURL,
 } = popUpSlice.actions;
 
 export default popUpSlice.reducer;

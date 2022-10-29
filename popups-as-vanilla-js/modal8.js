@@ -71,10 +71,10 @@ const popUp8 = (t) => {
 
       let isChecked = true
  
-      let popDiv = `
+      let popUpDiv = `
       <div
       id='modalWrapper'
-      class=" bg-[${t.color}] z-50 rounded-3xl shadow-lg shadow-gray-200 border border-gray-300  overflow-hidden flex flex-col justify-center items-center text-center fixed ${isVisible} ${modalSize.outerDiv} text-${textColor}  ${modalPosition}"
+      class=" bg-[${t.color}] z-50 rounded-3xl border border-gray-300  overflow-hidden flex flex-col justify-center items-center text-center fixed ${isVisible} ${modalSize.outerDiv} text-${textColor}  ${modalPosition}"
     >
       <h2 class="font-semibold text-3xl ">
         ${t.content[0] && t.content[0][1]}
@@ -144,7 +144,7 @@ const popUp8 = (t) => {
     </div>`;
 
       let theBody = document.getElementsByTagName("body")[0];
-      theBody.innerHTML += popDiv;
+      theBody.innerHTML += popUpDiv;
   
       function makeModalHidden() {
         modalWrapper.classList.remove("visible");

@@ -39,7 +39,6 @@ const Modal8 = () => {
       trafficSource: "",
       browserLanguage: [],
       exitIntentTargeting: true,
-      webhookURL: "",
       image: "",
       logo: "",
     };

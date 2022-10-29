@@ -74,14 +74,14 @@ const popUp12 = (t) => {
       ? `<img src="${t.image}" alt="image" class="w-full h-full" />`
       : `<img src="https://thumbsnap.com/i/7t4GA3WF.png" alt="bigger image" class="w-full h-full " />`;
 
-      let popDiv = `
+      let popUpDiv = `
             
       <div
       id='modalWrapper'
       class=" bg-rose-300 z-50 rounded-3xl bg-transparent flex overflow-hidden fixed ${isVisible} ${modalSize.outerDiv} ${modalPosition}"
     >
       <div class="relative w-full h-full">
-        <div class="absolute left-0 h-full  shadow-lg shadow-gray-200 border border-gray-300   rounded-3xl ${modalSize.imgDiv}">
+        <div class="absolute left-0 h-full border border-gray-300 rounded-3xl ${modalSize.imgDiv}">
           <div class=" relative h-full w-full  rounded-3xl overflow-hidden">
             ${imgDiv}
           </div>
@@ -160,7 +160,7 @@ const popUp12 = (t) => {
       `;
   
       let theBody = document.getElementsByTagName("body")[0];
-      theBody.innerHTML += popDiv;
+      theBody.innerHTML += popUpDiv;
   
       function makeModalHidden() {
         modalWrapper.classList.remove("visible");

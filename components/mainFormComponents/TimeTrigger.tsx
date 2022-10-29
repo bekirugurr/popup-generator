@@ -15,6 +15,13 @@ const TimeTrigger = () => {
     !isSwitchOn && dispatch(setHowManySecondsAfter(0));
   }, [isSwitchOn, dispatch]);
 
+  const handleChange = (e: React.FormEvent<EventTarget>) => { 
+    const inputTarget = e.target as HTMLInputElement
+    if (isSwitchOn && +inputTarget.value >= 0) {
+      dispatch(setHowManySecondsAfter(parseInt(inputTarget.value)))
+    }
+   }
+  
   return (
     <section className="text-secondary w-96 relative mt-8">
       <h4 className="my-3 pl-1 font-semibold">After X Seconds</h4>
@@ -22,12 +29,8 @@ const TimeTrigger = () => {
       <input
         type="number"
         className="w-96 h-9 pl-2 text-sm rounded-lg border border-gray-500 focus:outline-prime-violet"
-        value={
-          typeof howManySecondsAfter === "number" ? howManySecondsAfter : 0
-        }
-        onChange={(e) =>isSwitchOn &&
-          dispatch(setHowManySecondsAfter(parseInt(e.target.value)))
-        }
+        value={howManySecondsAfter}
+        onChange={(e) => handleChange(e)}
       />
     </section>
   );

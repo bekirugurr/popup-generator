@@ -65,10 +65,10 @@ const popUp0 = (t) => {
       };
     }
 
-    let popDiv = `
+    let popUpDiv = `
     <div
       id='modalWrapper'
-      class=" bg-white z-50 rounded-3xl shadow-lg shadow-gray-200 border border-gray-300 flex overflow-hidden fixed ${isVisible} ${
+      class=" bg-white z-50 rounded-3xl border border-gray-300 flex overflow-hidden fixed ${isVisible} ${
       modalSize.outerDiv
     } ${modalPosition}"
     >
@@ -125,7 +125,7 @@ const popUp0 = (t) => {
 `;
 
     let theBody = document.getElementsByTagName("body")[0];
-    theBody.innerHTML += popDiv;
+    theBody.innerHTML += popUpDiv;
 
     function makeModalHidden() {
       modalWrapper.classList.remove("visible");

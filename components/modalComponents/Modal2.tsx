@@ -43,7 +43,6 @@ const Modal2 = () => {
       trafficSource: "",
       browserLanguage: [],
       exitIntentTargeting: true,
-      webhookURL: "",
       image: "https://www.softlanding.ca/wp-content/uploads/2020/04/WM-2.jpg",
       logo: ""
     };

@@ -53,7 +53,6 @@ const Modal4 = () => {
       trafficSource: "",
       browserLanguage: [],
       exitIntentTargeting: true,
-      webhookURL: "",
       image: "",
       logo: ""
     };

@@ -43,7 +43,6 @@ const Modal10 = () => {
       trafficSource: "",
       browserLanguage: [],
       exitIntentTargeting: true,
-      webhookURL: "",
       image: 'https://thumbsnap.com/i/ffkXAzBs.png',
       logo: ""
     };

@@ -66,10 +66,10 @@ const popUp2 = (t) => {
       ? `<img src="${t.image}" alt="upper image" class="w-full h-1/2" />`
       : `<img src="https://www.softlanding.ca/wp-content/uploads/2020/04/WM-2.jpg" alt="upper image" class="w-full h-1/2" />`;
 
-    let popDiv = `
+    let popUpDiv = `
     <div
       id='modalWrapper'
-      class=" bg-white z-50 rounded-3xl shadow-lg shadow-gray-200 border border-gray-300  overflow-hidden fixed ${isVisible} ${
+      class=" bg-white z-50 rounded-3xl border border-gray-300  overflow-hidden fixed ${isVisible} ${
       modalSize.outerDiv
     } ${modalPosition} "
     >
@@ -118,7 +118,7 @@ const popUp2 = (t) => {
 `;
 
     let theBody = document.getElementsByTagName("body")[0];
-    theBody.innerHTML += popDiv;
+    theBody.innerHTML += popUpDiv;
 
     function makeModalHidden() {
       modalWrapper.classList.remove("visible");
