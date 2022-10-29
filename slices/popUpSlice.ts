@@ -43,8 +43,7 @@ const initialState: PopUpState = {
   trafficSource: "",
   browserLanguage: [],
   exitIntentTargeting: false,
-  infoComponent: 'VisitorDevice',
-  
+  infoComponent: 'none',
 };
 
 export const popUpSlice = createSlice({
