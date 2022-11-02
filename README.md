@@ -1,8 +1,20 @@
 # Popup Generator App
+<a href="https://www.typescriptlang.org/" rel="nofollow"><img src="https://user-images.githubusercontent.com/94041207/199342867-cdda2871-0051-411f-aa73-f357f2852502.png" height="30" alt="Typescript" data-canonical-src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" style="max-width: 100%;"></a>
+<a href="https://reactjs.org/" rel="nofollow"><img src="https://user-images.githubusercontent.com/94041207/199342992-af36d9e7-8dc7-4329-a635-33b6702dff18.png" height="30" alt="React" data-canonical-src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" style="max-width: 100%;"></a>
+<a href="https://nextjs.org/docs" rel="nofollow"><img src="https://user-images.githubusercontent.com/94041207/199343314-ca25b2c5-2801-48ef-9aa0-ff5c3b8126b0.png" height="30" alt="NextJs" data-canonical-src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" style="max-width: 100%;"></a>
+<a href="https://redux.js.org/" rel="nofollow"><img src="https://user-images.githubusercontent.com/94041207/199343229-b52eb0bd-2173-4b31-8205-457eb907cf36.png" height="30" alt="Redux" data-canonical-src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg" style="max-width: 100%;"></a>
+<a href="https://tailwindcss.com/" rel="nofollow"><img src="https://user-images.githubusercontent.com/94041207/199343872-4e273c81-b9dc-4be1-9271-06b8a5324c81.png" height="30" alt="TailwindCSS" data-canonical-src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg" style="max-width: 100%;"></a>
+<a href="https://vercel.com/" rel="nofollow"><img src="https://user-images.githubusercontent.com/94041207/199351014-f893e89f-84ab-4207-96a5-a36f077f23f5.png"  height="30" alt="Vercel" style="max-width: 100%;"></a>
+<a href="https://www.figma.com/" rel="nofollow"><img src="https://user-images.githubusercontent.com/94041207/199347184-f5ff8490-ad77-4ac0-993c-d1a3e34f0d96.png"  height="30" alt="Figma" data-canonical-src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" style="max-width: 100%;"></a>
 
-## <a href="https://popup-generator.vercel.app/" target="_blank"> Go to project demo 🚀 </a>
+<p>Eslint & Prettier & React-Dropzone </p>
+
+## Demo
+
+<a href="https://popup-generator.vercel.app/" target="_blank"> Live link 🚀 </a>
 ## Description 
-In this project, users can choose a modal/popup, fully customize and use it in their web sites without coding. 
+This app creates modular popups/modals that users can use them into their webpages without knowing coding. Users can customize size, content, position, color of modals. They can add image if chosen modal allows. They can determine in which kind of device (desktop, mobile or both) modal will appear, how many seconds after site opened or after what percentage of the page scrolled the modal will appear. Users can also allow to modal to appear for whom only come with links from certain sites and who have certain browser languages. Finally users can allow modal to apper when visitor moves out the mouse cursor to close tab. After these customization process, users get a short code snippet. After just pasting this snippet to a body of an html file the modal will work. Only requirement is tailwind must be installed to the html.
+
 ## How users customize modals and use them in their site:  
 1- Users choose a modal template from 12 template (I'll make it to 36) according to his need. 
 
