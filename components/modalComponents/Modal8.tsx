@@ -13,8 +13,8 @@ interface SizeType {
 const Modal8 = () => {
   const modalInfos = useSelector((state: RootState) => state.popUp);
   const [modalSize, setModalSize] = useState<SizeType>({
-    outerDiv: "h-[20.8rem] w-[39rem] gap-2 px-24",
-    form: "gap-4",
+    outerDiv: "h-[17rem] w-[29rem] gap-2 px-12 sm:h-[20.8rem] sm:w-[39rem]  sm:px-24",
+    form: "gap-2 sm:gap-4",
   });
   const [isModalVisible, setIsModalVisible] = useState<string>("visible");
   const [isChecked, setIsChecked] = useState<boolean>(true);
@@ -78,12 +78,12 @@ const Modal8 = () => {
   
   return (
     <div
-      className={` font-secondary bg-[${modalInfos.color}] z-50 rounded-3xl shadow-lg shadow-gray-200 border border-gray-300  overflow-hidden flex flex-col justify-center items-center text-center ml-8 ${isModalVisible} ${modalSize.outerDiv} text-${textColor}`}
+      className={` font-secondary bg-[${modalInfos.color}] z-50 rounded-3xl shadow-lg shadow-gray-200 border border-gray-300  overflow-hidden flex flex-col justify-center items-center text-center relative ml-1 lg:ml-8 ${isModalVisible} ${modalSize.outerDiv} text-${textColor}`}
     >
       <h2 className="font-bold text-3xl pt-3">
         {modalInfos.content[0] && modalInfos.content[0][1]}
       </h2>
-      <h3 className="text-xl font-normal mb-4">
+      <h3 className="text-xl font-normal sm:mb-4">
         {modalInfos.content[1] && modalInfos.content[1][1]}
       </h3>
 
@@ -108,7 +108,7 @@ const Modal8 = () => {
         />
         <label
           htmlFor="policyAccept"
-          className="flex items-center"
+          className="text-sm  flex items-center"
           onClick={() => setIsChecked(!isChecked)}
         >
           <div
@@ -122,7 +122,7 @@ const Modal8 = () => {
         <div className="flex gap-4 w-full justify-end">
           <button
             type="submit"
-            className={`font-semibold border-2 border-${textColor}  rounded-lg py-3 w-1/2 bg-white text-black`}
+            className={`font-semibold border-2 border-${textColor}  rounded-lg py-1 sm:py-3 w-1/2 bg-white text-black`}
           >
             {modalInfos.content[4] && modalInfos.content[4][1]}
           </button>

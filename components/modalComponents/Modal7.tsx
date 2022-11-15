@@ -12,7 +12,7 @@ interface SizeType {
 const Modal7 = () => {
   const modalInfos = useSelector((state: RootState) => state.popUp);
   const [modalSize, setModalSize] = useState<SizeType>({
-    outerDiv: "h-[18rem] w-[30rem] gap-5 px-16 ",
+    outerDiv: "h-[18rem] w-[29rem] gap-5 px-14 ",
   });
   const [isModalVisible, setIsModalVisible] = useState<string>("visible");
   const dispatch = useDispatch();
@@ -71,7 +71,7 @@ const Modal7 = () => {
 
   return (
     <div
-      className={` font-secondary bg-[${modalInfos.color}] z-50 rounded-3xl shadow-lg shadow-gray-200 border border-gray-300  overflow-hidden flex flex-col justify-center items-center text-center ml-8 ${isModalVisible} ${modalSize.outerDiv} text-${textColor}`}
+      className={` font-secondary bg-[${modalInfos.color}] z-50 rounded-3xl shadow-lg shadow-gray-200 border border-gray-300  overflow-hidden flex flex-col justify-center items-center text-center relative ml-1 lg:ml-8 ${isModalVisible} ${modalSize.outerDiv} text-${textColor}`}
     >
       <h2 className="font-bold text-3xl">
         {modalInfos.content[0] && modalInfos.content[0][1]}

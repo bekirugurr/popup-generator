@@ -86,7 +86,7 @@ const Modal9 = () => {
 
   return (
     <div
-      className={`font-secondary bg-white z-50 rounded-3xl shadow-lg shadow-gray-200 border border-gray-300  overflow-hidden ml-8 ${isModalVisible} ${modalSize.outerDiv} `}
+      className={`font-secondary bg-white z-50 rounded-3xl shadow-lg shadow-gray-200 border border-gray-300  overflow-hidden relative ml-8 ${isModalVisible} ${modalSize.outerDiv} `}
     >
       <div className="w-full h-2/5 relative flex items-center justify-center">
         <Image

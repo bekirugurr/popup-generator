@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import type { RootState } from "../../store";
 import { useSelector } from "react-redux";
+import excuseIcon from "../../assets/excuseIcon.png";
+import Image from "next/image";
 import ModalDefault from "./ModalDefault";
 import Modal1 from "./Modal1";
 import Modal2 from "./Modal2";
@@ -36,10 +38,20 @@ const ModalWrapper = () => {
     (state: RootState) => state.popUp.numberOfSelectedTemplate
   );
 
+  const excuse = "There are currently 12 modals. But I'll add the remainings as soon as possible";
+  const excuseDiv = (
+    <div className="border-2 border-blue-400 bg-rose-200 p-12 rounded-3xl  flex items-center gap-6 max-w-lg ">
+      <Image src={excuseIcon} alt="excuse icon" height='120' width='120'/>
+      <p>{excuse}</p>
+    </div>
+  );
+
   return (
-    <div className="p-1">
+    <div className="md:p-1">
       <div className="sticky top-6">
-        {Modals[numberOfSelectedTemplate]}
+        {Modals[numberOfSelectedTemplate]
+          ? Modals[numberOfSelectedTemplate]
+          : excuseDiv}
       </div>
     </div>
   );

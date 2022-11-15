@@ -2,9 +2,8 @@ import React, { useState } from "react";
 import templateImageArray from "../utils/templatesAsImages.js";
 import ButtonChangePanel from "./SelectComponents/ButtonChangePanel";
 import SelectItem from "./SelectComponents/SelectItem";
-import { useSelector } from 'react-redux'
-import type { RootState } from '../store'
-
+import { useSelector } from "react-redux";
+import type { RootState } from "../store";
 
 const SelectPanel = () => {
   const [numberOfPanel, setNumberOfPanel] = useState<number>(1);
@@ -19,7 +18,7 @@ const SelectPanel = () => {
   // console.log(numberOfSelectedTemplate)
 
   return (
-    <section className="px-32  pt-12 pb-8">
+    <section className="px-3 md:px-16 lg:px-24  pt-12 pb-8">
       <h2 className="text-4xl mb-4"> Model Card Generator</h2>
       <p className="md:w-1/2  ">
         Measure your return on email marketing efforts easier and faster by
@@ -33,10 +32,10 @@ const SelectPanel = () => {
         <h3 className="text-xl font-semibold pl-4">Choose your template</h3>
       </div>
 
-      <div className="grid grid-cols-4 grid-flow-row gap-5 mb-6">
-      {templatesArrayToShow.map((item, index)=>(
-      <SelectItem  key={index} templateNum={item[1]} image={item[0]}/>
-      ))}
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 grid-flow-row gap-5 mb-6">
+        {templatesArrayToShow.map((item, index) => (
+          <SelectItem key={index} templateNum={item[1]} image={item[0]} />
+        ))}
       </div>
       <ButtonChangePanel
         numberOfPanel={numberOfPanel}

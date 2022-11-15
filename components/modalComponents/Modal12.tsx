@@ -15,8 +15,8 @@ interface SizeType {
 const Modal12 = () => {
   const modalInfos = useSelector((state: RootState) => state.popUp);
   const [modalSize, setModalSize] = useState<SizeType>({
-    outerDiv: "h-[30rem] w-[34rem]",
-    innerDiv: "gap-4 p-8  w-[18rem]",
+    outerDiv: "h-[26rem] w-[29rem] sm:h-[30rem] sm:w-[34rem]",
+    innerDiv: "gap-2 p-6  w-[16rem] sm:gap-4 sm:p-8  sm:w-[18rem]",
     form: "gap-2",
   });
   const [isModalVisible, setIsModalVisible] = useState<string>("visible");
@@ -82,10 +82,10 @@ const Modal12 = () => {
 
   return (
     <div
-      className={`z-50 rounded-3xl bg-transparent flex overflow-hidden ml-3 ${isModalVisible} ${modalSize.outerDiv}`}
+      className={`z-50 rounded-3xl bg-transparent flex overflow-hidden relative ml-1 sm:ml-3 ${isModalVisible} ${modalSize.outerDiv}`}
     >
       <div className="relative w-full h-full">
-        <div className="absolute left-0 h-full w-[24rem] shadow-lg shadow-gray-200 border border-gray-300   rounded-3xl">
+        <div className="absolute left-0 h-full w-[21.5rem] sm:w-[24rem] shadow-lg shadow-gray-200 border border-gray-300   rounded-3xl">
           <div className=" relative h-full w-full  rounded-3xl overflow-hidden">
             {modalInfos.image ? (
               <Image

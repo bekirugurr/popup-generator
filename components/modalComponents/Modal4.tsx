@@ -18,7 +18,7 @@ interface SizeType {
 const Modal4 = () => {
   const modalInfos = useSelector((state: RootState) => state.popUp);
   const [modalSize, setModalSize] = useState<SizeType>({
-    outerDiv: "h-[32rem] w-[30rem] gap-5 px-16 ",
+    outerDiv: "h-[32rem] w-[29rem] gap-5 px-14 ",
     badgeDiv: "h-24 w-24",
     badge: "h-[4rem] w-[3rem]",
     defSVG: "60",
@@ -97,7 +97,7 @@ const Modal4 = () => {
 
   return (
     <div
-      className={` font-secondary bg-white z-50 rounded-3xl shadow-lg shadow-gray-200 border border-gray-300  overflow-hidden flex flex-col justify-center items-center text-center ml-8 ${isModalVisible} ${modalSize.outerDiv}`}
+      className={` font-secondary bg-white z-50 rounded-3xl shadow-lg shadow-gray-200 border border-gray-300  overflow-hidden flex flex-col justify-center items-center text-center lg:ml-8 relative ${isModalVisible} ${modalSize.outerDiv}`}
     >
       <div
         className={`${modalSize.badgeDiv} grid place-items-center rounded-full bg-[${modalInfos.color}]`}

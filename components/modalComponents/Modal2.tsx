@@ -84,7 +84,7 @@ const Modal2 = () => {
 
   return (
     <div
-      className={`font-secondary bg-white z-50 rounded-3xl shadow-lg shadow-gray-200 border border-gray-300  overflow-hidden ml-8 ${isModalVisible} ${modalSize.outerDiv} `}
+      className={`font-secondary bg-white z-50 rounded-3xl shadow-lg shadow-gray-200 border border-gray-300  overflow-hidden ml-2 lg:ml-8 relative ${isModalVisible} ${modalSize.outerDiv} `}
     >
       <div className="w-full h-1/2 relative">
         <Image

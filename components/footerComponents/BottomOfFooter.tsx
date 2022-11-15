@@ -5,58 +5,58 @@ import {
   MdOutlineIntegrationInstructions,
 } from "react-icons/md";
 import { FaAws } from "react-icons/fa";
-import Image from 'next/image'
-import popUpSmartLogo from '../../assets/popUpSmartLogo.svg'
+import Image from "next/image";
+import popUpSmartLogo from "../../assets/popUpSmartLogo.svg";
 
 const BottomOfFooter = () => {
+  const contentArray = [
+    {
+      logo: <MdOutlineGolfCourse />,
+      header: "Targeting Options",
+      content: "Target +26 trigger to your visitors",
+    },
+    {
+      logo: <MdOutlineCodeOff />,
+      header: "No-Code",
+      content: "No code required while you’re creating a popup",
+    },
+    {
+      logo: <MdOutlineIntegrationInstructions />,
+      header: "Integration",
+      content: "Integrated with your marketing and CRM platforms",
+    },
+    {
+      logo: <FaAws />,
+      header: "Deployment & Speed",
+      content: "Don’t worry about speed and Amazon AWS resources",
+    },
+  ];
   return (
     <section>
       <h2 className="text-4xl font-semibold text-center my-12">
         Build great popups without code
       </h2>
-      <div className="flex w-full px-8 justify-center gap-6">
-        <div className="flex flex-col flex-1 items-center justify-center gap-5">
-          <div className="p-4 rounded-full bg-prime-violet">
-            <MdOutlineGolfCourse className="text-white text-5xl" />
-          </div>
-          <h4 className="text-lg font-semibold">Targeting Options</h4>
-          <p className="text-sm text-center">
-            Target +26 trigger to your visitors
-          </p>
-        </div>
-        <div className="flex flex-col flex-1 items-center justify-center gap-5">
-          <div className="p-4 rounded-full bg-prime-violet">
-            <MdOutlineCodeOff className="text-white text-5xl" />
-          </div>
-          <h4 className="text-lg font-semibold">No-Code</h4>
-          <p className="text-sm text-center">
-            No code required while you’re creating a popup
-          </p>
-        </div>
-        <div className="flex flex-col flex-1 items-center justify-center gap-5">
-          <div className="p-4 rounded-full bg-prime-violet">
-            <MdOutlineIntegrationInstructions className="text-white text-5xl" />
-          </div>
-          <h4 className="text-lg font-semibold">Targeting Options</h4>
-          <p className="text-sm text-center">
-            Integrated with your marketing and CRM platforms
-          </p>
-        </div>
-        <div className="flex flex-col flex-1 items-center justify-center gap-5">
-          <div className="p-4 rounded-full bg-prime-violet">
-            <FaAws className="text-white text-5xl" />
-          </div>
-          <h4 className="text-lg font-semibold">Targeting Options</h4>
-          <p className="text-sm text-center">
-            Don’t worry about speed and Amazon AWS resources
-          </p>
-        </div>
-      </div>
+      <ul className="flex w-full px-8 justify-center gap-3 sm:gap-6">
+        {contentArray.map((item, index) => (
+          <li
+            key={index}
+            className="flex flex-col flex-1 items-center justify-start gap-5"
+          >
+            <div className="p-4 rounded-full bg-prime-violet text-white text-5xl">
+              {item.logo}
+            </div>
+            <h4 className="text-lg text-center font-semibold h-[3rem]">
+              {item.header}
+            </h4>
+            <p className="text-sm text-center">{item.content}</p>
+          </li>
+        ))}
+      </ul>
       <div className="flex flex-col items-center gap-3">
-      <div className="mt-14 w-[2.7rem] h-[2.7rem] grid grid-center p-3 bg-black rounded-full">
-        <Image src={popUpSmartLogo} alt='logo' className='text-xl'/>
-      </div>
-      <p className="text-sm">Povered by Popupsmart</p>
+        <div className="mt-14 w-[2.7rem] h-[2.7rem] grid grid-center p-3 bg-black rounded-full">
+          <Image src={popUpSmartLogo} alt="logo" className="text-xl" />
+        </div>
+        <p className="text-sm">Povered by Popupsmart</p>
       </div>
     </section>
   );

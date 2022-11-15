@@ -108,7 +108,7 @@ const Modal3 = () => {
 
   return (
     <div
-      className={` font-secondary bg-white z-50 rounded-3xl shadow-lg shadow-gray-200 border border-gray-300  overflow-hidden flex flex-col justify-center items-center px-6 ml-8 ${isModalVisible} ${modalSize.outerDiv}`}
+      className={` font-secondary bg-white z-50 rounded-3xl shadow-lg shadow-gray-200 border border-gray-300  overflow-hidden flex flex-col justify-center items-center px-6 ml-2 lg:ml-8 relative ${isModalVisible} ${modalSize.outerDiv}`}
     >
       <h3
         className={`font-lg font-medium text-center text-lg ${colorState.text}`}

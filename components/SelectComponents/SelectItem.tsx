@@ -18,7 +18,7 @@ const SelectItem: React.FC<Props>  = ({templateNum, image}) => {
   const dispatch = useDispatch()
   return (
     <div
-      className="bg-gray-200 rounded-xl  px-2 h-56 grid place-items-center z-20 relative"
+      className="bg-gray-200 rounded-xl  px-2 lg:px-1 h-56 grid place-items-center z-20 relative"
       onMouseEnter={() => setIsOnHover(true)}
       onMouseLeave={() => setIsOnHover(false)}
     >
