@@ -7,7 +7,7 @@ import dollarImage from "../assets/dollarImage.svg";
 
 const Header = () => {
   return (
-    <main className="px-3 md:px-24 lg:px-32 pt-20 pb-4 sm:pb-[12rem] lg:pb-[15rem] z-10 bg-gradient-to-b from-white  to-[#cde7ee] relative bg-red-600 m-0">
+    <main className="px-3 md:px-24 lg:px-32 pt-20 pb-4 sm:pb-[12rem] lg:pb-[15rem] z-10 bg-gradient-to-b from-white  to-[#cde7ee] relative m-0">
       <h1 className=" text-2xl sm:text-3xl md:text-6xl lg:text-7xl font-semibold leading-tight	">
         {" "}
         Simple Modal <br /> card generator{" "}
