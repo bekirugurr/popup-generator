@@ -12,7 +12,7 @@ interface SizeType {
 const Modal7 = () => {
   const modalInfos = useSelector((state: RootState) => state.popUp);
   const [modalSize, setModalSize] = useState<SizeType>({
-    outerDiv: "h-[18rem] w-[29rem] gap-5 px-14 ",
+    outerDiv: "h-[15rem] w-[25rem] gap-4 px-14 sm:h-[18rem] sm:w-[29rem] sm:gap-5 sm:px-14 ",
   });
   const [isModalVisible, setIsModalVisible] = useState<string>("visible");
   const dispatch = useDispatch();
@@ -71,24 +71,24 @@ const Modal7 = () => {
 
   return (
     <div
-      className={` font-secondary bg-[${modalInfos.color}] z-50 rounded-3xl shadow-lg shadow-gray-200 border border-gray-300  overflow-hidden flex flex-col justify-center items-center text-center relative ml-1 lg:ml-8 ${isModalVisible} ${modalSize.outerDiv} text-${textColor}`}
+      className={` font-secondary bg-[${modalInfos.color}] z-50 rounded-3xl shadow-lg shadow-gray-200 border border-gray-300  overflow-hidden flex flex-col justify-center items-center text-center relative sm:ml-1 lg:ml-8 ${isModalVisible} ${modalSize.outerDiv} text-${textColor}`}
     >
       <h2 className="font-bold text-3xl">
         {modalInfos.content[0] && modalInfos.content[0][1]}
       </h2>
-      <h3 className="text-xl font-normal">
+      <h3 className="text-lg sm:text-xl font-normal">
         {modalInfos.content[1] && modalInfos.content[1][1]}
       </h3>
       <div className="flex gap-4 w-full">
         <button
-          className={` font-semibold border-2 border-${textColor}  rounded-lg py-3 w-full  text-${textColor} hover:bg-[${modalInfos.color}]`}
+          className={` font-semibold border-2 border-${textColor}  rounded-lg py-2 sm:py-3 w-full  text-${textColor} hover:bg-[${modalInfos.color}]`}
         >
           {/* onClick={()=>setIsModalVisible('hidden')} */}
           {modalInfos.content[2] && modalInfos.content[2][1]}
         </button>
         <button
           type="submit"
-          className={` font-semibold border-2 border-${textColor}  rounded-lg py-3 w-full bg-white text-black`}
+          className={` font-semibold border-2 border-${textColor}  rounded-lg py-2 sm:py-3 w-full bg-white text-black`}
         >
           {modalInfos.content[3] && modalInfos.content[3][1]}
         </button>

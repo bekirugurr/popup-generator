@@ -15,8 +15,8 @@ interface SizeType {
 const ModalDefault = () => {
   const modalInfos = useSelector((state: RootState) => state.popUp);
   const [modalSize, setModalSize] = useState<SizeType>({
-    outerDiv: "h-[16rem] w-[29rem] sm:h-[20.8rem] sm:w-[39rem]",
-    innerDiv: "gap-1 px-3 sm:gap-2 sm:px-8",
+    outerDiv: "h-[15rem] w-[25rem] sm:h-[20.8rem] sm:w-[39rem]",
+    innerDiv: "gap-1 px-5 sm:gap-2 sm:px-8",
     form: "gap-1 sm:gap-3",
   });
   const [isModalVisible, setIsModalVisible] = useState<string>("visible");
@@ -81,7 +81,7 @@ const ModalDefault = () => {
 
   return (
     <div
-      className={` bg-white z-50 rounded-3xl shadow-lg shadow-gray-200 border border-gray-300 flex overflow-hidden ml-1 ${isModalVisible} ${modalSize.outerDiv}`}
+      className={` bg-white z-50 rounded-xl sm:rounded-3xl shadow-lg shadow-gray-200 border border-gray-300 flex overflow-hidden sm:ml-1 ${isModalVisible} ${modalSize.outerDiv}`}
     >
       <div
         className={`w-1/2  flex flex-col justify-center items-center gap-2 ${modalSize.innerDiv}`}
@@ -97,18 +97,18 @@ const ModalDefault = () => {
             name="name"
             id="name"
             placeholder={modalInfos.content[2][1]}
-            className="text-sm border border-gray-400 rounded-lg py-2 pl-2 w-full"
+            className="text-sm border border-gray-400 rounded-lg py-1 sm:py-2 pl-2 w-full"
           />
           <input
             type="email"
             name="email"
             id="email"
             placeholder={modalInfos.content[3][1]}
-            className="text-sm border border-gray-400 rounded-lg py-2 pl-2 w-full"
+            className="text-sm border border-gray-400 rounded-lg py-1 sm:py-2 pl-2 w-full"
           />
           <button
             type="submit"
-            className={`text-sm font-semibold border border-gray-400  rounded-lg py-2 pl-2 w-full bg-[${
+            className={`text-sm font-semibold border border-gray-400  rounded-lg py-1 sm:py-2 pl-2 w-full bg-[${
               modalInfos.color
             }] ${
               modalInfos.color == "#FFFFFF" || modalInfos.color == "#DDDDDD"
@@ -119,7 +119,7 @@ const ModalDefault = () => {
             {modalInfos.content[4][1]}
           </button>
         </form>
-        <p className="text-xs text-[#777777]">{modalInfos.content[5][1]}</p>
+        <p className="text-[10px] sm:text-xs text-[#777777]">{modalInfos.content[5][1]}</p>
       </div>
       <div className="w-1/2 relative">
         {modalInfos.image ? (

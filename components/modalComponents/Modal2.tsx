@@ -17,7 +17,7 @@ interface SizeType {
 const Modal2 = () => {
   const modalInfos = useSelector((state: RootState) => state.popUp);
   const [modalSize, setModalSize] = useState<SizeType>({
-    outerDiv: "h-[32.5rem] w-[26rem]",
+    outerDiv: "h-[32.5rem] w-[25rem]",
     innerDiv: "gap-4 px-12",
     badge: "h-[4rem] w-[3rem]",
     form: "gap-6",

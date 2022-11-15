@@ -16,7 +16,7 @@ interface SizeType {
 const Modal9 = () => {
   const modalInfos = useSelector((state: RootState) => state.popUp);
   const [modalSize, setModalSize] = useState<SizeType>({
-    outerDiv: "h-[32.5rem] w-[26rem] ",
+    outerDiv: "h-[32rem] w-[25rem] ",
     innerDiv: "gap-4 px-12",
     form: "gap-3",
   });
@@ -86,7 +86,7 @@ const Modal9 = () => {
 
   return (
     <div
-      className={`font-secondary bg-white z-50 rounded-3xl shadow-lg shadow-gray-200 border border-gray-300  overflow-hidden relative ml-8 ${isModalVisible} ${modalSize.outerDiv} `}
+      className={`font-secondary bg-white z-50 rounded-3xl shadow-lg shadow-gray-200 border border-gray-300  overflow-hidden relative sm:ml-8 ${isModalVisible} ${modalSize.outerDiv} `}
     >
       <div className="w-full h-2/5 relative flex items-center justify-center">
         <Image
@@ -107,8 +107,8 @@ const Modal9 = () => {
               : "https://thumbsnap.com/i/RDd8v24o.jpg"
           }
           alt="upper image"
-          height="150px"
-          width="200px"
+          height="120px"
+          width="170px"
           className=" z-40 rounded-xl "
         /></div>
       </div>

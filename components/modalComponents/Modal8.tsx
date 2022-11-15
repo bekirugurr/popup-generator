@@ -13,7 +13,7 @@ interface SizeType {
 const Modal8 = () => {
   const modalInfos = useSelector((state: RootState) => state.popUp);
   const [modalSize, setModalSize] = useState<SizeType>({
-    outerDiv: "h-[17rem] w-[29rem] gap-2 px-12 sm:h-[20.8rem] sm:w-[39rem]  sm:px-24",
+    outerDiv: "h-[15rem] w-[25rem] gap-2 px-6 sm:h-[20.8rem] sm:w-[39rem]  sm:px-24",
     form: "gap-2 sm:gap-4",
   });
   const [isModalVisible, setIsModalVisible] = useState<string>("visible");
@@ -78,12 +78,12 @@ const Modal8 = () => {
   
   return (
     <div
-      className={` font-secondary bg-[${modalInfos.color}] z-50 rounded-3xl shadow-lg shadow-gray-200 border border-gray-300  overflow-hidden flex flex-col justify-center items-center text-center relative ml-1 lg:ml-8 ${isModalVisible} ${modalSize.outerDiv} text-${textColor}`}
+      className={` font-secondary bg-[${modalInfos.color}] z-50 rounded-3xl shadow-lg shadow-gray-200 border border-gray-300  overflow-hidden flex flex-col justify-center items-center text-center relative sm:ml-1 lg:ml-8 ${isModalVisible} ${modalSize.outerDiv} text-${textColor}`}
     >
-      <h2 className="font-bold text-3xl pt-3">
+      <h2 className="font-bold text-2xl sm:text-3xl pt-5 sm:pt-3">
         {modalInfos.content[0] && modalInfos.content[0][1]}
       </h2>
-      <h3 className="text-xl font-normal sm:mb-4">
+      <h3 className="text-lg sm:text-xl font-normal sm:mb-4">
         {modalInfos.content[1] && modalInfos.content[1][1]}
       </h3>
 
@@ -96,7 +96,7 @@ const Modal8 = () => {
           name="name"
           id="name"
           placeholder={modalInfos.content[2] && modalInfos.content[2][1]}
-          className={`text-sm border border-${textColor} placeholder:text-${textColor} bg-[${modalInfos.color}] rounded-lg py-3 pl-2 w-full`}
+          className={`text-sm border border-${textColor} placeholder:text-${textColor} bg-[${modalInfos.color}] rounded-lg py-2 sm:py-3 pl-2 w-full`}
         />
 
         <input
@@ -108,7 +108,7 @@ const Modal8 = () => {
         />
         <label
           htmlFor="policyAccept"
-          className="text-sm  flex items-center"
+          className="text-xs  sm:text-sm  flex items-center"
           onClick={() => setIsChecked(!isChecked)}
         >
           <div
@@ -129,7 +129,7 @@ const Modal8 = () => {
         </div>
       </form>
 
-      <button className="absolute top-3 right-3 rounded-full">
+      <button className="absolute top-1 right-1 sm:top-3 sm:right-3 rounded-full">
         <IoIosCloseCircleOutline className={`text-${textColor} text-4xl`} />
         {/* onClick={()=>setIsModalVisible('hidden')} */}
       </button>

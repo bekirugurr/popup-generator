@@ -17,8 +17,8 @@ interface SizeType {
 const Modal6 = () => {
   const modalInfos = useSelector((state: RootState) => state.popUp);
   const [modalSize, setModalSize] = useState<SizeType>({
-    outerDiv: "h-[28rem] w-[29rem] gap-6 ",
-    badgeDiv: "h-24 w-24",
+    outerDiv: "h-[24rem] w-[25rem] gap-3 sm:h-[28rem] sm:w-[29rem] sm:gap-6 ",
+    badgeDiv: "h-24 w-24 ",
     badge: "100",
     form: "gap-3",
   });
@@ -86,7 +86,7 @@ const Modal6 = () => {
 
   return (
     <div
-      className={` font-secondary bg-white z-50 rounded-3xl shadow-lg shadow-gray-200 border border-gray-300  overflow-hidden flex flex-col justify-center items-center relative px-14 ml-1 lg:ml-8 text-center  ${isModalVisible} ${modalSize.outerDiv}`}
+      className={` font-secondary bg-white z-50 rounded-3xl shadow-lg shadow-gray-200 border border-gray-300  overflow-hidden flex flex-col justify-center items-center relative px-14 sm:ml-1 lg:ml-8 text-center  ${isModalVisible} ${modalSize.outerDiv}`}
     >
       <div
         className={`${modalSize.badgeDiv} grid place-items-center rounded-full`}
@@ -107,7 +107,7 @@ const Modal6 = () => {
       <h2 className="font-bold text-3xl">
         {modalInfos.content[0] && modalInfos.content[0][1]}
       </h2>
-      <h3 className="text-xl font-medium">
+      <h3 className="text-lg sm:text-xl font-medium">
         {modalInfos.content[1] && modalInfos.content[1][1]}
       </h3>
       <form

@@ -13,7 +13,7 @@ interface SizeType {
 const Modal5 = () => {
   const modalInfos = useSelector((state: RootState) => state.popUp);
   const [modalSize, setModalSize] = useState<SizeType>({
-    outerDiv: "h-[18rem] w-[29rem] gap-5 px-14 ",
+    outerDiv: "h-[16rem] w-[25rem] gap-4 px-8 sm:h-[18rem] sm:w-[29rem] sm:gap-5 sm:px-14 ",
   });
   const [isModalVisible, setIsModalVisible] = useState<string>("visible");
   const dispatch = useDispatch();

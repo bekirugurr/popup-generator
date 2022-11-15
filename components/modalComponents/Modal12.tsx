@@ -15,9 +15,9 @@ interface SizeType {
 const Modal12 = () => {
   const modalInfos = useSelector((state: RootState) => state.popUp);
   const [modalSize, setModalSize] = useState<SizeType>({
-    outerDiv: "h-[26rem] w-[29rem] sm:h-[30rem] sm:w-[34rem]",
-    innerDiv: "gap-2 p-6  w-[16rem] sm:gap-4 sm:p-8  sm:w-[18rem]",
-    form: "gap-2",
+    outerDiv: "h-[22rem] w-[25rem] sm:h-[30rem] sm:w-[34rem]",
+    innerDiv: "gap-1 p-6  w-[14rem] sm:gap-4 sm:p-8  sm:w-[18rem]",
+    form: "gap-1 sm:gap-2"
   });
   const [isModalVisible, setIsModalVisible] = useState<string>("visible");
   const dispatch = useDispatch();
@@ -82,10 +82,10 @@ const Modal12 = () => {
 
   return (
     <div
-      className={`z-50 rounded-3xl bg-transparent flex overflow-hidden relative ml-1 sm:ml-3 ${isModalVisible} ${modalSize.outerDiv}`}
+      className={`z-50 rounded-3xl bg-transparent flex overflow-hidden relative sm:ml-3 ${isModalVisible} ${modalSize.outerDiv}`}
     >
       <div className="relative w-full h-full">
-        <div className="absolute left-0 h-full w-[21.5rem] sm:w-[24rem] shadow-lg shadow-gray-200 border border-gray-300   rounded-3xl">
+        <div className="absolute left-0 h-full w-[18rem] sm:w-[24rem] shadow-lg shadow-gray-200 border border-gray-300   rounded-3xl">
           <div className=" relative h-full w-full  rounded-3xl overflow-hidden">
             {modalInfos.image ? (
               <Image
@@ -107,7 +107,7 @@ const Modal12 = () => {
 
         <div className="absolute right-0 z-50 bg-white shadow-lg shadow-gray-200 border border-gray-300 rounded-3xl top-1/2 -translate-y-1/2">
           <div
-            className={` flex flex-col justify-center items-start gap-2 px-8 ${modalSize.innerDiv}`}
+            className={` flex flex-col justify-center items-start ${modalSize.innerDiv}`}
           >
             <h2 className="font-semibold text-3xl">
               {modalInfos.content[0] && modalInfos.content[0][1]}
@@ -122,18 +122,18 @@ const Modal12 = () => {
                 name="name"
                 id="name"
                 placeholder={modalInfos.content[2] && modalInfos.content[2][1]}
-                className="text-sm border border-gray-400 rounded-lg py-2 pl-2 w-full"
+                className="text-sm border border-gray-400 rounded-lg py-1 sm:py-2 pl-2 w-full"
               />
               <input
                 type="email"
                 name="email"
                 id="email"
                 placeholder={modalInfos.content[3] && modalInfos.content[3][1]}
-                className="text-sm border border-gray-400 rounded-lg py-2 pl-2 w-full"
+                className="text-sm border border-gray-400 rounded-lg  py-1 sm:py-2 pl-2 w-full"
               />
               <button
                 type="submit"
-                className={`text-sm font-semibold border border-gray-400  rounded-lg py-2 pl-2 w-full bg-[${
+                className={`text-sm font-semibold border border-gray-400  rounded-lg  py-1 sm:py-2 pl-2 w-full bg-[${
                   modalInfos.color
                 }] ${
                   modalInfos.color == "#FFFFFF" || modalInfos.color == "#DDDDDD"

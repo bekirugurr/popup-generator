@@ -17,10 +17,10 @@ interface SizeType {
 const Modal3 = () => {
   const modalInfos = useSelector((state: RootState) => state.popUp);
   const [modalSize, setModalSize] = useState<SizeType>({
-    outerDiv: "h-[32.5rem] w-[26rem] gap-6",
+    outerDiv: "h-[32rem] w-[25rem] gap-6",
     badgeDiv: "h-24 w-24",
     badge: "h-[4rem] w-[3rem]",
-    form: "gap-3",
+    form: "gap-4",
   });
   const [colorState, setColorState] = useState<{
     text: string;
@@ -108,7 +108,7 @@ const Modal3 = () => {
 
   return (
     <div
-      className={` font-secondary bg-white z-50 rounded-3xl shadow-lg shadow-gray-200 border border-gray-300  overflow-hidden flex flex-col justify-center items-center px-6 ml-2 lg:ml-8 relative ${isModalVisible} ${modalSize.outerDiv}`}
+      className={` font-secondary bg-white z-50 rounded-3xl shadow-lg shadow-gray-200 border border-gray-300  overflow-hidden flex flex-col justify-center items-center px-6 sm:ml-2 lg:ml-8 relative ${isModalVisible} ${modalSize.outerDiv}`}
     >
       <h3
         className={`font-lg font-medium text-center text-lg ${colorState.text}`}

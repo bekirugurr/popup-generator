@@ -85,7 +85,7 @@ const Modal11 = () => {
 
   return (
     <div
-      className={`font-secondary bg-white z-50 rounded-3xl shadow-lg shadow-gray-200 border border-gray-300  overflow-hidden  flex flex-col justify-center items-center relative ml-3 lg:ml-8 ${isModalVisible} ${modalSize.outerDiv} `}
+      className={`font-secondary bg-white z-50 rounded-3xl shadow-lg shadow-gray-200 border border-gray-300  overflow-hidden  flex flex-col justify-center items-center relative sm:ml-3 lg:ml-8 ${isModalVisible} ${modalSize.outerDiv} `}
     >
       <div className={`relative flex items-center justify-center ${modalSize.innerDiv}`}>
         <Image

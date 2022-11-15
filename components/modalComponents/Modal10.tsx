@@ -15,8 +15,8 @@ interface SizeType {
 const Modal10 = () => {
   const modalInfos = useSelector((state: RootState) => state.popUp);
   const [modalSize, setModalSize] = useState<SizeType>({
-    outerDiv: "h-[17rem] w-[30rem] sm:h-[20.8rem] sm:w-[39rem]",
-    innerDiv: "gap-1 px-6 sm:gap-5 sm:px-8",
+    outerDiv: "h-[15rem] w-[25rem] sm:h-[20.8rem] sm:w-[39rem]",
+    innerDiv: "gap-1 px-5 sm:gap-5 sm:px-8",
     form: "gap-1 sm:gap-4",
   });
   const [isModalVisible, setIsModalVisible] = useState<string>("visible");
@@ -82,7 +82,7 @@ const Modal10 = () => {
 
   return (
     <div
-      className={` bg-white z-50 rounded-3xl shadow-lg shadow-gray-200 border border-gray-300 flex overflow-hidden ${isModalVisible} ${modalSize.outerDiv}`}
+      className={` bg-white z-50  rounded-xl sm:rounded-3xl shadow-lg shadow-gray-200 border border-gray-300 flex overflow-hidden ${isModalVisible} ${modalSize.outerDiv}`}
     >
       <div
         className={`w-1/2  flex flex-col justify-center items-start gap-2 px-8 ${modalSize.innerDiv}`}
@@ -98,18 +98,18 @@ const Modal10 = () => {
             name="name"
             id="name"
             placeholder={modalInfos.content[2][1]}
-            className="text-sm border border-gray-400 rounded-lg py-2 pl-2 w-full"
+            className="text-xs sm:text-sm border border-gray-400 rounded-lg py-1 sm:py-2 pl-2 w-full"
           />
           <input
             type="email"
             name="email"
             id="email"
             placeholder={modalInfos.content[3][1]}
-            className="text-sm border border-gray-400 rounded-lg py-2 pl-2 w-full"
+            className="text-xs sm:text-sm border border-gray-400 rounded-lg py-1 sm:py-2 pl-2 w-full"
           />
           <button
             type="submit"
-            className={`text-sm font-semibold border border-gray-400  rounded-lg py-2 pl-2 w-full bg-[${
+            className={`text-xs sm:text-sm font-semibold border border-gray-400  rounded-lg py-1 sm:py-2 pl-2 w-full bg-[${
               modalInfos.color
             }] ${
               modalInfos.color == "#FFFFFF" || modalInfos.color == "#DDDDDD"
@@ -119,7 +119,7 @@ const Modal10 = () => {
           >
             {modalInfos.content[4] && modalInfos.content[4][1]}
           </button>
-        <div className="text-xs text-gray-800 flex justify-between w-full">
+        <div className="text-[10px] sm:text-xs text-gray-800 flex justify-between w-full">
             <a className="hover:text-rose-600" href="#">{modalInfos.content[5] && modalInfos.content[5][1]}</a>
             <a className="hover:text-rose-600" href="#">{modalInfos.content[6] && modalInfos.content[6][1]}</a>
         </div>
