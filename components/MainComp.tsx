@@ -42,6 +42,9 @@ const MainComp: React.FC = () => {
     );
   }, [numberOfSelectedTemplate, setIsLogoShow, setIsImageShow]);
 
+  const imgInfo = 'You can upload a image by drag drop or clicking on the section below'
+  const logoInfo = 'You can upload a logo by drag drop or clicking on the section below'
+
   return (
     <main className=" pl-1 md:px-16 lg:px-24 lg:pt-2 pb-4 flex flex-col-reverse  lg:flex-row gap-4 lg:gap-9">
       <div className="pl-3 md:pl-0">
@@ -62,6 +65,7 @@ const MainComp: React.FC = () => {
             defaultImage={defaultLogo}
             changeImgFunc={setLogo}
             title={"Logo"}
+            info={logoInfo}
           />
         )}
         <div className="flex items-center pb-3 pt-12">
@@ -76,6 +80,7 @@ const MainComp: React.FC = () => {
             defaultImage={defaultImage}
             changeImgFunc={setImage}
             title={"Image"}
+            info={imgInfo}
           />
         )}
         <div className="flex items-center pb-3 pt-12">

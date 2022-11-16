@@ -4,16 +4,20 @@ import Image from "next/image";
 import { MdOutlineCloudUpload } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
+import Info from "./Common/Info";
+
 interface Props {
   defaultImage: any;
   changeImgFunc: any;
   title: string;
+  info: string;
 }
 
 const UploadImage: React.FC<Props> = ({
   defaultImage,
   changeImgFunc,
   title,
+  info
 }) => {
   const [image, setImage] = useState<any>(null);
   const dispatch = useDispatch();
@@ -56,7 +60,10 @@ const UploadImage: React.FC<Props> = ({
 
   return (
     <section className="font-secondary">
-      <h4 className="mt-7 mb-3">Upload {title}</h4>
+      <div className="mt-7 mb-4 pl-1 pr-4 flex justify-between items-center ">
+        <h4 className="font-secondary font-semibold ">Upload {title}</h4>
+        <Info info={info} inWhichComponent={title} />
+      </div>
       <div
         className={`border-2 border-dashed ${
           isDragReject ? "border-red-600" : "border-gray-500"

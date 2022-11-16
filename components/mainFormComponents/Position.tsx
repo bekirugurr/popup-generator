@@ -2,12 +2,23 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import {setPosition} from "../../slices/popUpSlice";
 import type { RootState } from "../../store";
+import Info from "./Common/Info";
+
+
 const Position = () => {
+
     const position = useSelector((state: RootState) => state.popUp.position);
     const dispatch = useDispatch()
+    const info = 'You can set position of popup in your website. Changes are not visible here. But it will work on your site. Default is center in both axis'
   return (
     <section>
-        <p className="mt-7 mb-3 font-secondary">Position</p>
+      <div className='mt-7 mb-3 pr-4 flex justify-between items-center '>
+        <h4 className="font-secondary font-semibold ">Position</h4>
+        <Info
+          info={info}
+          inWhichComponent="Position"
+        />
+      </div> 
       <div className="grid grid-cols-3 grid-flow-row gap-1.5 w-[7rem] ">
         <button
           className={`h-6 w-8 border border-1 border-gray-500 ${
