@@ -6,7 +6,7 @@ import Position from "./mainFormComponents/Position";
 import Color from "./mainFormComponents/Color";
 import UploadImage from "./mainFormComponents/UploadImage";
 import defaultLogo from "../assets/defaultLogo.svg";
-import defaultImage from "../assets/defaultImage.png";
+import defaultImage from "../assets/defaultImg.svg";
 import { setLogo, setImage } from "../slices/popUpSlice";
 import Content from "./mainFormComponents/Content";
 import VisitorDevice from "./mainFormComponents/VisitorDevice";
@@ -60,6 +60,13 @@ const MainComp: React.FC = () => {
         <Size />
         <Position />
         <Color />
+        <div className="flex items-center pb-3 pt-12">
+          <div className="rounded-full bg-zinc-300 w-8 h-8 flex items-center justify-center font-semibold">
+            3
+          </div>
+          <h3 className="text-xl font-semibold pl-4">Content </h3>
+        </div>
+        <Content />
         {isLogoShow && (
           <UploadImage
             defaultImage={defaultLogo}
@@ -68,13 +75,6 @@ const MainComp: React.FC = () => {
             info={logoInfo}
           />
         )}
-        <div className="flex items-center pb-3 pt-12">
-          <div className="rounded-full bg-zinc-300 w-8 h-8 flex items-center justify-center font-semibold">
-            3
-          </div>
-          <h3 className="text-xl font-semibold pl-4">Content </h3>
-        </div>
-        <Content />
         {isImageShow && (
           <UploadImage
             defaultImage={defaultImage}
