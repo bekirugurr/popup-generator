@@ -4,6 +4,7 @@ import type { RootState } from "../../store";
 import { useDispatch, useSelector } from "react-redux";
 import { HiCheck } from "react-icons/hi";
 import { RiInformationLine } from "react-icons/ri";
+import sendEmailToBekir from '../../utils/sendEmail'
 
 export interface PopUpState {
   numberOfSelectedTemplate: number;
@@ -93,6 +94,8 @@ const SettingsAndCode = () => {
         </script>`
       setOutPut(outPutString)
       dispatch(setStateTogether(initialState))
+      //! The bottom function just says someone is using the app. Just for motivation 🚀
+      sendEmailToBekir(allData.numberOfSelectedTemplate)
     } else {
       alert(
         "You must allow to send form data and click data by clicking both box to get embed code"
