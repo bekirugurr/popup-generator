@@ -13,9 +13,26 @@ const popUp2 = (t) => {
       referrerSite.toLowerCase().includes(t.trafficSource.toLowerCase())) ||
     (referrerSite &&
       t.trafficSource.toLowerCase().includes(referrerSite.toLowerCase()));
+ 
+  //! Aşağıda browser languge belirtilmemiş veya belirtilen dil kullanıcının browser languagesiyle eşleşiyorsa modalın çalışmasına izin veriyor
+  const userBrowserLanguage = navigator.language || navigator.userLanguage;
+  console.log(userBrowserLanguage);
 
-  //! if bloku ancak yukarıdaki ikisi için de sorun yoksa çalışıyor
-  if (isItOkeyAboutDevice && isItOkeyAboutTrafficSource) {
+  let isItOkayAboutBrowserLanguage =
+    t.browserLanguage.length === 0 ||
+    t.browserLanguage.includes(userBrowserLanguage.slice(0, 2));
+  console.log("uzunluk 0 mı", t.browserLanguage.length === 0);
+  console.log(
+    "browser dil array içinde var mı?",
+    t.browserLanguage.includes(userBrowserLanguage.slice(0, 2))
+  );
+
+  //! if bloku ancak yukarıdaki üçü için de sorun yoksa çalışıyor
+  if (
+    isItOkeyAboutDevice &&
+    isItOkeyAboutTrafficSource &&
+    isItOkayAboutBrowserLanguage
+  ) {
     let modalSize;
     let isVisible =
       t.percentage || t.howManySecondsAfter ? "hidden" : "visible";
@@ -181,7 +198,7 @@ const popUp2 = (t) => {
   }
 
   //! EXIT INTENT TARGETING. Kullanıcı mousu browserın yukarısına götürünce çalışıyor. Aşağılara gittiğinde çalışmıyor. Çünkü gidip dönebilir. Bir de kullanıcıyı sürekli darlamaması için sadece bir defa çalışıyor. İstenildiği üzere sadece desktoplarda çalışıyor
-  if (t.exitIntentTargeting && whichDevice !== "mobile") {
+  if (isItOkayAboutBrowserLanguage && t.exitIntentTargeting && whichDevice !== "mobile") {
     let onMouseOut = (e) => {
       if (e.clientY < 50) {
         document.removeEventListener("mouseout", onMouseOut);
