@@ -14,6 +14,7 @@
 <a href="https://popup-generator.vercel.app/" target="_blank"> Live link 🚀 </a>
 
 ## Preview of the project:
+👇 Gif, explaining how it works. It may take a long time to load. Wait a second... 👇
 
 ![preview](/assets/preview.gif)
 
