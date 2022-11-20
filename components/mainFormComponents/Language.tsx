@@ -5,7 +5,7 @@ import type { RootState } from "../../store";
 import { useDispatch, useSelector } from "react-redux";
 import { IoMdCloseCircle } from "react-icons/io";
 import { FiChevronUp, FiChevronDown } from "react-icons/fi";
-import { BsFillCheckSquareFill, BsSquare  } from "react-icons/bs";
+import { BsFillCheckSquareFill, BsSquare } from "react-icons/bs";
 import Info from "./Common/Info";
 
 interface LanguageItem {
@@ -25,17 +25,32 @@ const Language = () => {
     !isSwitchOn && dispatch(setBrowserLanguage([]));
   }, [isSwitchOn, dispatch]);
 
-  const languages: string[] = [
-    "English",
-    "Turkish",
-    "Spanish",
-    "Arabic",
-    "Portuguese",
-    "Japanese",
-    "German",
-    "French",
-    "Italian",
-  ];
+  const languages: string[]= ["en","tr","es", "ar","pt","ja","de","fr","it"];
+  
+  const displayFullName = (lang:string) => {  
+      switch (lang) {
+        case "en":
+          return "English";
+        case "tr":
+          return "Turkish";
+        case "es":
+          return "Spanish";
+        case "ar":
+          return "Arabic";
+        case "pt":
+          return "Portuguese";
+        case "ja":
+          return "Japanese";
+        case "de":
+          return "German";
+        case "fr":
+          return "French";
+        case "it":
+          return "Italian";
+        default:
+          return ;
+      }
+  }
 
   const handleDelete = (e: any, item: string) => {
     const langArr = browserLanguage?.filter((lang: string) => item !== lang);
@@ -43,33 +58,35 @@ const Language = () => {
       ? dispatch(setBrowserLanguage(langArr))
       : dispatch(setBrowserLanguage([]));
   };
-  const handleClick = (e:any, lang:string) => {
-    e.preventDefault()
-    if (browserLanguage != undefined &&  browserLanguage.includes(lang)) {
-        const newLangArr: string[] = browserLanguage.filter((item)=>item != lang)
-        dispatch(setBrowserLanguage(newLangArr))
-    } else if(browserLanguage != undefined){
-        const newLangArr: string[] = [...browserLanguage, lang]
-        dispatch(setBrowserLanguage(newLangArr))
-    } else{
-        dispatch(setBrowserLanguage([lang]))
+  const handleClick = (e: any, lang: string) => {
+    e.preventDefault();
+    if (browserLanguage != undefined && browserLanguage.includes(lang)) {
+      const newLangArr: string[] = browserLanguage.filter(
+        (item) => item != lang
+      );
+      dispatch(setBrowserLanguage(newLangArr));
+    } else if (browserLanguage != undefined) {
+      const newLangArr: string[] = [...browserLanguage, lang];
+      dispatch(setBrowserLanguage(newLangArr));
+    } else {
+      dispatch(setBrowserLanguage([lang]));
     }
-  }
+  };
 
-  const info = "You can allow to the popup to appear in your site for users who have certain browser languages by this feature. Default is all browser languages. "
+  const info =
+    "You can allow to the popup to appear in your site for users who have certain browser languages by this feature. Default is all browser languages. ";
   return (
     <section className="text-secondary w-96 relative mt-12">
       <h4 className="my-2 pl-1 font-semibold">Browser Language</h4>
       <div className="absolute top-0 right-0 flex items-center gap-3">
-        <Info
-          info={info}
-          inWhichComponent="Language"
-        />
+        <Info info={info} inWhichComponent="Language" />
         <RadioButton isSwitchOn={isSwitchOn} setIsSwitchOn={setIsSwitchOn} />
       </div>
       <div className="relative">
         <div
-          className={`w-96 h-11 px-2 mt-6 text-sm rounded-md border border-gray-400 flex gap-1 items-center justify-between text-gray-600 ${isOptionsOpen && 'border-2 border-blue-400'}`}
+          className={`w-96 h-11 px-2 mt-6 text-sm rounded-md border border-gray-400 flex gap-1 items-center justify-between text-gray-600 ${
+            isOptionsOpen && "border-2 border-blue-400"
+          }`}
           onClick={() => setIsOptionsOpen(!isOptionsOpen)}
         >
           <span>Select languages...</span>
@@ -79,34 +96,53 @@ const Language = () => {
             <FiChevronDown className="text-2xl" />
           )}
         </div>
+
+        {/* //! Section to add language */}
         {isOptionsOpen && (
-          <div className="absolute w-96 h-[16rem] -bottom-[16.1rem] rounded-lg border border-gray-400 overflow-y-auto bg-white z-50" onMouseLeave={()=>setIsOptionsOpen(false)}>
+          <div
+            className="absolute w-96 h-[16rem] -bottom-[16.1rem] rounded-lg border border-gray-400 overflow-y-auto bg-white z-50"
+            onMouseLeave={() => setIsOptionsOpen(false)}
+          >
             {languages.map((lang, index) => (
-              <button key={index} className='hover:bg-gray-200 flex items-center px-3 py-1.5 gap-3 w-full' onClick={(e)=>handleClick(e,lang)}>
-                {browserLanguage != undefined && browserLanguage.includes(lang) ? <BsFillCheckSquareFill className="text-prime-violet"/> : <BsSquare/> }
-                <div>{lang}</div> 
-                </button>
+              <button
+                key={index}
+                className="hover:bg-gray-200 flex items-center px-3 py-1.5 gap-3 w-full"
+                onClick={(e) => handleClick(e, lang)}
+              >
+                {browserLanguage != undefined &&
+                browserLanguage.includes(lang) ? (
+                  <BsFillCheckSquareFill className="text-prime-violet" />
+                ) : (
+                  <BsSquare />
+                )}
+                <div>{displayFullName(lang)}</div>
+              </button>
             ))}
           </div>
         )}
       </div>
 
-      <div className="w-96 mt-6 text-sm rounded-md border border-gray-400 flex gap-1 items-center flex-wrap pl-1 py-0.5" >
-
+      {/* //! Section for added languages */}
+      <div className="w-96 mt-6 text-sm rounded-md border border-gray-400 flex gap-1 items-center flex-wrap pl-1 py-0.5">
         {browserLanguage?.map((lang: string, index: number) => (
           <div
             key={index}
             className="border rounded py-1.5 px-1 mr-1 bg-gray-200 hover:bg-white hover:border-red-700 flex items-center hover:text-red-700"
-            
           >
-            <span className="text-black">{lang}</span>
+            <span className="text-black">{displayFullName(lang)}</span>
             <IoMdCloseCircle
               className="ml-2 text-xl"
               onClick={(e) => handleDelete(e, lang)}
             />
           </div>
-        ))}        
-        {browserLanguage != undefined && browserLanguage.length !== 0 ?<div className="h-9"></div> : <div className="h-9 flex items-center text-gray-600">You have not select yet...</div> }
+        ))}
+        {browserLanguage != undefined && browserLanguage.length !== 0 ? (
+          <div className="h-9"></div>
+        ) : (
+          <div className="h-9 flex items-center text-gray-600">
+            You have not select yet...
+          </div>
+        )}
       </div>
     </section>
   );
