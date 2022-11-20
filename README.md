@@ -16,6 +16,14 @@
 ## Preview of the project:
 
 ![preview](/assets/preview.gif)
+
+## Functionalities 
+- User selects a popup from templates list
+- User selects color, size and position for popup
+- User can change the content of popups
+- User sets behavioural events for popup to appear
+- User copies code and pastes scripts to a website
+
 ## Description 
 This app creates modular popups/modals that users can use them into their webpages without knowing coding. Users can customize size, content, position, color of modals. They can add image if chosen modal allows. They can determine in which kind of device (desktop, mobile or both) modal will appear, how many seconds after site opened or after what percentage of the page scrolled the modal will appear. Users can also allow to modal to appear for whom only come with links from certain sites and who have certain browser languages. Finally users can allow modal to apper when visitor moves out the mouse cursor to close tab. After these customization process, users get a short code snippet. After just pasting this snippet to a body of an html file the modal will work. Only requirement is tailwind must be installed to the html.
 
