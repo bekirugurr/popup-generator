@@ -14,9 +14,8 @@
 <a href="https://popup-generator.vercel.app/" target="_blank"> Live link 🚀 </a>
 
 ## Preview of the project:
-👇 Gif, explaining how it works. It may take a long time to load. Wait a second... 👇
 
-![preview](/assets/preview_short.gif)
+https://user-images.githubusercontent.com/94041207/203125527-9b6fd9b2-88a8-4c17-b397-827a3ab119a1.mp4
 
 ## Functionalities 
 - User selects a popup from templates list
